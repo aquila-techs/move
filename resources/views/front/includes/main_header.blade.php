@@ -24,7 +24,7 @@
 							<i class="i-plain icon-line2-envelope m-0"></i>
 							<div class="he-text font-weight-normal text-white-50">
 								Email Us:
-								<span><a href="mailto:info@canvas.com" target="_top" class="text-white font-weight-medium">info@canvas.com</a></span>
+								<span><a href="mailto:info@canvas.com" target="_top" class="text-white font-weight-medium">info@moveinandout.com</a></span>
 							</div>
 						</li>
 					</ul>
@@ -62,7 +62,7 @@
 
 							<ul class="menu-container">
 								<li class="current menu-item"><a class="menu-link" href="{{ url('/') }}"><div>Home</div></a></li>
-								<li class="menu-item"><a class="menu-link" href="#"><div>Our Company</div></a></li>
+								<li class="menu-item"><a class="menu-link" href="{{ url('about_us') }}"><div>Our Company</div></a></li>
 								<li class="menu-item"><a class="menu-link" href="#"><div>Rates</div></a>
 									<ul class="sub-menu-container">
 										<li class="menu-item"><a class="menu-link" href="#"><div><i class="icon-line2-home"></i>Home Moving</div></a></li>
@@ -77,7 +77,6 @@
 								<li class="menu-item"><a class="menu-link" href="{{ url('faqs') }}"><div>FAQs</div></a></li>
 								<li class="menu-item"><a class="menu-link" href="{{ url('blog_I') }}"><div>Blog</div></a></li>
 								<li class="menu-item"><a class="menu-link" href="{{ url('contact_us') }}"><div>Contact Us</div></a></li>
-								<li class="menu-item"><a class="menu-link" href="{{ url('about_us') }}"><div>About Us</div></a></li>
 							</ul>
 
 						</nav><!-- #primary-menu end -->

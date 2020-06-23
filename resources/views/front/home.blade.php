@@ -7,11 +7,11 @@
 			
 		<!-- Slider
 		============================================= -->
-		<section id="slider" class="slider-element bg-color" style="height: auto; padding: 60px 0; background: url('movers/images/bg-2.png') no-repeat center center / 100% 100%;">
+		<section id="slider" class="slider-element bg-color" style="height: auto; padding: 60px 0; background: url({{ asset('front/movers/images/bg-2.png') }}) no-repeat center center / 100% 100%;">
 
 			<div class="container" style="z-index: 2">
 				<div class="center">
-					<h2 class="text-white h2 font-weight-semibold mb-2">Welcome to the Canvas Packers and Movers.</h2>
+					<h2 class="text-white h2 font-weight-semibold mb-2">Welcome to the Moveinandout Packers and Movers.</h2>
 					<p class="text-white-50">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, aperiam.</p>
 				</div>
 				<div class="row topmargin justify-content-end">
@@ -174,7 +174,7 @@
 
 										<div class="col-12 input-group form-group">
 											<div class="input-group-prepend">
-												<span class="input-group-text bg-transparent"><img src="movers/images/baggage.png" height="18" alt="baggage Icon"></span>
+												<span class="input-group-text bg-transparent"><img src="front/movers/images/baggage.png" height="18" alt="baggage Icon"></span>
 											</div>
 											<select class="required custom-select" name="others-moving-form-service" id="others-moving-form-service">
 												<option value="" disabled selected>-- Select Your Service --</option>
@@ -382,7 +382,7 @@
 						<div class="row col-mb-50 col-mb-lg-80">
 							<div class="col-md-4">
 								<div class="feature-box media-box">
-									<div class="fbox-icon position-relative mb-4" style="background-image: url('movers/images/featured-img/1.jpg');">
+									<div class="fbox-icon position-relative mb-4" style="background-image: url({{ asset('front/movers/images/featured-img/1.jpg') }});">
 										<i class="icon-line2-home"></i>
 									</div>
 									<div class="fbox-content">
@@ -393,7 +393,7 @@
 							</div>
 							<div class="col-md-4">
 								<div class="feature-box media-box">
-									<div class="fbox-icon position-relative mb-4" style="background-image: url('movers/images/featured-img/2.jpg');">
+									<div class="fbox-icon position-relative mb-4" style="background-image: url({{ asset('front/movers/images/featured-img/2.jpg') }});">
 										<i class="icon-building2"></i>
 									</div>
 									<div class="fbox-content">
@@ -404,7 +404,7 @@
 							</div>
 							<div class="col-md-4">
 								<div class="feature-box media-box">
-									<div class="fbox-icon position-relative mb-4" style="background-image: url('movers/images/featured-img/3.jpg');">
+									<div class="fbox-icon position-relative mb-4" style="background-image: url({{ asset('front/movers/images/featured-img/3.jpg') }});">
 										<i class="icon-line2-globe"></i>
 									</div>
 									<div class="fbox-content">
@@ -426,7 +426,7 @@
 							</div>
 							<div class="col-md-4">
 								<div class="feature-box media-box">
-									<div class="fbox-icon position-relative mb-4" style="background-image: url('movers/images/featured-img/1.jpg');">
+									<div class="fbox-icon position-relative mb-4" style="background-image: url({{ asset('front/movers/images/featured-img/1.jpg') }});">
 										<i class="icon-car"></i>
 									</div>
 									<div class="fbox-content">
@@ -531,7 +531,7 @@
 										<div class="testimonial bg-transparent shadow-none border-0 p-0">
 											<div class="d-flex flex-row mb-4 align-items-center">
 												<div class="testi-image">
-													<a href="#"><img src="{{ asset('front/demos/pet/images/testimonials/1.jpg') }}" alt="Customer Testimonails"></a>
+													<a href="#"><img src="{{ asset('front/images/testimonials/1.jpg') }}" alt="Customer Testimonails"></a>
 												</div>
 												<h4 class="ml-1 mb-0">John Dow</h4>
 											</div>
@@ -588,7 +588,7 @@
 									<i class="toggle-open icon-line-circle-cross"></i>
 								</div>
 								<div class="toggle-title font-weight-medium">
-									Why Canvas for Home Shifting?
+									Why Moveinandout for Home Shifting?
 								</div>
 							</div>
 							<div class="toggle-content text-black-50">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, dolorum, vero ipsum molestiae minima odio quo voluptate illum excepturi quam cum voluptates doloribus quae nisi tempore necessitatibus dolores ducimus enim libero eaque explicabo suscipit animi at quaerat aliquid ex expedita perspiciatis? Saepe, aperiam, nam unde quas beatae vero vitae nulla.</div>
@@ -626,7 +626,7 @@
 
 			<div class="clear"></div>
 
-				<div class="section dark pt-0 mb-0 bg-color" style="background: url({{ asset('front/demos/movers/images/bg-2.png') }} ) no-repeat center bottom / 100%; overflow: visible">
+				<div class="section dark pt-0 mb-0 bg-color" style="background: url({{ asset('front/movers/images/bg-2.png') }} ) no-repeat center bottom / 100%; overflow: visible">
 					<svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 1960 206.8" class="bg-white">
 						<path class="svg-themecolor" style="opacity:0.2;" d="M0,142.8A2337.49,2337.49,0,0,1,297.5,56.3C569.33-3.53,783.89.22,849.5,2.3c215.78,6.86,382.12,45.39,503.25,73.45,158.87,36.8,283.09,79.13,458.75,54.55A816.49,816.49,0,0,0,1983,86.8v110H0Z"/>
 						<path class="svg-themecolor" d="M.5,152.8s498-177,849-150,1031,238,1134,94v110H.5Z"/>

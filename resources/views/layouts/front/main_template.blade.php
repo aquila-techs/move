@@ -36,6 +36,13 @@
 
 	@stack('custom-css')
 
+	<style>
+		footer
+		{
+			margin-top: 0 !important;
+		}
+	</style>
+
 </head>
 
 <body class="stretched">
@@ -169,7 +176,7 @@
 
 					<div class="row justify-content-between align-items-center">
 						<div class="col-md-6 text-black-50">
-							Copyrights &copy; 2020 All Rights Reserved by Canvas Inc.
+							Copyrights &copy; 2020 All Rights Reserved by Moveinandout Inc.
 						</div>
 
 						<div class="col-md-6 d-md-flex flex-md-column align-items-md-end mt-4 mt-md-0">
@@ -204,6 +211,9 @@
 	<script src="{{ asset('front/js/plugins.easing.js' )}}"></script>
 	<script src="{{ asset('front/js/plugins.lightbox.js' )}}"></script>
 
+	<!-- bootstrap min -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha256-u+Q/eQIe6P5wU4K8maihJOQkhqBbf7K1NN68GwTpNz0=" crossorigin="anonymous"></script>
+	
 	<!-- DatePicker JS -->
 	<script src="{{ asset('front/js/datepicker.js') }}"></script>
 
