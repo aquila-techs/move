@@ -1,7 +1,8 @@
 @extends('layouts.front.main_template')
 
 	@section('content')
-	
+
+@php $root = env('ROOT_FOLDER'); @endphp	
 				<!-- Including header -->
 			@include('front.includes.main_header')
 
@@ -182,18 +183,18 @@
 					</div>
 
 					<ul class="clients-grid grid-2 grid-sm-3 grid-md-6 mb-0">
-						<li class="grid-item"><a href="http://logofury.com/logo/enzo.html"><img src="{{ asset('front/images/clients/1.png') }}" alt="Clients"></a></li>
-						<li class="grid-item"><a href="http://logofury.com"><img src="{{ asset('front/images/clients/2.png') }}" alt="Clients"></a></li>
-						<li class="grid-item"><a href="http://logofaves.com/2021/03/grabbt/"><img src="{{ asset('front/images/clients/3.png') }}" alt="Clients"></a></li>
-						<li class="grid-item"><a href="http://logofaves.com/2021/01/ladera-granola/"><img src="{{ asset('front/images/clients/4.png') }}" alt="Clients"></a></li>
-						<li class="grid-item"><a href="http://logofaves.com/2021/02/hershel-farms/"><img src="{{ asset('front/images/clients/5.png') }}" alt="Clients"></a></li>
-						<li class="grid-item"><a href="http://logofury.com/logo/food-fight-radio.html"><img src="{{ asset('front/images/clients/6.png') }}" alt="Clients"></a></li>
-						<li class="grid-item"><a href="http://logofury.com"><img src="{{ asset('front/images/clients/7.png') }}" alt="Clients"></a></li>
-						<li class="grid-item"><a href="http://logofury.com/logo/up-travel.html"><img src="{{ asset('front/images/clients/8.png') }}" alt="Clients"></a></li>
-						<li class="grid-item"><a href="http://logofury.com/logo/caffi-bardi.html"><img src="{{ asset('front/images/clients/9.png') }}" alt="Clients"></a></li>
-						<li class="grid-item"><a href="http://logofury.com/logo/bignix-design.html"><img src="{{ asset('front/images/clients/10.png') }}" alt="Clients"></a></li>
-						<li class="grid-item"><a href="http://logofury.com/"><img src="{{ asset('front/images/clients/11.png') }}" alt="Clients"></a></li>
-						<li class="grid-item"><a href="http://logofury.com/"><img src="{{ asset('front/images/clients/12.png') }}" alt="Clients"></a></li>
+						<li class="grid-item"><a href="http://logofury.com/logo/enzo.html"><img src="{{ asset($root.'front/images/clients/1.png') }}" alt="Clients"></a></li>
+						<li class="grid-item"><a href="http://logofury.com"><img src="{{ asset($root.'front/images/clients/2.png') }}" alt="Clients"></a></li>
+						<li class="grid-item"><a href="http://logofaves.com/2021/03/grabbt/"><img src="{{ asset($root.'front/images/clients/3.png') }}" alt="Clients"></a></li>
+						<li class="grid-item"><a href="http://logofaves.com/2021/01/ladera-granola/"><img src="{{ asset($root.'front/images/clients/4.png') }}" alt="Clients"></a></li>
+						<li class="grid-item"><a href="http://logofaves.com/2021/02/hershel-farms/"><img src="{{ asset($root.'front/images/clients/5.png') }}" alt="Clients"></a></li>
+						<li class="grid-item"><a href="http://logofury.com/logo/food-fight-radio.html"><img src="{{ asset($root.'front/images/clients/6.png') }}" alt="Clients"></a></li>
+						<li class="grid-item"><a href="http://logofury.com"><img src="{{ asset($root.'front/images/clients/7.png') }}" alt="Clients"></a></li>
+						<li class="grid-item"><a href="http://logofury.com/logo/up-travel.html"><img src="{{ asset($root.'front/images/clients/8.png') }}" alt="Clients"></a></li>
+						<li class="grid-item"><a href="http://logofury.com/logo/caffi-bardi.html"><img src="{{ asset($root.'front/images/clients/9.png') }}" alt="Clients"></a></li>
+						<li class="grid-item"><a href="http://logofury.com/logo/bignix-design.html"><img src="{{ asset($root.'front/images/clients/10.png') }}" alt="Clients"></a></li>
+						<li class="grid-item"><a href="http://logofury.com/"><img src="{{ asset($root.'front/images/clients/11.png') }}" alt="Clients"></a></li>
+						<li class="grid-item"><a href="http://logofury.com/"><img src="{{ asset($root.'front/images/clients/12.png') }}" alt="Clients"></a></li>
 					</ul>
 
 
@@ -204,7 +205,7 @@
 
 
 @push('custom-scripts')
-	<script src="{{ asset('front/js/plugins.animations.js' )}}"></script>
+	<script src="{{ asset($root.'front/js/plugins.animations.js' )}}"></script>
 @endpush
 
 @endsection

@@ -2,6 +2,8 @@
 
 @section('content')
 
+@php $root = env('ROOT_FOLDER'); @endphp
+
 			<!-- Including header -->
 		@include('front.includes.main_header')
 
@@ -248,7 +250,7 @@
 											<div class="grid-inner row no-gutters">
 												<div class="col-auto">
 													<div class="entry-image">
-														<a href="#"><img src="images/magazine/small/3.jpg" alt="Image"></a>
+														<a href="#"><img src="{{ asset($root.'front/images/magazine/3.jpg') }}" alt="Image"></a>
 													</div>
 												</div>
 												<div class="col pl-3">
@@ -268,7 +270,7 @@
 											<div class="grid-inner row no-gutters">
 												<div class="col-auto">
 													<div class="entry-image">
-														<a href="#"><img src="images/magazine/small/2.jpg" alt="Image"></a>
+														<a href="#"><img src="{{ asset($root.'front/images/magazine/2.jpg') }}" alt="Image"></a>
 													</div>
 												</div>
 												<div class="col pl-3">
@@ -288,7 +290,7 @@
 											<div class="grid-inner row no-gutters">
 												<div class="col-auto">
 													<div class="entry-image">
-														<a href="#"><img src="images/magazine/small/1.jpg" alt="Image"></a>
+														<a href="#"><img src="{{ asset($root.'front/images/magazine/1.jpg') }}" alt="Image"></a>
 													</div>
 												</div>
 												<div class="col pl-3">

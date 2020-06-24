@@ -56,7 +56,7 @@
 						</div>
 
 						<div class="col-lg-7">
-							<img src="{{ asset('front/images/contact_form.jpg') }}" style="position:absolute;top:-30px;left:30px;transition:opacity 0.5s;width:100%;height:125%;object-fit:cover;object-position:center;">
+							<img src="{{ asset(env('ROOT_FOLDER').'front/images/contact_form.jpg') }}" style="position:absolute;top:-30px;left:30px;transition:opacity 0.5s;width:100%;height:125%;object-fit:cover;object-position:center;">
 						</div>	
 			</div>
 			</div>

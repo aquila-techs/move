@@ -1,5 +1,7 @@
 @extends('layouts.front.main_template')
 
+@php $root = env('ROOT_FOLDER'); @endphp
+
 	@section('content')
 	
 				<!-- Including header -->
@@ -7,7 +9,7 @@
 			
 		<!-- Slider
 		============================================= -->
-		<section id="slider" class="slider-element bg-color" style="height: auto; padding: 60px 0; background: url({{ asset('front/movers/images/bg-2.png') }}) no-repeat center center / 100% 100%;">
+		<section id="slider" class="slider-element bg-color" style="height: auto; padding: 60px 0; background: url({{ asset($root.'front/movers/images/bg-2.png') }}) no-repeat center center / 100% 100%;">
 
 			<div class="container" style="z-index: 2">
 				<div class="center">
@@ -174,7 +176,7 @@
 
 										<div class="col-12 input-group form-group">
 											<div class="input-group-prepend">
-												<span class="input-group-text bg-transparent"><img src="front/movers/images/baggage.png" height="18" alt="baggage Icon"></span>
+												<span class="input-group-text bg-transparent"><img src="{{ asset($root.'front/movers/images/baggage.png') }}" height="18" alt="baggage Icon"></span>
 											</div>
 											<select class="required custom-select" name="others-moving-form-service" id="others-moving-form-service">
 												<option value="" disabled selected>-- Select Your Service --</option>
@@ -304,7 +306,7 @@
 						<div class="col-lg-8">
 							<div class="row align-items-center">
 								<div class="col-sm-6">
-									<img src="{{ asset('front/movers/images/others/4.png') }}" alt="Image 1">
+									<img src="{{ asset($root.'front/movers/images/others/4.png') }}" alt="Image 1">
 								</div>
 								<div class="col-sm-6">
 									<h3>After you Share your Shifting details, Our Team will contact you.</h3>
@@ -319,12 +321,12 @@
 									<a target="_blank" href="https://icons8.com" class="color btn btn-sm p-0 btn-link"><u>illustration by Ouch.pics</u> <i class="icon-line-arrow-right"></i></a>
 								</div>
 								<div class="col-sm-6">
-									<img src="{{ asset('front/movers/images/others/2.png') }}" alt="Image 1">
+									<img src="{{ asset($root.'front/movers/images/others/2.png') }}" alt="Image 1">
 								</div>
 							</div>
 							<div class="row align-items-center mt-5">
 								<div class="col-sm-6">
-									<img src="{{ asset('front/movers/images/others/1.png') }}" alt="Image 1">
+									<img src="{{ asset($root.'front/movers/images/others/1.png') }}" alt="Image 1">
 								</div>
 								<div class="col-sm-6">
 									<h3>Deliver whenever you are Ready.</h3>
@@ -339,7 +341,7 @@
 
 				<div class="clear"></div>
 
-				<div class="section p-0 dark mb-0" style="background: linear-gradient(to right, rgba(25,102,221,0.2), rgba(25,102,221,0.5)), url({{ asset('front/movers/images/section/1.jpg') }} ) no-repeat center center / cover; min-height: 400px">
+				<div class="section p-0 dark mb-0" style="background: linear-gradient(to right, rgba(25,102,221,0.2), rgba(25,102,221,0.5)), url({{ asset($root.'front/movers/images/section/1.jpg') }} ) no-repeat center center / cover; min-height: 400px">
 					<div class="container">
 						<div class="row justify-content-between mb-4" style="padding: 100px 0 160px;">
 							<div class="col-lg-5 col-md-6 offset-lg-1 pt-3">
@@ -382,7 +384,7 @@
 						<div class="row col-mb-50 col-mb-lg-80">
 							<div class="col-md-4">
 								<div class="feature-box media-box">
-									<div class="fbox-icon position-relative mb-4" style="background-image: url({{ asset('front/movers/images/featured-img/1.jpg') }});">
+									<div class="fbox-icon position-relative mb-4" style="background-image: url({{ asset($root.'front/movers/images/featured-img/1.jpg') }});">
 										<i class="icon-line2-home"></i>
 									</div>
 									<div class="fbox-content">
@@ -393,7 +395,7 @@
 							</div>
 							<div class="col-md-4">
 								<div class="feature-box media-box">
-									<div class="fbox-icon position-relative mb-4" style="background-image: url({{ asset('front/movers/images/featured-img/2.jpg') }});">
+									<div class="fbox-icon position-relative mb-4" style="background-image: url({{ asset($root.'front/movers/images/featured-img/2.jpg') }});">
 										<i class="icon-building2"></i>
 									</div>
 									<div class="fbox-content">
@@ -404,7 +406,7 @@
 							</div>
 							<div class="col-md-4">
 								<div class="feature-box media-box">
-									<div class="fbox-icon position-relative mb-4" style="background-image: url({{ asset('front/movers/images/featured-img/3.jpg') }});">
+									<div class="fbox-icon position-relative mb-4" style="background-image: url({{ asset($root.'front/movers/images/featured-img/3.jpg') }});">
 										<i class="icon-line2-globe"></i>
 									</div>
 									<div class="fbox-content">
@@ -426,7 +428,7 @@
 							</div>
 							<div class="col-md-4">
 								<div class="feature-box media-box">
-									<div class="fbox-icon position-relative mb-4" style="background-image: url({{ asset('front/movers/images/featured-img/1.jpg') }});">
+									<div class="fbox-icon position-relative mb-4" style="background-image: url({{ asset($root.'front/movers/images/featured-img/1.jpg') }});">
 										<i class="icon-car"></i>
 									</div>
 									<div class="fbox-content">
@@ -455,22 +457,22 @@
 
 				<div class="section-map clearfix bottommargin-lg topmargin-lg">
 					<div class="container">
-						<img src="{{ asset('front/movers/images/map.png') }}" alt="Map Image" class="img-fluid map-image">
+						<img src="{{ asset($root.'front/movers/images/map.png') }}" alt="Map Image" class="img-fluid map-image">
 						<div class="map-title">
 							<h2 class="center">More than 21 Countries included in Our Network. Some of Our Most Popular Countries</h2>
 							<div class="d-flex justify-content-center">
 								<ul class="iconlist m-0 pr-5">
-									<li><img src="{{ asset('front/movers/images/flags/uk.png') }}" alt="Country Flag"><a href="#">United Kingdom</a></li>
-									<li><img src="{{ asset('front/movers/images/flags/us.png') }}" alt="Country Flag"><a href="#">USA</a></li>
-									<li><img src="{{ asset('front/movers/images/flags/br.png') }}" alt="Country Flag"><a href="#">Brazil</a></li>
-									<li><img src="{{ asset('front/movers/images/flags/sa.png') }}" alt="Country Flag"><a href="#">South Africa</a></li>
-									<li><img src="{{ asset('front/movers/images/flags/in.png') }}" alt="Country Flag"><a href="#">India</a></li>
+									<li><img src="{{ asset($root.'front/movers/images/flags/uk.png') }}" alt="Country Flag"><a href="#">United Kingdom</a></li>
+									<li><img src="{{ asset($root.'front/movers/images/flags/us.png') }}" alt="Country Flag"><a href="#">USA</a></li>
+									<li><img src="{{ asset($root.'front/movers/images/flags/br.png') }}" alt="Country Flag"><a href="#">Brazil</a></li>
+									<li><img src="{{ asset($root.'front/movers/images/flags/sa.png') }}" alt="Country Flag"><a href="#">South Africa</a></li>
+									<li><img src="{{ asset($root.'front/movers/images/flags/in.png') }}" alt="Country Flag"><a href="#">India</a></li>
 								</ul>
 								<ul class="iconlist m-0 pl-5">
-									<li><img src="{{ asset('front/movers/images/flags/si.png') }}" alt="Country Flag"><a href="#">Singapore</a></li>
-									<li><img src="{{ asset('front/movers/images/flags/ja.png') }}" alt="Country Flag"><a href="#">Japan</a></li>
-									<li><img src="{{ asset('front/movers/images/flags/au.png') }}" alt="Country Flag"><a href="#">Australia</a></li>
-									<li><img src="{{ asset('front/movers/images/flags/ca.png') }}" alt="Country Flag"><a href="#">Canada</a></li>
+									<li><img src="{{ asset($root.'front/movers/images/flags/si.png') }}" alt="Country Flag"><a href="#">Singapore</a></li>
+									<li><img src="{{ asset($root.'front/movers/images/flags/ja.png') }}" alt="Country Flag"><a href="#">Japan</a></li>
+									<li><img src="{{ asset($root.'front/movers/images/flags/au.png') }}" alt="Country Flag"><a href="#">Australia</a></li>
+									<li><img src="{{ asset($root.'front/movers/images/flags/ca.png') }}" alt="Country Flag"><a href="#">Canada</a></li>
 									<li><a href="#" class="text-black-50">See all..</a></li>
 								</ul>
 							</div>
@@ -531,7 +533,7 @@
 										<div class="testimonial bg-transparent shadow-none border-0 p-0">
 											<div class="d-flex flex-row mb-4 align-items-center">
 												<div class="testi-image">
-													<a href="#"><img src="{{ asset('front/images/testimonials/1.jpg') }}" alt="Customer Testimonails"></a>
+													<a href="#"><img src="{{ asset($root.'front/images/testimonials/1.jpg') }}" alt="Customer Testimonails"></a>
 												</div>
 												<h4 class="ml-1 mb-0">John Dow</h4>
 											</div>
@@ -568,7 +570,7 @@
 								</div>
 							</div>
 							<div class="grid-bg d-none d-md-block">
-								<img src="{{ asset('front/movers/images/dot-grid.svg') }}" alt="Dot Image">
+								<img src="{{ asset($root.'front/movers/images/dot-grid.svg') }}" alt="Dot Image">
 							</div>
 						</div>
 					</div>
@@ -626,7 +628,7 @@
 
 			<div class="clear"></div>
 
-				<div class="section dark pt-0 mb-0 bg-color" style="background: url({{ asset('front/movers/images/bg-2.png') }} ) no-repeat center bottom / 100%; overflow: visible">
+				<div class="section dark pt-0 mb-0 bg-color" style="background: url({{ asset($root.'front/movers/images/bg-2.png') }} ) no-repeat center bottom / 100%; overflow: visible">
 					<svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 1960 206.8" class="bg-white">
 						<path class="svg-themecolor" style="opacity:0.2;" d="M0,142.8A2337.49,2337.49,0,0,1,297.5,56.3C569.33-3.53,783.89.22,849.5,2.3c215.78,6.86,382.12,45.39,503.25,73.45,158.87,36.8,283.09,79.13,458.75,54.55A816.49,816.49,0,0,0,1983,86.8v110H0Z"/>
 						<path class="svg-themecolor" d="M.5,152.8s498-177,849-150,1031,238,1134,94v110H.5Z"/>

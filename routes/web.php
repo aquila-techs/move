@@ -13,10 +13,11 @@
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('dashboard', 'RoutingController@index');
+    // Route::get('dashboard', 'RoutingController@index');
 
 });
-    
+
+    Route::get('dashboard', 'RoutingController@index');
     Route::view('apps/calendar','apps.calendar');
     Route::view('apps/email/compose','apps.email.compose');
     Route::view('apps/project/list','apps.project.list');
@@ -38,3 +39,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::view('faqs','front.faqs');
     Route::view('blog_I','front.blog_I');
     Route::view('blog_II','front.blog_II');
+
+    Route::get('test',function(){
+        return env('ROOT_FOLDER');
+    });
+
