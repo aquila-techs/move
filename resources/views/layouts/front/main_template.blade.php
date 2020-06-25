@@ -35,15 +35,15 @@
 	============================================= -->
 	<title>Move'in</title>
 
+    <style>
+        footer
+        {
+            margin-top: 0 !important;
+        }
+    </style>
 
-	@stack('custom-css')
+    @stack('custom-css')
 
-	<style>
-		footer
-		{
-			margin-top: 0 !important;
-		}
-	</style>
 
 </head>
 
@@ -215,7 +215,7 @@
 
 	<!-- bootstrap min -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha256-u+Q/eQIe6P5wU4K8maihJOQkhqBbf7K1NN68GwTpNz0=" crossorigin="anonymous"></script>
-	
+
 	<!-- DatePicker JS -->
 	<script src="{{ asset($root.'front/js/datepicker.js') }}"></script>
 
