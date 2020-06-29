@@ -13,9 +13,6 @@
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
-    // Route::get('dashboard', 'RoutingController@index');
-
-});
 
     Route::get('dashboard', 'RoutingController@index');
     Route::view('apps/calendar','apps.calendar');
@@ -26,6 +23,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::view('apps/task/board','apps.task.board');
 
     Route::view('forms/basic','forms.basic');
+
+});
+
 
     // Route::get('pages-logout', 'RoutingController@logout');
     // Route::get('{first}/{second}/{third}', 'RoutingController@thirdLevel');

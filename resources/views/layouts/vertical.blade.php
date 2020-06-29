@@ -9,7 +9,7 @@
     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
     <meta content="Coderthemes" name="author" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    
+
     @if(isset($isDark) && $isDark)
         @include('layouts.shared.head', ['isDark' => true])
     @elseif(isset($isRTL) && $isRTL)
@@ -19,6 +19,7 @@
     @endif
 
 </head>
+@php $root = env('ROOT_FOLDER'); @endphp
 
 @if(isset($isScrollable) && $isScrollable)
     <body class="scrollable-layout">

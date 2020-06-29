@@ -1,16 +1,17 @@
 @extends('layouts.vertical')
 
+@php $root = env('ROOT_FOLDER'); @endphp
 
 @section('css')
-<link href="{{ URL::asset('assets/libs/fullcalendar-core/fullcalendar-core.min.css') }}" rel="stylesheet"
+<link href="{{ URL::asset($root.'assets/libs/fullcalendar-core/fullcalendar-core.min.css') }}" rel="stylesheet"
     type="text/css" />
-<link href="{{ URL::asset('assets/libs/fullcalendar-daygrid/fullcalendar-daygrid.min.css') }}" rel="stylesheet"
+<link href="{{ URL::asset($root.'assets/libs/fullcalendar-daygrid/fullcalendar-daygrid.min.css') }}" rel="stylesheet"
     type="text/css" />
-<link href="{{ URL::asset('assets/libs/fullcalendar-bootstrap/fullcalendar-bootstrap.min.css') }}" rel="stylesheet"
+<link href="{{ URL::asset($root.'assets/libs/fullcalendar-bootstrap/fullcalendar-bootstrap.min.css') }}" rel="stylesheet"
     type="text/css" />
-<link href="{{ URL::asset('assets/libs/fullcalendar-timegrid/fullcalendar-timegrid.min.css') }}" rel="stylesheet"
+<link href="{{ URL::asset($root.'assets/libs/fullcalendar-timegrid/fullcalendar-timegrid.min.css') }}" rel="stylesheet"
     type="text/css" />
-<link href="{{ URL::asset('assets/libs/fullcalendar-list/fullcalendar-list.min.css') }}" rel="stylesheet"
+<link href="{{ URL::asset($root.'assets/libs/fullcalendar-list/fullcalendar-list.min.css') }}" rel="stylesheet"
     type="text/css" />
 
 @endsection
@@ -37,7 +38,7 @@
             <div class="card-body">
                 <div class="row align-items-center">
                     <div class="col-xl-2 col-lg-3 col-6">
-                        <img src="{{ URL::asset('assets/images/cal.png') }}" class="mr-4 align-self-center img-fluid "
+                        <img src="{{ URL::asset($root.'assets/images/cal.png') }}" class="mr-4 align-self-center img-fluid "
                             alt="cal" />
                     </div>
                     <div class="col-xl-10 col-lg-9">
@@ -127,13 +128,13 @@
 @endsection
 
 @section('script')
-<script src="{{ URL::asset('assets/libs/moment/moment.min.js') }}"></script>
-<script src="{{ URL::asset('assets/libs/fullcalendar-core/fullcalendar-core.min.js') }}"></script>
-<script src="{{ URL::asset('assets/libs/fullcalendar-bootstrap/fullcalendar-bootstrap.min.js') }}"></script>
-<script src="{{ URL::asset('assets/libs/fullcalendar-daygrid/fullcalendar-daygrid.min.js') }}"></script>
-<script src="{{ URL::asset('assets/libs/fullcalendar-timegrid/fullcalendar-timegrid.min.js') }}"></script>
-<script src="{{ URL::asset('assets/libs/fullcalendar-list/fullcalendar-list.min.js') }}"></script>
-<script src="{{ URL::asset('assets/libs/fullcalendar-interaction/fullcalendar-interaction.min.js') }}"></script>
+<script src="{{ URL::asset($root.'assets/libs/moment/moment.min.js') }}"></script>
+<script src="{{ URL::asset($root.'assets/libs/fullcalendar-core/fullcalendar-core.min.js') }}"></script>
+<script src="{{ URL::asset($root.'assets/libs/fullcalendar-bootstrap/fullcalendar-bootstrap.min.js') }}"></script>
+<script src="{{ URL::asset($root.'assets/libs/fullcalendar-daygrid/fullcalendar-daygrid.min.js') }}"></script>
+<script src="{{ URL::asset($root.'assets/libs/fullcalendar-timegrid/fullcalendar-timegrid.min.js') }}"></script>
+<script src="{{ URL::asset($root.'assets/libs/fullcalendar-list/fullcalendar-list.min.js') }}"></script>
+<script src="{{ URL::asset($root.'assets/libs/fullcalendar-interaction/fullcalendar-interaction.min.js') }}"></script>
 @endsection
 
 @section('script-bottom')
@@ -163,5 +164,5 @@
         className: 'bg-primary',
     }];
 </script>
-<script src="{{ URL::asset('assets/js/pages/calendar.init.js') }}"></script>
+<script src="{{ URL::asset($root.'assets/js/pages/calendar.init.js') }}"></script>
 @endsection

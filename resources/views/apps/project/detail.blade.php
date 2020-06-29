@@ -1,5 +1,5 @@
 @extends('layouts.vertical')
-
+@php $root = env('ROOT_FOLDER'); @endphp
 
 @section('css')
 
@@ -141,16 +141,16 @@
                     <div class="assign team mt-4">
                         <h6 class="font-weight-bold">Assign To</h6>
                         <a href="javascript: void(0);">
-                            <img src="/assets/images/users/avatar-2.jpg" alt="" class="avatar-sm m-1 rounded-circle">
+                            <img src="{{ asset($root.'assets/images/users/avatar-2.jpg') }}" alt="" class="avatar-sm m-1 rounded-circle">
                         </a>
                         <a href="javascript: void(0);">
-                            <img src="/assets/images/users/avatar-3.jpg" alt="" class="avatar-sm m-1 rounded-circle">
+                            <img src="{{ asset($root.'assets/images/users/avatar-3.jpg') }}" alt="" class="avatar-sm m-1 rounded-circle">
                         </a>
                         <a href="javascript: void(0);">
-                            <img src="/assets/images/users/avatar-9.jpg" alt="" class="avatar-sm m-1 rounded-circle">
+                            <img src="{{ asset($root.'assets/images/users/avatar-9.jpg') }}" alt="" class="avatar-sm m-1 rounded-circle">
                         </a>
                         <a href="javascript: void(0);">
-                            <img src="/assets/images/users/avatar-10.jpg" alt="" class="avatar-sm m-1 rounded-circle">
+                            <img src="{{ asset($root.'assets/images/users/avatar-10.jpg') }}" alt="" class="avatar-sm m-1 rounded-circle">
                         </a>
                     </div>
 
@@ -221,7 +221,7 @@
                             <div class="media mb-4 font-size-14">
                                 <div class="mr-3">
                                     <a href="#"> <img class="media-object rounded-circle avatar-sm" alt=""
-                                            src="/assets/images/users/avatar-2.jpg"> </a>
+                                            src="{{ asset($root.'assets/images/users/avatar-2.jpg') }}"> </a>
                                 </div>
                                 <div class="media-body">
                                     <h5 class="mt-0 font-size-15">John Cooks</h5>
@@ -235,7 +235,7 @@
                             <div class="media mb-4 font-size-14">
                                 <div class="mr-3">
                                     <a href="#"> <img class="media-object rounded-circle avatar-sm" alt=""
-                                            src="/assets/images/users/avatar-3.jpg"> </a>
+                                            src="{{ asset($root.'assets/images/users/avatar-3.jpg') }}"> </a>
                                 </div>
                                 <div class="media-body">
                                     <h5 class="mt-0 font-size-15">Jayden Dowie</h5>
@@ -271,7 +271,7 @@
                             <div class="media mb-4 font-size-14">
                                 <div class="mr-3">
                                     <a href="#"> <img class="media-object rounded-circle avatar-sm" alt=""
-                                            src="/assets/images/users/avatar-2.jpg"> </a>
+                                            src="{{ asset($root.'assets/images/users/avatar-2.jpg') }}"> </a>
                                 </div>
                                 <div class="media-body">
                                     <h5 class="mt-0 font-size-15">John Cooks</h5>
@@ -302,7 +302,7 @@
                             <div class="media">
                                 <div class="d-flex mr-3">
                                     <a href="#"> <img class="media-object rounded-circle avatar-sm" alt=""
-                                            src="/assets/images/users/avatar-1.jpg"> </a>
+                                            src="{{ asset($root.'assets/images/users/avatar-1.jpg') }}"> </a>
                                 </div>
                                 <div class="media-body">
                                     <input type="text" class="form-control input-sm" placeholder="Some text value...">
@@ -348,11 +348,11 @@
 
                                 <div class="p-2 border rounded mb-3">
                                     <div>
-                                        <a href="#" class="d-inline-block m-1"><img src="/assets/images/small/img-2.jpg"
+                                        <a href="#" class="d-inline-block m-1"><img src="{{ asset($root.'assets/images/small/img-2.jpg') }}"
                                                 alt="" class="avatar-lg rounded"></a>
-                                        <a href="#" class="d-inline-block m-1"><img src="/assets/images/small/img-3.jpg"
+                                        <a href="#" class="d-inline-block m-1"><img src="{{ asset($root.'assets/images/small/img-3.jpg') }}"
                                                 alt="" class="avatar-lg rounded"></a>
-                                        <a href="#" class="d-inline-block m-1"><img src="/assets/images/small/img-4.jpg"
+                                        <a href="#" class="d-inline-block m-1"><img src="{{ asset($root.'assets/images/small/img-4.jpg') }}"
                                                 alt="" class="avatar-lg rounded"></a>
                                     </div>
                                 </div>
@@ -374,9 +374,9 @@
                                 </div>
                                 <div class="p-2 border rounded mb-3">
                                     <div>
-                                        <a href="#" class="d-inline-block m-1"><img src="/assets/images/small/img-7.jpg"
+                                        <a href="#" class="d-inline-block m-1"><img src="{{  asset($root.'assets/images/small/img-7.jpg') }}"
                                                 alt="" class="avatar-lg rounded"></a>
-                                        <a href="#" class="d-inline-block m-1"><img src="/assets/images/small/img-6.jpg"
+                                        <a href="#" class="d-inline-block m-1"><img src="{{  asset($root.'assets/images/small/img-6.jpg' ) }}"
                                                 alt="" class="avatar-lg rounded"></a>
                                     </div>
                                 </div>

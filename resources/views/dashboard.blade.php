@@ -1,8 +1,9 @@
 @extends('layouts.vertical')
 
+@php $root = env('ROOT_FOLDER'); @endphp
 
 @section('css')
-<link href="{{ URL::asset('assets/libs/flatpickr/flatpickr.min.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ URL::asset($root.'assets/libs/flatpickr/flatpickr.min.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 
 @section('breadcrumb')
@@ -279,7 +280,7 @@
             <div class="card-body pt-2">
                 <h5 class="mb-4 header-title">Top Performers</h5>
                 <div class="media border-top pt-3">
-                    <img src="assets/images/users/avatar-7.jpg" class="avatar rounded mr-3" alt="shreyu">
+                    <img src="{{ asset($root.'assets/images/users/avatar-7.jpg') }}" class="avatar rounded mr-3" alt="shreyu">
                     <div class="media-body">
                         <h6 class="mt-1 mb-0 font-size-15">Shreyu N</h6>
                         <h6 class="text-muted font-weight-normal mt-1 mb-3">Senior Sales Guy</h6>
@@ -304,7 +305,7 @@
                     </div>
                 </div>
                 <div class="media mt-1 border-top pt-3">
-                    <img src="assets/images/users/avatar-9.jpg" class="avatar rounded mr-3" alt="shreyu">
+                    <img src="{{ asset($root.'assets/images/users/avatar-9.jpg') }}" class="avatar rounded mr-3" alt="shreyu">
                     <div class="media-body">
                         <h6 class="mt-1 mb-0 font-size-15">Greeva Y</h6>
                         <h6 class="text-muted font-weight-normal mt-1 mb-3">Social Media Campaign</h6>
@@ -329,7 +330,7 @@
                     </div>
                 </div>
                 <div class="media mt-1 border-top pt-3">
-                    <img src="assets/images/users/avatar-4.jpg" class="avatar rounded mr-3" alt="shreyu">
+                    <img src="{{ asset($root.'assets/images/users/avatar-4.jpg') }}" class="avatar rounded mr-3" alt="shreyu">
                     <div class="media-body">
                         <h6 class="mt-1 mb-0 font-size-15">Nik G</h6>
                         <h6 class="text-muted font-weight-normal mt-1 mb-3">Inventory Manager</h6>
@@ -354,7 +355,7 @@
                     </div>
                 </div>
                 <div class="media mt-1 border-top pt-3">
-                    <img src="assets/images/users/avatar-1.jpg" class="avatar rounded mr-3" alt="shreyu">
+                    <img src="{{ asset($root.'assets/images/users/avatar-1.jpg') }}" class="avatar rounded mr-3" alt="shreyu">
                     <div class="media-body">
                         <h6 class="mt-1 mb-0 font-size-15">Hardik G</h6>
                         <h6 class="text-muted font-weight-normal mt-1 mb-3">Sales Person</h6>
@@ -380,7 +381,7 @@
                 </div>
 
                 <div class="media mt-1 border-top pt-3">
-                    <img src="assets/images/users/avatar-5.jpg" class="avatar rounded mr-3" alt="shreyu">
+                    <img src="{{ asset($root.'assets/images/users/avatar-5.jpg') }}" class="avatar rounded mr-3" alt="shreyu">
                     <div class="media-body">
                         <h6 class="mt-1 mb-0 font-size-15">Stive K</h6>
                         <h6 class="text-muted font-weight-normal mt-1 mb-1">Sales Person</h6>
@@ -530,7 +531,7 @@
                     <ul class="conversation-list slimscroll" style="max-height: 328px;">
                         <li class="clearfix">
                             <div class="chat-avatar">
-                                <img src="assets/images/users/avatar-9.jpg" alt="Female">
+                                <img src="{{ asset($root.'assets/images/users/avatar-9.jpg') }}" alt="Female">
                                 <i>10:00</i>
                             </div>
                             <div class="conversation-text">
@@ -544,7 +545,7 @@
                         </li>
                         <li class="clearfix odd">
                             <div class="chat-avatar">
-                                <img src="assets/images/users/avatar-7.jpg" alt="Male">
+                                <img src="asset($root.'assets/images/users/avatar-7.jpg') }}" alt="Male">
                                 <i>10:01</i>
                             </div>
                             <div class="conversation-text">
@@ -558,7 +559,7 @@
                         </li>
                         <li class="clearfix">
                             <div class="chat-avatar">
-                                <img src="assets/images/users/avatar-9.jpg" alt="female">
+                                <img src="asset($root.'assets/images/users/avatar-9.jpg') }}" alt="female">
                                 <i>10:01</i>
                             </div>
                             <div class="conversation-text">
@@ -572,7 +573,7 @@
                         </li>
                         <li class="clearfix odd">
                             <div class="chat-avatar">
-                                <img src="assets/images/users/avatar-7.jpg" alt="male">
+                                <img src="{{ asset($root.'assets/images/users/avatar-7.jpg') }}" alt="male">
                                 <i>10:02</i>
                             </div>
                             <div class="conversation-text">
@@ -611,12 +612,12 @@
 
 @section('script')
 <!-- optional plugins -->
-<script src="{{ URL::asset('assets/libs/moment/moment.min.js') }}"></script>
-<script src="{{ URL::asset('assets/libs/apexcharts/apexcharts.min.js') }}"></script>
-<script src="{{ URL::asset('assets/libs/flatpickr/flatpickr.min.js') }}"></script>
+<script src="{{ URL::asset($root.'assets/libs/moment/moment.min.js') }}"></script>
+<script src="{{ URL::asset($root.'assets/libs/apexcharts/apexcharts.min.js') }}"></script>
+<script src="{{ URL::asset($root.'assets/libs/flatpickr/flatpickr.min.js') }}"></script>
 @endsection
 
 @section('script-bottom')
 <!-- init js -->
-<script src="{{ URL::asset('assets/js/pages/dashboard.init.js') }}"></script>
+<script src="{{ URL::asset($root.'assets/js/pages/dashboard.init.js') }}"></script>
 @endsection

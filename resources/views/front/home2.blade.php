@@ -4,9 +4,40 @@
 
 @push('custom-css')
     <link rel="stylesheet" href="{{  asset($root.'front/headphones/headphones.css') }}">
+    <link rel="stylesheet" href="{{ asset('front/css/owl.carousel.min.css') }}" type="text/css">
+
+    <link href="https://fonts.googleapis.com/css?family=Cabin:400,500,600,700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/49bf7f7ca4.js" crossorigin="anonymous"></script>
+
 @endpush
 
 <style>
+    #owl-demo .item{
+        padding: 15px;
+    }
+
+    #custom_btns{
+        position: relative;
+        top: 35%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .customNextBtn, .customPreviousBtn{
+        ackground-color: #fff;
+        box-shadow: -14.142px 14.142px 20px 0px rgba(157,157,157,0.2);
+        padding: 14px;
+        color: #000;
+        font-weight: 500;
+        border: 1px solid #f5f5f5;
+        display: inline-flex;
+        cursor: pointer;
+    }
+    .gtc_pictures img { min-height: 400px; margin-bottom: 5%; }
+    .customNextBtn:hover, .customPreviousBtn:hover
+    {
+        box-shadow: -21.142px 9.142px 20px #ccc;
+    }
     .transparent-header
     {
         background: rgba(255,255,255,.2) !important;
@@ -15,32 +46,64 @@
     {
         margin-right: 10px !important;
     }
-    .transparent-header .menu-item a
-    {
-        color: dodgerblue !important;
-    }
-    .transparent-header .sub-menu-container .menu-item a:hover
+    #logo a, .menu-item a
     {
         color: white !important;
     }
-    .sticky-header .menu-item a
+    .sub-menu-container
+    {
+        background: #fff !important;
+    }
+    .sub-menu-container .menu-item a
+    {
+        color: #0F66DD !important;
+    }
+    .sub-menu-container .menu-item a:hover
     {
         color: white !important;
     }
-    .sticky-header .sub-menu-container .menu-item a
+    .text-overlay-wrap img
     {
-        color: dodgerblue !important;
+        height: 300px;
     }
-    .sticky-header .sub-menu-container .menu-item a:hover
+    .vertical-middle a
     {
-        color: white !important;
+        position: absolute;
+        bottom: 15%;
+        left: 31%;
+        width: 150px;
+    }
+    .image-text
+    {
+        position: absolute;
+        display: block;
+        top: 0;
+        left: 0;
+        width: calc(100% - 30px);
+        height: 100%;
+        z-index: 1;
+        /*background-color: rgba(255,255,255,.3);*/
+        margin-left: 15px;
+        -webkit-transition: all .4s ease;
+        -o-transition: all .4s ease;
+        transition: all .4s ease;
+    }
+    .image-text h4
+    {
+        margin-top: 10%;
+        color: white;
+        background: rgba(0,0,0,.5) !important;
+        border-radius: 5px;
+        padding: 5px;
+        font-size: 22px !important;
+        text-transform: uppercase;
     }
 </style>
 
 @section('content')
     <!-- Header
 		============================================= -->
-<div style="height: 100vh; padding: 60px 0; background: url({{ asset($root.'front/images/apartment.jpg') }}) no-repeat center center / 100% 100%;">
+<div style="height: 100vh; padding: 60px 0; background: url({{ asset($root.'front/images/main_cover.jpg') }}) no-repeat center center / 100% 100%;">
     <header id="header" class="dark transparent-header"  style="position:absolute; top:0; left: 0; width:100%;" data-menu-padding="24" data-sticky-shrink="false">
         <div class="container">
             <div class="header-row">
@@ -404,66 +467,79 @@
 
         <div class="content-wrap pb-0">
 
-            <div class="container clearfix">
+            <div class="clear"></div>
 
-                <div class="row justify-content-center mb-5">
-                    <div class="col-lg-7 center">
-                        <div class="heading-block">
-                            <h3 class="nott mb-3 font-weight-semibold ls0">How We Make your Shifting Easy</h3>
-                            <span class="text-black-50">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate corporis, facilis assumenda optio consequuntur amet iure, quidem animi nam inventore!</span>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5">
+                        <div class="about-text">
+                            <div class="section-title">
+                                <h2> Top Rated Companies</h2>
+                            </div>
+                            <p class="f-para">Movein is a leading online moving company selection site. Every day
+                                we inspire and reach thousands of customers gloabally.  ,</p>
+                            <p class="s-para">We’re passionate about providing you with the top rated moving companies.
+                                So when it comes to the selection of the best company, we’ve got you covered.</p>
+                            <a href="#" class="primary-btn about-btn">Read More</a>
                         </div>
                     </div>
+                    <div class="col-lg-7">
+                        <div class="about-pic">
+                            <div class="row">
+                                <div class="col-lg-11">
+                                    <div id="top_rated_hotels" class="owl-carousel owl-theme">
+                                           <div class="item">
+                                                <div class="gtc_pictures">
+                                                    <img src="{{ asset($root.'front/images/apartment.jpg') }}" alt="" class="img-fluid img-thumbmnail">
+                                                </div>
+                                                <div class="gtc_des">
+                                                    <span class="gtc_country_flag float-left"> Company Logo </span>
+                                                    <a class="hotels_a" href=""> <span class="gtc_name float-left ml-2"> Company Name </span> </a>
+                                                </div>
+                                            </div>
 
-                    <div class="col-lg-8">
-                        <div class="row align-items-center">
-                            <div class="col-sm-6">
-                                <img src="{{ asset($root.'front/movers/images/others/4.png') }}" alt="Image 1">
-                            </div>
-                            <div class="col-sm-6">
-                                <h3>After you Share your Shifting details, Our Team will contact you.</h3>
-                                <p class="mb-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi deserunt doloremque facilis rem, in recusandae, vel.</p>
-                                <a target="_blank" href="https://icons8.com" class="color btn btn-sm p-0 btn-link"><u>illustration by Ouch.pics</u> <i class="icon-line-arrow-right"></i></a>
-                            </div>
-                        </div>
-                        <div class="row align-items-center mt-5">
-                            <div class="col-sm-6 mb-4 mb-sm-0">
-                                <h3>Pack &amp; Load your Stuffs.</h3>
-                                <p class="mb-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi deserunt doloremque facilis rem, in recusandae, vel.</p>
-                                <a target="_blank" href="https://icons8.com" class="color btn btn-sm p-0 btn-link"><u>illustration by Ouch.pics</u> <i class="icon-line-arrow-right"></i></a>
-                            </div>
-                            <div class="col-sm-6">
-                                <img src="{{ asset($root.'front/movers/images/others/2.png') }}" alt="Image 1">
-                            </div>
-                        </div>
-                        <div class="row align-items-center mt-5">
-                            <div class="col-sm-6">
-                                <img src="{{ asset($root.'front/movers/images/others/1.png') }}" alt="Image 1">
-                            </div>
-                            <div class="col-sm-6">
-                                <h3>Deliver whenever you are Ready.</h3>
-                                <p class="mb-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi deserunt doloremque facilis rem, in recusandae, vel.</p>
-                                <a target="_blank" href="https://icons8.com" class="color btn btn-sm p-0 btn-link"><u>illustration by Ouch.pics</u> <i class="icon-line-arrow-right"></i></a>
+                                        <div class="item">
+                                            <div class="gtc_pictures">
+                                                <img src="{{ asset($root.'front/images/magazine/2.jpg') }}" alt="" class="img-fluid img-thumbmnail">
+                                            </div>
+                                            <div class="gtc_des">
+                                                <span class="gtc_country_flag float-left"> Company Logo </span>
+                                                <a class="hotels_a" href=""> <span class="gtc_name float-left ml-2"> Company Name</span> </a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-1">
+                                    <div id="custom_btns">
+                                        <div class="customNextBtn mt-1"><i class="fas fa-long-arrow-alt-up"></i></div>
+                                        <div class="customPreviousBtn mt-2"><i class="fas fa-long-arrow-alt-down"></i></div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
 
             <div class="clear"></div>
 
 
-            <div class="container">
+            <div class="container" style="margin: 0 8%;">
 
-                <h3 class="nott mb-3 font-weight-semibold ls0 text-center" style="font-size: 30px; margin: 50px !important;">Lorem Ipsem</h3>
+                <h3 class="nott mb-3 font-weight-semibold ls0 text-center" style="font-size: 30px; margin: 50px !important;"> Helping Hands  </h3>
 
 
                 <!-- Explore Gallery
                 ============================================= -->
                 <div class="row clearfix">
 
-                    <div class="col-md-4  mb-4 overflow-hidden text-overlay-wrap" >
-                        <img src="{{  asset($root.'front/headphones/images/explore/3.jpg' ) }}" alt="Image">
+                    <div class="col-md-4 lazy lazy-loaded mb-4 overflow-hidden text-overlay-wrap" >
+                        <img src="{{  asset($root.'front/images/trucks.jpg' ) }}" alt="Image">
+                        <div class="image-text">
+                            <h4 class="text-center"> Rent a Truck </h4>
+                        </div>
                         <div class="explore-text-overlay">
                             <div class="vertical-middle dark center">
                                 <div>
@@ -472,8 +548,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4  mb-4 mb-md-auto overflow-hidden text-overlay-wrap">
-                        <img src="{{  asset($root.'front/headphones/images/explore/3.jpg' ) }}" alt="Image">
+                    <div class="col-md-4 lazy lazy-loaded mb-4 mb-md-auto overflow-hidden text-overlay-wrap">
+                        <img src="{{  asset($root.'front/images/packing.jpg' ) }}" alt="Image">
+                        <div class="image-text">
+                            <h4 class="text-center"> Packing </h4>
+                        </div>
                         <div class="explore-text-overlay">
                             <div class="vertical-middle dark center">
                                 <div>
@@ -482,8 +561,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4  mb-4 mb-md-auto overflow-hidden text-overlay-wrap">
-                        <img src="{{  asset($root.'front/headphones/images/explore/3.jpg' ) }}" alt="Image">
+                    <div class="col-md-4 lazy lazy-loaded mb-4 mb-md-auto overflow-hidden text-overlay-wrap">
+                        <img src="{{  asset($root.'front/images/pets.jpg' ) }}" alt="Image">
+                        <div class="image-text">
+                            <h4 class="text-center"> Pets Shifting </h4>
+                        </div>
                         <div class="explore-text-overlay">
                             <div class="vertical-middle dark center">
                                 <div>
@@ -492,8 +574,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4  mb-md-auto overflow-hidden text-overlay-wrap">
-                        <img src="{{  asset($root.'front/headphones/images/explore/3.jpg' ) }}" alt="Image">
+                    <div class="col-md-4 lazy lazy-loaded mb-md-auto overflow-hidden text-overlay-wrap">
+                        <img src="{{  asset($root.'front/images/storage.jpg' ) }}" alt="Image">
+                        <div class="image-text">
+                            <h4 class="text-center"> Storage </h4>
+                        </div>
                         <div class="explore-text-overlay">
                             <div class="vertical-middle dark center">
                                 <div>
@@ -502,8 +587,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4  mb-md-auto overflow-hidden text-overlay-wrap">
-                        <img src="{{  asset($root.'front/headphones/images/explore/3.jpg' ) }}" alt="Image">
+                    <div class="col-md-4 lazy lazy-loaded mb-md-auto overflow-hidden text-overlay-wrap">
+                        <img src="{{  asset($root.'front/images/loading.jpg' ) }}" alt="Image">
+                        <div class="image-text">
+                            <h4 class="text-center"> Loading / Unloading </h4>
+                        </div>
                         <div class="explore-text-overlay">
                             <div class="vertical-middle dark center">
                                 <div>
@@ -512,8 +600,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4  mb-md-auto overflow-hidden text-overlay-wrap">
-                        <img src="{{  asset($root.'front/headphones/images/explore/3.jpg' ) }}" alt="Image">
+                    <div class="col-md-4 lazy lazy-loaded mb-md-auto overflow-hihubsdden text-overlay-wrap">
+                        <img src="{{  asset($root.'front/images/antique.jpg' ) }}" alt="Image">
+                        <div class="image-text">
+                            <h4 class="text-center"> Shifting Antiques </h4>
+                        </div>
                         <div class="explore-text-overlay">
                             <div class="vertical-middle dark center">
                                 <div>
@@ -527,7 +618,7 @@
                 </div>
 
             </div>
-            <div class="section p-0 dark mb-0" style="background: linear-gradient(to right, rgba(25,102,221,0.2), rgba(25,102,221,0.5)), url({{ asset($root.'front/movers/images/section/1.jpg') }} ) no-repeat center center / cover; min-height: 400px">
+            <div class="section p-0 dark mb-0" style="background: linear-gradient(to right, rgba(25,102,221,0.2), rgba(25,102,221,0.5)), url({{ asset($root.'front/movers/images/section/2.jpg') }} ) no-repeat center center / cover; min-height: 400px">
                 <div class="container">
                     <div class="row justify-content-between mb-4" style="padding: 100px 0 160px;">
                         <div class="col-lg-5 col-md-6 offset-lg-1 pt-3">
@@ -836,5 +927,34 @@
 
         </div>
     </section><!-- #content end -->
+
+@push('custom-scripts')
+    <script src="{{ asset('front/js/owl.carousel.min.js') }}"></script>
+    <script>
+        $(document).ready(function(){
+            const owl = $("#top_rated_hotels");
+            owl.owlCarousel({
+                loop:true,
+                margin:30,
+                responsiveClass:true,
+                lazyLoad: true,
+                autoplay:true,
+                infinite: true,
+                smartSpeed: 800,
+                nav: false,
+                items: 2,
+
+            });
+            $('.customNextBtn').click(function() {
+                owl.trigger('next.owl.carousel');
+            });
+            $('.customPreviousBtn').click(function() {
+                owl.trigger('prev.owl.carousel');
+            });
+
+        });
+    </script>
+@endpush
+
 
 @endsection

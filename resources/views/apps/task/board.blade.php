@@ -1,8 +1,8 @@
 @extends('layouts.vertical')
-
+@php $root = env('ROOT_FOLDER'); @endphp
 @section('css')
 <!-- Summernote css -->
-<link href="/assets/libs/summernote/summernote.min.css" rel="stylesheet" />
+<link href="{{ asset($root.'assets/libs/summernote/summernote.min.css') }}" rel="stylesheet" />
 @endsection
 
 @section('breadcrumb')
@@ -73,17 +73,17 @@
                     contract document for sales team', 'assignedTo' => 'Arya Stark','dueDate' =>
                     'Today 10am', 'noChecklists' => 3, 'noComments' => 2,'priority' =>
                     'High', 'assigneeAvatar' =>
-                    '/assets/images/users/avatar-9.jpg'])@endcomponent
+                    asset($root.'assets/images/users/avatar-9.jpg') ])@endcomponent
 
                     @component('apps.task.board-task-item', ['id' => 2, 'title' => 'iOS App home
                     page', 'assignedTo' => 'James B','dueDate' => 'Today 4pm', 'noChecklists' =>
                     3, 'noComments' => 2,'priority' => 'Low', 'assigneeAvatar' =>
-                    '/assets/images/users/avatar-7.jpg'])@endcomponent
+                    asset($root.'assets/images/users/avatar-7.jpg') ])@endcomponent
 
                     @component('apps.task.board-task-item', ['id' => 3, 'title' => 'Write a release
                     note', 'assignedTo' => 'Kevin C','dueDate' => 'Today 4pm', 'noChecklists' =>
                     3, 'noComments' => 3,'priority' => 'Medium', 'assigneeAvatar' =>
-                    '/assets/images/users/avatar-4.jpg'])@endcomponent
+                    asset($root.'assets/images/users/avatar-4.jpg') ])@endcomponent
                 </div>
 
             </div>
@@ -95,12 +95,12 @@
                     @component('apps.task.board-task-item', ['id' => 4, 'title' => 'Invite user to
                     a project', 'assignedTo' => 'Arya Stark','dueDate' => 'Tomorrow 10am',
                     'noChecklists' => 3, 'noComments' => 2,'priority' => 'Low',
-                    'assigneeAvatar' => '/assets/images/users/avatar-9.jpg'])@endcomponent
+                    'assigneeAvatar' => asset($root.'assets/images/users/avatar-9.jpg') ])@endcomponent
 
                     @component('apps.task.board-task-item', ['id' => 5, 'title' => 'Enable
                     analytics tracking', 'assignedTo' => 'James B','dueDate' => '27 Aug
                     10am', 'noChecklists' => 3, 'noComments' => 2,'priority' => 'Low',
-                    'assigneeAvatar' => '/assets/images/users/avatar-5.jpg'])@endcomponent
+                    'assigneeAvatar' => asset($root.'assets/images/users/avatar-5.jpg') ])@endcomponent
                 </div>
             </div>
 
@@ -111,13 +111,13 @@
                     @component('apps.task.board-task-item', ['id' => 6, 'title' => 'Code HTML
                     email template', 'assignedTo' => 'Kevin C','dueDate' => 'No Due Date',
                     'noChecklists' => 3, 'noComments' => 2,'priority' => 'Medium',
-                    'assigneeAvatar' => '/assets/images/users/avatar-6.jpg'])@endcomponent
+                    'assigneeAvatar' => asset($root.'assets/images/users/avatar-6.jpg') ])@endcomponent
 
                     @component('apps.task.board-task-item', ['id' => 7, 'title' => 'Coordinate
                     with business development', 'assignedTo' => 'Arya Stark','dueDate' =>
                     'No Due Date', 'noChecklists' => 3, 'noComments' => 2,'priority' =>
                     'High', 'assigneeAvatar' =>
-                    '/assets/images/users/avatar-9.jpg'])@endcomponent
+                    asset($root.'assets/images/users/avatar-9.jpg') ])@endcomponent
                 </div>
             </div>
 
@@ -128,7 +128,7 @@
                     @component('apps.task.board-task-item', ['id' => 8, 'title' => 'Kanban board
                     design', 'assignedTo' => 'James B','dueDate' => '30 Aug 10am',
                     'noChecklists' => 3, 'noComments' => 2,'priority' => 'Low',
-                    'assigneeAvatar' => '/assets/images/users/avatar-5.jpg'])@endcomponent
+                    'assigneeAvatar' => asset($root.'assets/images/users/avatar-5.jpg') ])@endcomponent
                 </div>
             </div>
         </div>
@@ -138,9 +138,9 @@
 @endsection
 
 @section('script')
-<script src="/assets/libs/sortablejs/sortablejs.min.js"></script>
+<script src="{{ asset($root.'assets/libs/sortablejs/sortablejs.min.js') }}"></script>
 @endsection
 
 @section('script-bottom')
-<script src="/assets/js/pages/kanban.init.js"></script>
+<script src="{{ asset($root.'assets/js/pages/kanban.init.js') }}"></script>
 @endsection

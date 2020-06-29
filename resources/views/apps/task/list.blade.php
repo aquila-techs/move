@@ -1,8 +1,8 @@
 @extends('layouts.vertical')
-
+@php $root = env('ROOT_FOLDER'); @endphp
 @section('css')
 <!-- Summernote css -->
-<link href="/assets/libs/summernote/summernote.min.css" rel="stylesheet" />
+<link href="{{ asset($root.'assets/libs/summernote/summernote.min.css') }}" rel="stylesheet" />
 @endsection
 
 @section('breadcrumb')
@@ -81,17 +81,17 @@
                                             contract document for sales team', 'assignedTo' => 'Arya Stark','dueDate' =>
                                             'Today 10am', 'noChecklists' => 3, 'noComments' => 2,'priority' =>
                                             'High', 'assigneeAvatar' =>
-                                            '/assets/images/users/avatar-9.jpg'])@endcomponent
+                                            asset($root.'assets/images/users/avatar-9.jpg') ])@endcomponent
 
                                             @component('apps.task.task-item', ['id' => 2, 'title' => 'iOS App home
                                             page', 'assignedTo' => 'James B','dueDate' => 'Today 4pm', 'noChecklists' =>
                                             3, 'noComments' => 2,'priority' => 'High', 'assigneeAvatar' =>
-                                            '/assets/images/users/avatar-3.jpg'])@endcomponent
+                                            asset($root.'assets/images/users/avatar-3.jpg') ])@endcomponent
 
                                             @component('apps.task.task-item', ['id' => 3, 'title' => 'Write a release
                                             note', 'assignedTo' => 'Kevin C','dueDate' => 'Today 4pm', 'noChecklists' =>
                                             3, 'noComments' => 3,'priority' => 'Medium', 'assigneeAvatar' =>
-                                            '/assets/images/users/avatar-4.jpg'])@endcomponent
+                                            asset($root.'assets/images/users/avatar-4.jpg') ])@endcomponent
                                             <!-- end task -->
                                         </div>
                                     </div>
@@ -114,17 +114,17 @@
                                                 @component('apps.task.task-item', ['id' => 4, 'title' => 'Invite user to
                                                 a project', 'assignedTo' => 'Arya Stark','dueDate' => 'Tomorrow 10am',
                                                 'noChecklists' => 3, 'noComments' => 2,'priority' => 'Low',
-                                                'assigneeAvatar' => '/assets/images/users/avatar-9.jpg'])@endcomponent
+                                                'assigneeAvatar' => asset($root.'assets/images/users/avatar-9.jpg') ])@endcomponent
 
                                                 @component('apps.task.task-item', ['id' => 5, 'title' => 'Enable
                                                 analytics tracking', 'assignedTo' => 'James B','dueDate' => '27 Aug
                                                 10am', 'noChecklists' => 3, 'noComments' => 2,'priority' => 'Low',
-                                                'assigneeAvatar' => '/assets/images/users/avatar-5.jpg'])@endcomponent
+                                                'assigneeAvatar' => asset($root.'assets/images/users/avatar-5.jpg') ])@endcomponent
 
                                                 @component('apps.task.task-item', ['id' => 6, 'title' => 'Code HTML
                                                 email template', 'assignedTo' => 'Kevin C','dueDate' => 'No Due Date',
                                                 'noChecklists' => 3, 'noComments' => 2,'priority' => 'Medium',
-                                                'assigneeAvatar' => '/assets/images/users/avatar-6.jpg'])@endcomponent
+                                                'assigneeAvatar' => asset($root.'assets/images/users/avatar-6.jpg') ])@endcomponent
                                             </div>
                                         </div>
                                     </div>
@@ -147,24 +147,24 @@
                                                 with business development', 'assignedTo' => 'Arya Stark','dueDate' =>
                                                 'No Due Date', 'noChecklists' => 3, 'noComments' => 2,'priority' =>
                                                 'High', 'assigneeAvatar' =>
-                                                '/assets/images/users/avatar-9.jpg'])@endcomponent
+                                                asset($root.'assets/images/users/avatar-9.jpg') ])@endcomponent
 
                                                 @component('apps.task.task-item', ['id' => 8, 'title' => 'Kanban board
                                                 design', 'assignedTo' => 'James B','dueDate' => '30 Aug 10am',
                                                 'noChecklists' => 3, 'noComments' => 2,'priority' => 'Low',
-                                                'assigneeAvatar' => '/assets/images/users/avatar-5.jpg'])@endcomponent
+                                                'assigneeAvatar' => asset($root.'assets/images/users/avatar-5.jpg') ])@endcomponent
 
                                                 @component('apps.task.task-item', ['id' => 9, 'title' => 'Draft the new
                                                 contract document for sales team', 'assignedTo' => 'Kevin C','dueDate'
                                                 => 'No Due Date', 'noChecklists' => 3, 'noComments' => 2,'priority' =>
                                                 'Medium', 'assigneeAvatar' =>
-                                                '/assets/images/users/avatar-6.jpg'])@endcomponent
+                                                asset($root.'assets/images/users/avatar-6.jpg') ])@endcomponent
 
                                                 @component('apps.task.task-item', ['id' => 10, 'title' => 'Draft the new
                                                 contract document for vendor Abc', 'assignedTo' => 'Kevin C','dueDate'
                                                 => '2 Sep 10am', 'noChecklists' => 3, 'noComments' => 2,'priority' =>
                                                 'Medium', 'assigneeAvatar' =>
-                                                '/assets/images/users/avatar-6.jpg'])@endcomponent
+                                                asset($root.'assets/images/users/avatar-6.jpg') ])@endcomponent
                                             </div>
                                         </div>
                                     </div>
@@ -239,7 +239,7 @@
                                 <!-- assignee -->
                                 <p class="mt-2 mb-1 text-muted">Assigned To</p>
                                 <div class="media">
-                                    <img src="/assets/images/users/avatar-9.jpg" alt="Arya S"
+                                    <img src="{{ asset($root.'assets/images/users/avatar-9.jpg') }}"  alt="Arya S"
                                         class="rounded-circle mr-2" height="24" />
                                     <div class="media-body">
                                         <h5 class="mt-1 font-size-14">
@@ -310,13 +310,13 @@
                             <div class="p-1 px-2">
                                 <div class="row align-items-center">
                                     <div class="col-auto">
-                                        <img src="/assets/images/projects/project-1.jpg" class="avatar-sm rounded"
+                                        <img src="{{ asset($root.'assets/images/projects/project-1.jpg') }}" class="avatar-sm rounded"
                                             alt="file-image">
                                     </div>
                                     <div class="col pl-0">
                                         <a href="javascript:void(0);"
-                                            class="text-muted font-weight-bold">sales-assets.zip</a>
-                                        <p class="mb-0">2.3 MB</p>
+                                            class="text-muted font-weight-bold">sale assets.zip</a>
+                  )                       <p class="mb-0">2.3 MB</p>
                                     </div>
                                     <div class="col-auto">
                                         <!-- Button -->
@@ -336,7 +336,7 @@
                             <div class="p-1 px-2">
                                 <div class="row align-items-center">
                                     <div class="col-auto">
-                                        <img src="/assets/images/projects/project-2.jpg" class="avatar-sm rounded"
+                                        <img src="{{ asset($root.'assets/images/projects/project-2.jpg') }}" class="avatar-sm rounded"
                                             alt="file-image">
                                     </div>
                                     <div class="col pl-0">
@@ -366,7 +366,7 @@
                                 <h5 class="mb-2 font-size-16">Comments</h5>
 
                                 <div class="media mt-3 p-1">
-                                    <img src="/assets/images/users/avatar-9.jpg" class="mr-2 rounded-circle" height="36"
+                                    <img src="{{ asset($root.'assets/images/users/avatar-9.jpg') }}"  class="mr-2 rounded-circle" height="36"
                                         alt="Arya Stark" />
                                     <div class="media-body">
                                         <h5 class="mt-0 mb-0 font-size-14">
@@ -383,7 +383,7 @@
                                 <hr />
 
                                 <div class="media mt-2 p-1">
-                                    <img src="/assets/images/users/avatar-5.jpg" class="mr-2 rounded-circle" height="36"
+                                    <img src="{{ asset($root.'assets/images/users/avatar-5.jpg') }}"  class="mr-2 rounded-circle" height="36"
                                         alt="Dominc B" />
                                     <div class="media-body">
                                         <h5 class="mt-0 mb-0 font-size-14">
@@ -435,7 +435,7 @@
 @endsection
 
 @section('script')
-<script src="/assets/libs/summernote/summernote.min.js"></script>
+<script src=" {{ asset($root.'assets/libs/summernote/summernote.min.js') }}"></script>
 @endsection
 <!--Summernote js-->
 

@@ -1,3 +1,4 @@
+@php $root = env('ROOT_FOLDER'); @endphp
 <div class="card @if(isset($bodyClass)){{$bodyClass}}@endif">
     <div class="card-body">
         @if (isset($status) && $status == 'Finished')
@@ -21,10 +22,10 @@
 
         <div>
             <a href="javascript: void(0);">
-                <img src="/assets/images/users/avatar-2.jpg" alt="" class="avatar-sm m-1 rounded-circle">
+                <img src="{{ asset($root.'assets/images/users/avatar-2.jpg') }}" alt="" class="avatar-sm m-1 rounded-circle">
             </a>
             <a href="javascript: void(0);">
-                <img src="/assets/images/users/avatar-3.jpg" alt="" class="avatar-sm m-1 rounded-circle">
+                <img src="{{ asset($root.'assets/images/users/avatar-3.jpg') }}" alt="" class="avatar-sm m-1 rounded-circle">
             </a>
         </div>
     </div>
@@ -55,7 +56,7 @@
             <div class="col offset-sm-1">
                 <div class="progress mt-4 mt-sm-0" style="height: 5px;" data-toggle="tooltip" data-placement="top"
                     title="" data-original-title="{{$progress}}% completed">
-                    
+
                     <div class="progress-bar bg-success" role="progressbar" style="width: {{$progress}}%;" aria-valuenow="{{$progress}}"
                         aria-valuemin="0" aria-valuemax="100"></div>
                 </div>

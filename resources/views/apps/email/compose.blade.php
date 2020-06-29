@@ -1,9 +1,10 @@
 @extends('layouts.vertical')
 
+@php $root = env('ROOT_FOLDER'); @endphp
 
 @section('css')
 <!-- Summernote css -->
-<link href="/assets/libs/summernote/summernote.min.css" rel="stylesheet" />
+<link href="{{ asset($root.'assets/libs/summernote/summernote.min.css" rel="stylesheet') }}" />
 @endsection
 
 @section('breadcrumb')
@@ -83,7 +84,7 @@
 
 @section('script')
 <!--Summernote js-->
-<script src="/assets/libs/summernote/summernote.min.js"></script>
+<script src="{{ asset($root.'assets/libs/summernote/summernote.min.js') }}"></script>
 @endsection
 
 @section('script-bottom')
