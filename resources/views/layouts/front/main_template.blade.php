@@ -21,7 +21,7 @@
 	<link rel="stylesheet" href="{{ asset($root.'front/css/custom.css') }}" type="text/css" />
 
 	<!-- Movers Demo Specific Stylesheet -->
-	<link rel="stylesheet" href="{{ asset($root.'front/css/colors.php?color=0F66DD') }}" type="text/css" /> <!-- Theme Color -->
+	<link rel="stylesheet" href="{{ asset($root.'front/css/colors.php?color=55be73') }}" type="text/css" /> <!-- Theme Color -->
 	<link rel="stylesheet" href="{{ asset($root.'front/movers/css/fonts.css') }}" type="text/css" />
 	<link rel="stylesheet" href="{{ asset($root.'front/movers/movers.css') }}" type="text/css" />
 	<!-- / -->

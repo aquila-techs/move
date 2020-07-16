@@ -56,7 +56,7 @@
     }
     .sub-menu-container .menu-item a
     {
-        color: #0F66DD !important;
+        color: #55BE73 !important;
     }
     .sub-menu-container .menu-item a:hover
     {

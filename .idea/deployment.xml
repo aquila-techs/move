@@ -2,10 +2,17 @@
 <project version="4">
   <component name="PublishConfigData" serverName="movein">
     <serverData>
+      <paths name="dnc">
+        <serverdata>
+          <mappings>
+            <mapping deploy="\" local="$PROJECT_DIR$/../dnc" web="http://binyameen.dncourier.com" />
+          </mappings>
+        </serverdata>
+      </paths>
       <paths name="movein">
         <serverdata>
           <mappings>
-            <mapping deploy="/" local="$PROJECT_DIR$" web="http://yameen_malik@moveinandout.aquilatechs.com.moveinandout.aquilatechs.com" />
+            <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>

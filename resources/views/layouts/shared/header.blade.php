@@ -1,3 +1,4 @@
+@php $root = env('ROOT_FOLDER'); @endphp
 <!-- Topbar Start -->
 <div class="navbar navbar-expand flex-column flex-md-row navbar-custom">
     <div class="container-fluid">

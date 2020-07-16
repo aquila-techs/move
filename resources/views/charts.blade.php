@@ -1,6 +1,6 @@
 @extends('layouts.vertical')
 
-
+@php $root = env('ROOT_FOLDER'); @endphp
 @section('css')
 
 @endsection
@@ -270,11 +270,11 @@
 <script src="https://apexcharts.com/samples/assets/ohlc.js"></script>
 
 <!-- third party:js -->
-<script src="{{ URL::asset('assets/libs/apexcharts/apexcharts.min.js') }}"></script>
+<script src="{{ URL::asset($root.'assets/libs/apexcharts/apexcharts.min.js') }}"></script>
 <!-- third party end -->
 @endsection
 
 @section('script-bottom')
 <!-- init js -->
-<script src="{{ URL::asset('assets/js/pages/apexcharts.init.js') }}"></script>
+<script src="{{ URL::asset($root.'assets/js/pages/apexcharts.init.js') }}"></script>
 @endsection

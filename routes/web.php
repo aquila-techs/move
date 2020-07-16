@@ -21,17 +21,22 @@ Route::group(['middleware' => 'auth'], function () {
     Route::view('apps/project/detail','apps.project.detail');
     Route::view('apps/task/list','apps.task.list');
     Route::view('apps/task/board','apps.task.board');
+    Route::view('layout-example/horizontal','layout-example.horizontal');
 
     Route::view('forms/basic','forms.basic');
+    Route::view('charts','charts');
+
 
 });
 
 
     // Route::get('pages-logout', 'RoutingController@logout');
-    // Route::get('{first}/{second}/{third}', 'RoutingController@thirdLevel');
-    // Route::get('{first}/{second}', 'RoutingController@secondLevel');
+//     Route::get('{first}/{second}/{third}', 'RoutingController@thirdLevel');
+//     Route::get('{first}/{second}', 'RoutingController@secondLevel');
     // Route::get('{any}', 'RoutingController@root');
     // Route::get('dashboard', 'RoutingController@index');
+
+    Route::view('profile','companies.profile.index');
 
     Route::view('/','front.home');
     Route::view('about_us','front.about_us');

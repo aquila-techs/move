@@ -1,3 +1,4 @@
+@php $root = env('ROOT_FOLDER'); @endphp
 <!-- Right Sidebar -->
 <div class="right-bar">
     <div class="rightbar-title">

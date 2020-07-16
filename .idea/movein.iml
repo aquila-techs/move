@@ -100,5 +100,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="dnc" />
+    <orderEntry type="module" module-name="AnxietySystem" />
   </component>
 </module>
