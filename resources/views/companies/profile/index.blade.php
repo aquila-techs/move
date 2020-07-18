@@ -1,8 +1,20 @@
-@extends('layouts.vertical')
+@extends('companies.layouts.vertical')
 
 
 @section('css')
-
+    <style>
+        #loader {
+            position: fixed;
+            height: 100%;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            background: #fff;
+            padding-top: 20%;
+            padding-left: 45%;
+        }
+    </style>
 @endsection
 
 @section('breadcrumb')
@@ -10,8 +22,7 @@
     <div class="col-md-12">
         <nav aria-label="breadcrumb" class="float-right mt-1">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/">Shreyu</a></li>
-                <li class="breadcrumb-item"><a href="">Pages</a></li>
+                <li class="breadcrumb-item"><a href="{{ url('company/dashboard') }}">Company Dashboard</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Profile</li>
             </ol>
         </nav>
@@ -21,63 +32,51 @@
 @endsection
 
 @section('content')
+    <div id="loader">
+        <div class="spinner-grow text-primary m-2" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+
 <div class="row">
     <div class="col-lg-3">
-        <div class="card">
+     @include('companies.includes.profile-sidebar')
+    </div>
+
+    <div class="col-lg-9">
+        <div class="card" style="height: 500px;">
             <div class="card-body">
-                <div class="text-center mt-3">
-                    <img src="{{ asset('public/assets/images/users/avatar-7.jpg') }}" alt="" class="avatar-lg rounded-circle" />
-                    <h5 class="mt-2 mb-0"> Company Name </h5>
-                    <h6 class="text-muted font-weight-normal mt-2 mb-0"> Company Type
-                    </h6>
-                    <h6 class="text-muted font-weight-normal mt-1 mb-4">San Francisco, CA</h6>
 
-                </div>
+                @foreach (['danger', 'warning', 'success', 'info'] as $key)
+                    @if(Session::has($key))
+                        <div class="row">
+                            <div class="offset-3 col-6">
+                                <div class="alert alert-{{ $key }} alert-dismissible fade show" role="alert">
+                                    {{ Session::get($key) }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+                @endforeach
 
-                <!-- profile  -->
-                <div class="mt-5 pt-2 border-top">
-                    <h4 class="mb-3 font-size-15">About</h4>
-                    <p class="text-muted mb-4">Hi I'm Shreyu. I am user experience and user
-                        interface designer.
-                        I have been working on UI & UX since last 10 years.</p>
-                </div>
-                <div class="mt-3 pt-2 border-top">
-                    <h4 class="mb-3 font-size-15">Contact Information</h4>
-                    <div class="table-responsive">
-                        <table class="table table-borderless mb-0 text-muted">
-                            <tbody>
-                                <tr>
-                                    <th scope="row">Email</th>
-                                    <td>xyz123@gmail.com</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Phone</th>
-                                    <td>(123) 123 1234</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Address</th>
-                                    <td>1975 Boring Lane, San Francisco, California, United States -
-                                        94108</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
 
             </div>
         </div>
         <!-- end card -->
-
-    </div>
-
-    <div class="col-lg-9">
-      
     </div>
 </div>
 <!-- end row -->
 @endsection
 
 @section('script')
+    <script>
+        $(document).ready(function () {
+            $('#loader').fadeOut('slow');
+        });
+    </script>
 @endsection
 
 @section('script-bottom')

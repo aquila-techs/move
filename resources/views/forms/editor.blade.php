@@ -3,7 +3,9 @@
 
 @section('css')
 <!-- Summernote css -->
-<link href="{{ URL::asset('assets/libs/summernote/summernote.min.css') }}" rel="stylesheet" />
+
+<link href="{{ URL::asset('public/assets/libs/summernote/summernote.min.css') }}" rel="stylesheet" />
+
 @endsection
 
 @section('breadcrumb')
@@ -78,10 +80,10 @@
 
 @section('script')
 <!--Summernote js-->
-<script src="{{ URL::asset('assets/libs/summernote/summernote.min.js') }}"></script>
+<script src="{{ URL::asset('public/assets/libs/summernote/summernote.min.js') }}"></script>
 @endsection
 
 @section('script-bottom')
 <!-- Init js -->
-<script src="{{ URL::asset('assets/js/pages/form-editor.init.js') }}"></script>
+<script src="{{ URL::asset('public/assets/js/pages/form-editor.init.js') }}"></script>
 @endsection

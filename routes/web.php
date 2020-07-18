@@ -14,7 +14,6 @@ Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
 
-    Route::get('dashboard', 'RoutingController@index');
     Route::view('apps/calendar','apps.calendar');
     Route::view('apps/email/compose','apps.email.compose');
     Route::view('apps/project/list','apps.project.list');
@@ -36,7 +35,6 @@ Route::group(['middleware' => 'auth'], function () {
     // Route::get('{any}', 'RoutingController@root');
     // Route::get('dashboard', 'RoutingController@index');
 
-    Route::view('profile','companies.profile.index');
 
     Route::view('/','front.home');
     Route::view('about_us','front.about_us');
@@ -47,7 +45,15 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::view('home2','front.home2');
 
+    Route::prefix('company')->group(function (){
+        Route::view('dashboard','companies.dashboard');
+        Route::resource('profile','Company\ProfileController');
+
+    });
+
     Route::get('test',function(){
         return env('ROOT_FOLDER');
     });
+
+     Route::get('{first}/{second}', 'RoutingController@secondLevel');
 
