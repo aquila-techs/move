@@ -1,0 +1,387 @@
+/*
+@import url('https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Amiri:400,700&display=swap');
+
+
+ html {
+    scroll-behavior: smooth;
+}
+
+*/
+/* 
+..................................................................
+
+this is main css file for home page..
+
+ TABLE OF CONTENTS
+    ----------------------------------------------------------------------------
+
+    [1.0]  import font family, 'Bebas Neue', cursive or 'Raleway', sans-serif
+    [2.0]  header section, navbar css
+    [3.0]  slider section css
+    [4.0]  paragraph section css
+    [5.0]  favourites section css
+    [6.0]  woman inspiration section css
+    [7.0]  blog section css
+    [8.0]  instagram section css
+    [9.0]  footer section, copyright css
+    [10.0] media queries
+
+..................................................................
+*/
+
+
+/* font family import start */
+
+/*  import font family:  'Bebas Neue', cursive */
+
+/*  import font family:  'Raleway', sans-serif */
+
+
+
+
+
+/* font family import end */
+
+
+
+
+
+
+
+
+/* header section css start */
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body {
+    font-size: 100%;
+    background: #f4f2f1;
+    color: #38332e;
+    line-height: 1.45;
+    font-family: 'Poppins', sans-serif !important;
+}
+
+
+body p{
+    font-size: 19px;
+}
+
+
+
+h1, h2, h3, h4, h5, h6 {
+    color: #444;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+.top-menu{
+    background-color: #55be73;
+    color: #fff;
+}
+.top-menu ul{
+    padding-inline-start: 0;
+    list-style: none;
+    margin-bottom: 0;
+    padding: 10px 0px;
+}
+
+.top-menu ul li{
+    display: inline-block;
+}
+.top-menu ul li a{
+    text-decoration: none;
+    color: #fff;
+    padding: 10px;
+}
+.top-menu ul li a:hover{
+    color: #fff;
+}
+
+.hero-section{
+    background-image: url("../img/headerbg.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    padding: 50px 0px;
+}
+.overlay{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: #0000008a;
+}
+.calci-heading{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: auto;
+    max-width: 600px;
+    text-align: center;
+    
+}
+.calci-heading h1{
+    color: rgba(255,255,255, 0.9);
+    font-size: 3.05176em;
+    font-family: ubuntu;
+}
+.calci-heading p{
+    color: rgba(255,255,255, 0.8);
+    font-size: 1.5625em;
+    line-height: 1.2;
+}
+.calculator{
+      display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: auto;
+    max-width: 450px;
+    background-color: #fff;
+    border-radius: .5rem;
+}
+.calci-header{
+       padding: 1.3em;
+    background: #ea8024;
+    border-radius: .5rem .5rem 0 0;
+    color: #fff;
+}
+.calci-header i{
+    font-size: 50px;
+}
+.calci-form{
+    padding: 1.3em;
+}
+.calci-form .btn{
+    display: inline-block;
+    border: none;
+    padding: 1em 2.5em;
+    text-align: center;
+    border-radius: .5rem;
+    color: #fff;
+    background: #8dc63e;
+    text-transform: uppercase;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: .025em;
+    cursor: pointer;
+}
+.reviews{
+    margin: auto;
+    max-width: 800px;
+    background-color: #fff;
+    padding: 20px;
+}
+.start ul{
+ list-style: none;
+ padding-inline-start: 0;
+}
+.start ul li{
+ display: inline;
+}
+.start ul li i{
+ color: #ea8024
+}
+
+.box{
+    border-top: 1px solid;
+    margin-bottom: 10px;
+    padding: 15px 0px;
+}
+.box a{
+    color: black;
+    text-decoration: none;
+}
+.box h4{
+    padding: 10px 0px;
+    color: #4c4c4c;
+}
+.box p{
+    color: #7f7f7f;
+}
+.box a:hover{
+    color: #4c4c4c;
+    cursor: pointer;
+}
+
+
+
+
+/* -------   */
+
+.row-box{
+   padding: 1.3em;
+    border-radius: .5rem;
+    background: #fff;
+}
+.well-idea {
+    color: #145d60;
+    padding-left: 2.7625em;
+}
+.well--idea {
+    color: #145d60;
+    padding-left: 2.7625em;
+}
+.well--idea  h5{
+   font-weight: 300;
+   line-height: 1.8;
+}
+.well--idea  h5 b{
+   font-weight: 600;
+}
+.well--idea a{
+    color: #55be73;
+    text-decoration: none;
+}
+.well--idea a:hover{
+    color: #55be73;
+    text-decoration: none;
+}
+.well--idea:before,
+.idea2::before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f0eb";
+    position: absolute;
+    margin-left: -28px;
+    top: 15px;
+    font-size: 25px;
+}
+.people-box{
+    text-align: center;
+}
+.people-box a{
+    color: #928c87;
+    text-decoration: none;
+}
+.people-box i{
+    font-size: 50px;
+}
+.people-box h4{
+    padding: 20px 0px;
+}
+.people-box p{
+    color: #55be73;
+}
+.mover p span{
+  color: #55be73;
+}
+.lists ul{
+    list-style: none;
+    padding-inline-start: 0px;
+}
+.lists ul li{
+    padding: 10px 0px;
+    display: flex;
+    align-items: center;
+}
+.lists ul li::before{
+   font-family: "Font Awesome 5 Free";
+    content: "\f058";
+    font-size: 25px;
+    margin-right: 10px;
+    color: #55be73;
+}
+.logo img{
+    max-width: 120px;
+}
+.star-reviews ul{
+    list-style: none;
+    padding-inline-start: 0px;
+    margin-bottom: 0;
+}
+.star-reviews ul li{
+    display: inline;
+}
+.star-reviews ul li i,
+.star-reviews p{
+    color: #ea8024;
+}
+
+.active-btn{
+    background-color: #55be73;
+    display: inline-block;
+    padding: 1em 2.5em;
+    border-radius: .5rem;
+    text-align: center;
+    margin-bottom: 10px;
+    color: #fff;
+    font-weight: 600;
+}
+.active-btn:hover{
+    background-color: #55be73;
+    color: #fff;
+    text-decoration: none;
+}
+.normal-btn{
+    background: #f4f2f1;
+    color: #6d655f;
+    display: inline-block;
+    padding: 1em 2.5em;
+    margin-bottom: 10px;
+    border-radius: .5rem;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 600;
+}
+.normal-btn:hover{
+    background: #f4f2f1;
+    color: #6d655f;
+    text-decoration: none;
+}
+.peach-btn{
+    background-color: #55be73;
+}
+.peach-btn:hover{
+    background-color: #55be73;
+}
+.action{
+    border-top: 1px solid #e5e5e5;
+    padding: 20px 0px;
+}
+
+.travel h6,
+.mover h5{
+    text-transform: uppercase;
+    color: #928c87;
+}
+
+
+/* @media screen and (max-width:991px){
+ .lists ul{
+     display: flex;
+     flex-direction: column;
+} */
+@media screen and (min-width:769px){
+ .travel{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+}
+@media screen and (min-width:991px){
+ .action{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+.buttons{
+    display: flex;
+    flex-direction: column;
+}
+}
+
+.sidebar  img{
+    max-width: 280px;
+}
+
+.sidebar  h6{
+   text-transform: uppercase;
+   color: #928c87;
+}
+.sidebar  h6 b{
+   font-weight: 600;
+}

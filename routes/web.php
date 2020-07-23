@@ -42,10 +42,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::view('faqs','front.faqs');
     Route::view('blog_I','front.blog_I');
     Route::view('blog_II','front.blog_II');
+    Route::view('page1','front.page1');
 
     Route::view('home2','front.home2');
 
-    Route::prefix('company')->group(function (){
+    Route::prefix('company')->middleware(['auth'])->group(function (){
         Route::view('dashboard','companies.dashboard');
         Route::resource('profile','Company\ProfileController');
 
