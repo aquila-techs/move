@@ -91,6 +91,21 @@ class UserController extends Controller
         //
     }
 
+    /**
+    * @api {post} /api/login Grant Access Token
+    * @apiGroup Authentication
+    * @apiParam {string} email User Email
+    * @apiParam {string} password User Password
+    * @apiSuccess {string} token Access Token
+    *
+    * @apiSuccessExample Successful Response:
+    *  HTTP/1.1 200 OK
+    *{
+    *    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvbW92ZWluYW5kb3V0LmFxdWlsYXRlY2hzLmNvbVwvYXBpXC9sb2dpbiIsImlhdCI6MTU5NTQ5OTgwNCwiZXhwIjoxNTk1NTAzNDA0LCJuYmYiOjE1OTU0OTk4MDQsImp0aSI6Ik1mcXFFWUtTWG9CaDdZTGMiLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.ipmix0eUpVneon54IdDDXjvpqQVjCuGsyBnnKUhc2ts"
+    * }
+    *
+    */
+
     public function authenticate(Request $request)
     {
         $credentials = $request->only('email', 'password');
@@ -106,12 +121,37 @@ class UserController extends Controller
         return response()->json(compact('token'));
     }
 
+      /**
+    * @api {post} /api/register Register New User
+    * @apiGroup Authentication
+    * @apiParam {string} name User Name
+    * @apiParam {string} email User Email
+    * @apiParam {string} password  Password
+    * @apiParam {string} confirm_password Confirm Password
+    * @apiSuccess {object} user User Details
+        *@apiSuccess {string} token Access Token
+    *  @apiSuccessExample Successful Response:
+    *  HTTP/1.1 200 OK
+    *{
+    *  "user": {
+    *  "name": "Binyameen",
+    *   "email": "yameenmalik79@gmail.com",
+    *  "updated_at": "2020-07-23 11:34:27",
+    *  "created_at": "2020-07-23 11:34:27",
+    *  "id": 2
+    *  },
+    *  "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvbW92ZWluYW5kb3V0LmFxdWlsYXRlY2hzLmNvbVwvYXBpXC9yZWdpc3RlciIsImlhdCI6MTU5NTUwNDA2NywiZXhwIjoxNTk1NTA3NjY3LCJuYmYiOjE1OTU1MDQwNjcsImp0aSI6IkhrRXJkekJvSElWR29XeWMiLCJzdWIiOjIsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.VrYMos6e9BFkdAnxadGXcvGivLA1y_0usIpfMhfAwtE"
+    * }
+    *
+    */
+
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'required_with:confirm_password|same:confirm_password'],
+            'confirm_password' => ['required', 'string', 'min:8'],
         ]);
 
         if($validator->fails()){
