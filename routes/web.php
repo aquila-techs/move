@@ -12,7 +12,7 @@
 */
 Auth::routes();
 
-Route::group(['middleware' => 'auth'], function () {
+Route::group([], function () {
 
     Route::view('apps/calendar','apps.calendar');
     Route::view('apps/email/compose','apps.email.compose');
@@ -43,6 +43,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::view('blog_I','front.blog_I');
     Route::view('blog_II','front.blog_II');
     Route::view('page1','front.page1');
+    Route::view('calculator','front.calculator');
 
     Route::view('home2','front.home2');
 
