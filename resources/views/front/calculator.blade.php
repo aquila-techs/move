@@ -1,7 +1,13 @@
 @extends('layouts.front.main_template')
 
 	@section('content')
-
+        <style>
+            #est_cost, #est_distance
+            {
+                color: #55be73;
+                font-weight: 600;
+            }
+        </style>
 @php $root = env('ROOT_FOLDER'); @endphp
 				<!-- Including header -->
 			@include('front.includes.main_header')
@@ -41,12 +47,18 @@
                                         <div class="row">
                                             <div class="form-group col-6">
                                                 <label  for="simpleinput">Moving From</label>
-                                                <input type="text" class="form-control" id="simpleinput" placeholder="Some text value...">
+                                                <input type="text" class="form-control" id="zip_code1" placeholder="Some text value...">
+                                                <div class="invalid-feedback" id="zip_code1_message">
+                                                    Please provide a valid Zip Code.
+                                                </div>
                                             </div>
 
                                             <div class="form-group col-6">
                                                 <label for="example-date">Moving To</label>
-                                                <input type="text" class="form-control" id="simpleinput" placeholder="Some text value...">
+                                                <input type="text" class="form-control" id="zip_code2" placeholder="Some text value...">
+                                                <div class="invalid-feedback" id="zip_code2_message">
+                                                    Please provide a valid Zip Code.
+                                                </div>
                                             </div>
                                         </div>
 
@@ -78,17 +90,17 @@
                                             </div>
                                             <div class="form-group col-4">
                                                 <div class="form-group row">
-                                                    <label class="col-lg-7 col-form-label" for="example-static">Estimate Distance</label>
-                                                    <div class="col-lg-5">
-                                                        <input type="text" readonly="" class="form-control-plaintext" id="example-static" value="email@example.com">
+                                                    <label class="col-lg-6 col-form-label" for="example-static">Estimate Distance</label>
+                                                    <div class="col-lg-6">
+                                                        <input type="text" readonly="" class="form-control-plaintext" id="est_distance" value="">
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="form-group col-4">
                                                 <div class="form-group row">
-                                                    <label class="col-lg-7 col-form-label" for="example-static">Estimate Cost</label>
-                                                    <div class="col-lg-5">
-                                                        <input type="text" readonly="" class="form-control-plaintext" id="example-static" value="email@example.com">
+                                                    <label class="col-lg-6 col-form-label" for="example-static">Estimate Cost</label>
+                                                    <div class="col-lg-6">
+                                                        <input type="text" readonly="" class="form-control-plaintext" id="est_cost" value="">
                                                     </div>
                                                 </div>
                                             </div>
@@ -96,7 +108,7 @@
 
                                         <div class="row">
                                             <div class="col-2 offset-10">
-                                                <button type="button" class="btn btn-outline-success">Calculate</button>
+                                                <button type="button" id="calculate_btn" class="btn btn-outline-success">Calculate</button>
                                             </div>
                                         </div>
 
@@ -115,6 +127,74 @@
 
 @push('custom-scripts')
 	<script src="{{ asset($root.'front/js/plugins.animations.js' )}}"></script>
+    <script>
+        $(document).ready(function () {
+            const token = '{{ csrf_token()  }}';
+
+            $('#zip_code1, #zip_code2').change(function () {
+                const est_dist = $('#est_distance');
+                const est_cost = $('#est_cost');
+                est_dist.val(''); est_cost.val('');
+                if( $('#zip_code1').val() != '' && $('#zip_code2').val() != '' )
+                {
+                    const btn = $('#calculate_btn');
+                    btn.prop('disabled', true);
+
+                    $.ajax({
+                        url: 'distance_calculator',
+                        type: 'POST',
+                        data: {'_token': token},
+                        success: function (response){
+                            btn.prop('disabled', false);
+                            response = parseFloat(response).toFixed(3);
+                            est_dist.val(`${response} kms`);
+                        },
+                        error: function (err) {
+                            btn.prop('disabled', false);
+                            console.log(err);
+                        }
+                    });
+                }
+
+            });
+
+            $('#zip_code1, #zip_code2').keydown(function () {
+                $('#zip_code1_message').fadeOut('fast'); $('#zip_code2_message').fadeOut('fast');
+                $('#zip_code1').removeClass('is-invalid is-valid'); $('#zip_code2').removeClass('is-valid is-invalid');
+            });
+
+            $('#calculate_btn').click(function () {
+                const zip_code1 = $('#zip_code1').val();
+                const zip_code2 = $('#zip_code2').val();
+
+                if( zip_code1 == '' && zip_code2 != '' )
+                {
+                    $('#zip_code1_message').fadeIn('slow');
+                    $('#zip_code1').addClass('is-invalid');
+                    $('#zip_code2').addClass('is-valid');
+                }
+                else if( zip_code2 == '' && zip_code1 != '' )
+                {
+                    $('#zip_code2_message').fadeIn('slow');
+                    $('#zip_code1').addClass('is-valid');
+                    $('#zip_code2').addClass('is-invalid');
+                }
+                else if ( zip_code1 == '' && zip_code2 == '' )
+                {
+                    $('#zip_code1_message').fadeIn('slow');
+                    $('#zip_code2_message').fadeIn('slow');
+                    $('#zip_code1').addClass('is-invalid');
+                    $('#zip_code2').addClass('is-invalid');
+
+                }
+                else
+                {
+                    console.log('calculating');
+                }
+
+            });
+        });
+    </script>
 @endpush
 
 @endsection

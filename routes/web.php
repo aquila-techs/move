@@ -28,7 +28,7 @@ Route::group([], function () {
 
 });
 
-
+    Route::post('distance_calculator','CalculationController@getDistance');
     // Route::get('pages-logout', 'RoutingController@logout');
 //     Route::get('{first}/{second}/{third}', 'RoutingController@thirdLevel');
 //     Route::get('{first}/{second}', 'RoutingController@secondLevel');
