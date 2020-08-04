@@ -9,10 +9,10 @@ class CalculationController extends Controller
     // distance calculator
     public function getDistance(Request $request)
     {
-        $lat1 = 19.820664;
-        $lat2 = 20.709722;
-        $lon1 = -155.468066;
-        $lon2 = -156.253333;
+        $lat1 = $request['zip1']['lat'];
+        $lat2 = $request['zip2']['lat'];
+        $lon1 = $request['zip1']['long'];
+        $lon2 = $request['zip2']['long'];
         $unit = 'k';
         $theta = $lon1 - $lon2;
         $dist = sin(deg2rad($lat1)) * sin(deg2rad($lat2)) +  cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * cos(deg2rad($theta));

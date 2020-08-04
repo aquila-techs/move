@@ -47,7 +47,7 @@
                                         <div class="row">
                                             <div class="form-group col-6">
                                                 <label  for="simpleinput">Moving From</label>
-                                                <input type="text" class="form-control" id="zip_code1" placeholder="Some text value...">
+                                                <input type="text" class="form-control" id="zip_code1" placeholder="Enter Zip Code" list="zip_codes">
                                                 <div class="invalid-feedback" id="zip_code1_message">
                                                     Please provide a valid Zip Code.
                                                 </div>
@@ -55,11 +55,13 @@
 
                                             <div class="form-group col-6">
                                                 <label for="example-date">Moving To</label>
-                                                <input type="text" class="form-control" id="zip_code2" placeholder="Some text value...">
+                                                <input type="text" class="form-control" id="zip_code2" placeholder="Enter Zip Code" list="zip_codes">
                                                 <div class="invalid-feedback" id="zip_code2_message">
                                                     Please provide a valid Zip Code.
                                                 </div>
                                             </div>
+
+                                            <datalist id="zip_codes"></datalist>
                                         </div>
 
                                         <div class="row">
@@ -82,11 +84,12 @@
                                         <div class="row">
                                             <div class="form-group col-4">
                                                 <div class="custom-control custom-switch mb-2">
-                                                    <input type="checkbox" class="custom-control-input input-lg" id="customSwitch1">
-                                                    <label class="custom-control-label" for="customSwitch1">
+                                                    <input type="checkbox" class="custom-control-input input-lg" id="packing_services">
+                                                    <label class="custom-control-label" for="packing_services">
                                                         Packing Services
                                                     </label>
                                                 </div>
+                                                <div id="packing_servieces_div"></div>
                                             </div>
                                             <div class="form-group col-4">
                                                 <div class="form-group row">
@@ -131,19 +134,42 @@
         $(document).ready(function () {
             const token = '{{ csrf_token()  }}';
 
+           $.ajax({
+               url: 'https://public.opendatasoft.com/api/records/1.0/search/?dataset=us-zip-code-latitude-and-longitude&q=',
+               method: 'GET',
+               success: function (response) {
+                    $(response.records).each(function () {
+
+                        const lat = ($(this)[0]['fields']['latitude']);
+                        const long = ($(this)[0]['fields']['longitude']);
+                        const zip = ($(this)[0]['fields']['zip']);
+                        const city = ($(this)[0]['fields']['city']);
+                        const state = ($(this)[0]['fields']['state']);
+                        $('#zip_codes').append(`
+                            <option data-lat='${lat}' data-long='${long}' value='${zip} , ${city} ${state}'></option>
+                        `);
+                    });
+               },
+               error: function (err) {
+                    console.log(err);
+               }
+           });
+
             $('#zip_code1, #zip_code2').change(function () {
                 const est_dist = $('#est_distance');
                 const est_cost = $('#est_cost');
                 est_dist.val(''); est_cost.val('');
                 if( $('#zip_code1').val() != '' && $('#zip_code2').val() != '' )
                 {
+                    const zip1 = $('#zip_codes [value="' + $('#zip_code1').val() + '"]').data();
+                    const zip2 = $('#zip_codes [value="' + $('#zip_code2').val() + '"]').data();
                     const btn = $('#calculate_btn');
                     btn.prop('disabled', true);
 
                     $.ajax({
                         url: 'distance_calculator',
                         type: 'POST',
-                        data: {'_token': token},
+                        data: {'_token': token, 'zip1': zip1, 'zip2': zip2},
                         success: function (response){
                             btn.prop('disabled', false);
                             response = parseFloat(response).toFixed(3);
@@ -161,6 +187,26 @@
             $('#zip_code1, #zip_code2').keydown(function () {
                 $('#zip_code1_message').fadeOut('fast'); $('#zip_code2_message').fadeOut('fast');
                 $('#zip_code1').removeClass('is-invalid is-valid'); $('#zip_code2').removeClass('is-valid is-invalid');
+            });
+
+            $('#packing_services').change(function (){
+                if($(this).prop('checked'))
+                {
+                    $('#packing_servieces_div').append(`
+                        <div class="custom-control custom-radio">
+                        <input type="radio" id="full_service" name="packing_service" class="custom-control-input" checked>
+                        <label class="custom-control-label" for="full_service"> Half Service </label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                        <input type="radio" id="half_service" name="packing_service" class="custom-control-input">
+                        <label class="custom-control-label" for="half_service"> Full Service </label>
+                        </div>
+                    `);
+                }
+                else
+                {
+                    $('#packing_servieces_div').html('');
+                }
             });
 
             $('#calculate_btn').click(function () {
@@ -189,7 +235,7 @@
                 }
                 else
                 {
-                    console.log('calculating');
+                    $('#est_cost').val('$ '+parseFloat($('#est_distance').val()) * 3);
                 }
 
             });
