@@ -18,6 +18,16 @@ section { min-height: 400px; }
 .arrow-icon:hover { box-shadow: 10px 10px 40px 5px #ccc; cursor: pointer; }
 h3 { margin-top: 12% !important; }
 .nav-link, .nav-link:hover { color: #fff; }
+.item-body { height: 80%; }
+.item-footer { height: 20%; }
+.checked { color: #ffa500; }
+.item-body img  { height: 210px; }
+.stars, .item-footer { margin-top: 5%; }
+.h2 {
+        font-size: 40px !important;
+        font-family: cursive !important;
+        padding-left: 10%;
+}
 </style>
 			<!-- Including header -->
 		@include('front.includes.header')
@@ -29,8 +39,8 @@ h3 { margin-top: 12% !important; }
 			<div class="content-wrap" style="overflow: visible;">
 
                 <div class="container" style="z-index: 2">
-                    <div class="center">
-                        <h2 class="h2 font-weight-semibold mb-2" style="z-index: 10; text-transform: uppercase; color:#55be73;">Welcome <br> to <br>Moveinandout.</h2>
+                    <div class="text-left">
+                        <h2 class="h2 font-weight-semibold mb-2" style="z-index: 10; text-transform: uppercase; color:#55be73;">Welcome to Moveinandout.</h2>
 {{--                        <p >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, aperiam.</p>--}}
                     </div>
                     <div class="row topmargin justify-content-end">
@@ -297,23 +307,71 @@ h3 { margin-top: 12% !important; }
                     <div class="container-fluid">
                         <div class="row py-5">
                             <div class="col-md-3 pl-5">
-                                <h3> Moving Companies </h3>
+                                <h3> Top Rated Moving Companies </h3>
                                 <p class="card-text"> We analyzed millions of bids from Thumbtack professionals to see what things really cost. Find out what other people have paid for projects like yours. </p>
                                 <a href="#" class="button button-rounded btn-sm"> Get All Companies <i class="fa fa-angle-double-right" aria-hidden="true"></i> </a>
                             </div>
                             <div class="col-md-8">
                                 <div class="owl-carousel owl-theme" id="companyCarousel">
                                     <div class="item">
-                                        <img src="https://secureservercdn.net/50.62.172.232/6cb.dd2.myftpupload.com/wp-content/uploads/2019/11/Moving-Companies.jpg" alt="">
+                                        <div class="item-body">
+                                            <img src="https://secureservercdn.net/50.62.172.232/6cb.dd2.myftpupload.com/wp-content/uploads/2019/11/Moving-Companies.jpg" alt="">
+                                        </div>
+                                        <div class="item-footer">
+                                            <h6> Company Name </h6>
+                                            <div class="stars mt-n4">
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="item">
-                                        <img src="https://www.meganewsviral.com/wp-content/uploads/2019/02/questions_for_moving_company_large.jpg" alt="">
+                                        <div class="item-body">
+                                            <img src="https://www.meganewsviral.com/wp-content/uploads/2019/02/questions_for_moving_company_large.jpg" alt="">
+                                        </div>
+                                        <div class="item-footer">
+                                            <h6> Company Name </h6>
+                                            <div class="stars mt-n4">
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="item">
-                                        <img src="http://www.movingsupplies.us/wp-content/uploads/2018/09/Moving-Companies-Helping-You-to-Relocate.jpg" alt="">
+                                        <div class="item-body">
+                                            <img src="http://www.movingsupplies.us/wp-content/uploads/2018/09/Moving-Companies-Helping-You-to-Relocate.jpg" alt="">
+                                        </div>
+                                        <div class="item-footer">
+                                            <h6> Company Name </h6>
+                                            <div class="stars mt-n4">
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="item">
-                                        <img src="https://www.iblogshub.com/wp-content/uploads/2019/08/Moving-Companies.jpg" alt="">
+                                        <div class="item-body">
+                                            <img src="https://www.iblogshub.com/wp-content/uploads/2019/08/Moving-Companies.jpg" alt="">
+                                        </div>
+                                        <div class="item-footer">
+                                            <h6> Company Name </h6>
+                                            <div class="stars mt-n4">
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -336,16 +394,64 @@ h3 { margin-top: 12% !important; }
                 <div class="col-md-8">
                     <div class="owl-carousel owl-theme" id="retalorCarosousel">
                         <div class="item">
-                            <img src="https://snow-wolf-studios.com/wp-content/uploads/Fotolia_72430358_Subscription_Monthly_M-1.jpg" alt="">
+                            <div class="item-body">
+                                <img src="https://snow-wolf-studios.com/wp-content/uploads/Fotolia_72430358_Subscription_Monthly_M-1.jpg" alt="">
+                            </div>
+                            <div class="item-footer">
+                                <h6> Realtors Name </h6>
+                                <div class="stars mt-n4">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                </div>
+                            </div>
                         </div>
                         <div class="item">
-                            <img src="https://realtybiznews.com/wp-content/uploads/2017/02/Realtor.jpg" alt="">
+                            <div class="item-body">
+                                <img src="https://realtybiznews.com/wp-content/uploads/2017/02/Realtor.jpg" alt="">
+                            </div>
+                            <div class="item-footer">
+                                <h6> Realtors Name </h6>
+                                <div class="stars mt-n4">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                </div>
+                            </div>
                         </div>
                         <div class="item">
-                            <img src="https://www.thechronicleherald.ca/media/photologue/photos/cache/while-the-market-is-plummeting-realtors-are-turning-to-high-tech-solutions-1_large.jpg" alt="">
+                            <div class="item-body">
+                                <img src="https://www.thechronicleherald.ca/media/photologue/photos/cache/while-the-market-is-plummeting-realtors-are-turning-to-high-tech-solutions-1_large.jpg" alt="">
+                            </div>
+                            <div class="item-footer">
+                                <h6> Realtors Name </h6>
+                                <div class="stars mt-n4">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                </div>
+                            </div>
                         </div>
                         <div class="item">
-                            <img src="https://i2.wp.com/www.pammarketingnut.com/wp-content/uploads/iStock_000014364264XSmall.jpg" alt="">
+                            <div class="item-body">
+                                <img src="https://i2.wp.com/www.pammarketingnut.com/wp-content/uploads/iStock_000014364264XSmall.jpg" alt="">
+                            </div>
+                            <div class="item-footer">
+                                <h6> Realtors Name </h6>
+                                <div class="stars mt-n4">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -358,7 +464,7 @@ h3 { margin-top: 12% !important; }
                     </div>
                 </div>
                 <div class="col-md-3 pr-5">
-                    <h3> Realtors </h3>
+                    <h3> Top Rated Realtors </h3>
                     <p class="card-text"> We analyzed millions of bids from Thumbtack professionals to see what things really cost. Find out what other people have paid for projects like yours. </p>
                     <a href="#" class="button button-rounded btn-sm "> Get All Realtors <i class="fa fa-angle-double-right" aria-hidden="true"></i> </a>
                 </div>
@@ -372,23 +478,71 @@ h3 { margin-top: 12% !important; }
         <div class="container-fluid">
             <div class="row py-5">
                 <div class="col-md-3 pl-5">
-                    <h3> Service Providers </h3>
+                    <h3> Top Rated Service Providers </h3>
                     <p class="card-text"> We analyzed millions of bids from Thumbtack professionals to see what things really cost. Find out what other people have paid for projects like yours. </p>
                     <a href="#" class="button button-rounded btn-sm"> Get All Service Providers <i class="fa fa-angle-double-right" aria-hidden="true"></i> </a>
                 </div>
                 <div class="col-md-8">
                     <div class="owl-carousel owl-theme" id="spCarousel">
                         <div class="item">
-                            <img src="https://miro.medium.com/max/685/1*BfCdPHrqkGIIwv7j9O5LhQ.jpeg" alt="">
+                            <div class="item-body">
+                                <img src="https://miro.medium.com/max/685/1*BfCdPHrqkGIIwv7j9O5LhQ.jpeg" alt="">
+                            </div>
+                            <div class="item-footer">
+                                <h6> Service Provider Name </h6>
+                                <div class="stars mt-n4">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                </div>
+                            </div>
                         </div>
                         <div class="item">
-                            <img src="http://www.wall-ebuilders.com/wp-content/uploads/2018/04/brand-620x400.jpg" alt="">
+                            <div class="item-body">
+                                <img src="http://www.wall-ebuilders.com/wp-content/uploads/2018/04/brand-620x400.jpg" alt="">
+                            </div>
+                            <div class="item-footer">
+                                <h6> Service Provider Name </h6>
+                                <div class="stars mt-n4">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                </div>
+                            </div>
                         </div>
                         <div class="item">
-                            <img src="https://i1.wp.com/movingtips.wpengine.com/wp-content/uploads/2018/07/movers-carrying-boxes.jpg" alt="">
+                            <div class="item-body">
+                                <img src="https://i1.wp.com/movingtips.wpengine.com/wp-content/uploads/2018/07/movers-carrying-boxes.jpg" alt="">
+                            </div>
+                            <div class="item-footer">
+                                <h6> Service Provider Name </h6>
+                                <div class="stars mt-n4">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                </div>
+                            </div>
                         </div>
                         <div class="item">
-                            <img src="https://i.pinimg.com/originals/a0/9f/01/a09f01c8f344512299f9830f0ec25e16.jpg" alt="">
+                            <div class="item-body">
+                                <img src="https://i.pinimg.com/originals/a0/9f/01/a09f01c8f344512299f9830f0ec25e16.jpg" alt="">
+                            </div>
+                            <div class="item-footer">
+                                <h6> Service Provider Name </h6>
+                                <div class="stars mt-n4">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

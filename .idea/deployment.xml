@@ -12,7 +12,14 @@
       <paths name="movein">
         <serverdata>
           <mappings>
-            <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/" local="$PROJECT_DIR$" web="https://moveinandout.aquilatechs.com" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="tce">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/" local="$PROJECT_DIR$/../tce" web="/" />
           </mappings>
         </serverdata>
       </paths>

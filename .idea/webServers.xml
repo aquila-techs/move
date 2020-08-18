@@ -16,6 +16,13 @@
           </advancedOptions>
         </fileTransfer>
       </webServer>
+      <webServer id="9f36f0cf-5674-417b-810e-5018e5977c60" name="tce" url="http://schoolslip.ca">
+        <fileTransfer rootFolder="/public_html/schoolslip.ca" host="schoolslip.ca" port="21">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
     </option>
   </component>
 </project>
