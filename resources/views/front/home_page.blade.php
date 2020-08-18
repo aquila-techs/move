@@ -721,4 +721,6 @@ h3 { margin-top: 12% !important; }
     });
 </script>
 
+    @include('front.includes.footer')
+
 @endsection
