@@ -101,6 +101,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="dnc" />
-    <orderEntry type="module" module-name="AnxietySystem" />
+    <orderEntry type="module" module-name="tce.app.v1" />
   </component>
 </module>

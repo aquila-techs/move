@@ -44,6 +44,7 @@ Route::group([], function () {
     Route::view('blog_II','front.blog_II');
     Route::view('page1','front.page1');
     Route::view('calculator','front.calculator');
+    Route::view('home_page','front.home_page');
 
     Route::view('home2','front.home2');
 
