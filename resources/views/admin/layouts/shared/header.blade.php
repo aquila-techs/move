@@ -1,4 +1,4 @@
-@php $root = env('ROOT_FOLDER'); @endphp
+@php if(env('ROOT_FOLDER')) $root = env('ROOT_FOLDER'); else $root='public/' @endphp
 <!-- Topbar Start -->
 <div class="navbar navbar-expand flex-column flex-md-row navbar-custom">
     <div class="container-fluid">

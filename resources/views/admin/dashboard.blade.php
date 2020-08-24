@@ -1,6 +1,6 @@
 @extends('admin.layouts.vertical')
 
-@php $root = env('ROOT_FOLDER'); @endphp
+@php if(env('ROOT_FOLDER')) $root = env('ROOT_FOLDER'); else $root='public/' @endphp
 
 @section('css')
 <link href="{{ URL::asset($root.'assets/libs/flatpickr/flatpickr.min.css') }}" rel="stylesheet" type="text/css" />

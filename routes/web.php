@@ -58,6 +58,7 @@ Route::group([], function () {
 
     Route::prefix('admin')->middleware(['auth'])->group(function (){
         Route::view('dashboard','admin.dashboard');
+        Route::resource('companies', 'Admin\Companies');
 
     });
 
