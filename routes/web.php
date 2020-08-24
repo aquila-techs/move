@@ -36,7 +36,7 @@ Route::group([], function () {
     // Route::get('dashboard', 'RoutingController@index');
 
 
-    Route::view('/','front.home');
+    Route::view('/','front.home_page');
     Route::view('about_us','front.about_us');
     Route::view('contact_us','front.contact_us');
     Route::view('faqs','front.faqs');
@@ -48,9 +48,16 @@ Route::group([], function () {
 
     Route::view('home2','front.home2');
 
+    Route::get('get-quote','CalculationController@getQuote');
+
     Route::prefix('company')->middleware(['auth'])->group(function (){
         Route::view('dashboard','companies.dashboard');
         Route::resource('profile','Company\ProfileController');
+
+    });
+
+    Route::prefix('admin')->middleware(['auth'])->group(function (){
+        Route::view('dashboard','admin.dashboard');
 
     });
 

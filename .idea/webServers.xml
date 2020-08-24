@@ -23,6 +23,34 @@
           </advancedOptions>
         </fileTransfer>
       </webServer>
+      <webServer id="677fa7bc-2b8b-4435-8c50-9cc99023a710" name="memeber_area" url="http://ftp.sc1zesty.universe.wf">
+        <fileTransfer host="ftp.sc1zesty.universe.wf" port="21">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+      <webServer id="f01ce424-da3a-439d-b417-11cd4013242a" name="themantal" url="http://ftp.sc1zesty.universe.wf">
+        <fileTransfer host="ftp.sc1zesty.universe.wf" port="21">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+      <webServer id="87a0214f-35e0-4613-88dc-14dd3d2b247f" name="voyance" url="http://ftp.sc1zesty.universe.wf">
+        <fileTransfer host="ftp.sc1zesty.universe.wf" port="21">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+      <webServer id="e3c909ad-77c8-4a9d-8e09-4baf8f52690a" name="waqas" url="http://moveinandout.aquilatechs.com">
+        <fileTransfer host="moveinandout.aquilatechs.com" port="21">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
     </option>
   </component>
 </project>

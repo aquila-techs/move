@@ -34,4 +34,11 @@ class CalculationController extends Controller
             return response()->json([$miles]);
         }
     }
+
+    public function getQuote()
+    {
+        return view('front.get-quotes');
+    }
+
+
 }

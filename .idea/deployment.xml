@@ -9,6 +9,14 @@
           </mappings>
         </serverdata>
       </paths>
+      <paths name="memeber_area">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$/../dnc" web="/" />
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
       <paths name="movein">
         <serverdata>
           <mappings>
@@ -20,6 +28,30 @@
         <serverdata>
           <mappings>
             <mapping deploy="/" local="$PROJECT_DIR$/../tce" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="themantal">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$/../dnc" web="/" />
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="voyance">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$/../dnc" web="/" />
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="waqas">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$/../dnc" web="/" />
+            <mapping local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>

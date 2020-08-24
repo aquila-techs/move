@@ -6,7 +6,9 @@
     <link rel="stylesheet" href="{{ $root }}/front/owl/owl.carousel.min.css">
 {{--    <link rel="stylesheet" href="{{ $root }}/public/front/owl/owl.theme.default.min.css">--}}
 <style>
-.dark .menu-link { color: var(--themecolor) !important; }
+.dark .menu-link { color: #666; }
+.dark .menu-link:hover { color: var(--themecolor); }
+.sub-menu-container .menu-link:hover { color: white; }
 .card-text { line-height: 1.6em; margin-bottom: 8px; color: #666; font-size: 14px; }
 .card a:hover { color: var(--themecolor); font-weight: 600; }
 .card i { font-size: 11px; margin-left: 2px; }
@@ -23,10 +25,12 @@ h3 { margin-top: 12% !important; }
 .checked { color: #ffa500; }
 .item-body img  { height: 210px; }
 .stars, .item-footer { margin-top: 5%; }
+a { color: #888a85 ; }
+a:hover { var(--themecolor) !important; }
 .h2 {
         font-size: 40px !important;
         font-family: cursive !important;
-        padding-left: 10%;
+        color: gray;
 }
 </style>
 			<!-- Including header -->
@@ -39,9 +43,9 @@ h3 { margin-top: 12% !important; }
 			<div class="content-wrap" style="overflow: visible;">
 
                 <div class="container" style="z-index: 2">
-                    <div class="text-left">
-                        <h2 class="h2 font-weight-semibold mb-2" style="z-index: 10; text-transform: uppercase; color:#55be73;">Welcome to Moveinandout.</h2>
-{{--                        <p >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, aperiam.</p>--}}
+                    <div class="text-left text-gray">
+                        <h2 class="h2 font-weight-semibold mb-2" style="text-transform: uppercase;"> Welcome to Moveinandout.</h2>
+                        <p style="font-family: cursive;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, aperiam.</p>
                     </div>
                     <div class="row topmargin justify-content-end">
                         <div class="col-lg-6">
@@ -61,7 +65,8 @@ h3 { margin-top: 12% !important; }
                                     <p class="mb-4">Shift to your new Home, So we're here. Please send us your Deatils &amp; our team will contact your email asap.</p>
                                     <div class="form-widget">
                                         <div class="form-result"></div>
-                                        <form class="row home-moving-form position-relative mb-0" action="include/form.php" method="post" enctype="multipart/form-data">
+                                        <form class="row home-moving-form position-relative mb-0" action="{{ url('get-quote')  }}" method="post" enctype="multipart/form-data">
+                                           @csrf
                                             <div class="form-process">
                                                 <div class="css3-spinner">
                                                     <div class="css3-spinner-scaler"></div>
@@ -72,14 +77,14 @@ h3 { margin-top: 12% !important; }
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text bg-transparent"><i class="icon-truck1"></i></span>
                                                 </div>
-                                                <input type="text" name="home-moving-form-location-from" id="home-moving-form-location-from" class="form-control required" value="" placeholder="Location From">
+                                                <input type="text" name="home-moving-form-location-from" id="home-moving-form-location-from" class="form-control required" value="" placeholder="Location From" list="zip_codes">
                                             </div>
 
                                             <div class="col-sm-6 input-group form-group">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text bg-transparent"><i class="icon-line2-map"></i></span>
                                                 </div>
-                                                <input type="text" name="home-moving-form-location-to" id="home-moving-form-location-to" class="form-control required" value="" placeholder="Location To">
+                                                <input type="text" name="home-moving-form-location-to" id="home-moving-form-location-to" class="form-control required" value="" placeholder="Location To" list="zip_codes">
                                             </div>
 
                                             <div class="col-sm-6 input-group form-group">
@@ -88,7 +93,7 @@ h3 { margin-top: 12% !important; }
                                                 </div>
                                                 <input type="text" name="home-moving-form-name" id="home-moving-form-name" class="form-control required" value="" placeholder="Your Full Name">
                                             </div>
-
+                                            <datalist id="zip_codes"></datalist>
                                             <div class="col-sm-6 input-group form-group">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text bg-transparent"><i class="icon-line2-envelope"></i></span>
@@ -115,7 +120,7 @@ h3 { margin-top: 12% !important; }
                                             </div>
 
                                             <div class="col-12">
-                                                <button type="submit" name="home-moving-form-submit" class="btn bg-color text-white font-weight-medium btn-block py-2 mt-2">Contact Us</button>
+                                                <button type="button" name="home-moving-form-submit" class="btn bg-color text-white font-weight-medium btn-block py-2 mt-2">Get Quote</button>
                                             </div>
 
                                             <input type="hidden" name="prefix" value="home-moving-form-">
@@ -139,14 +144,14 @@ h3 { margin-top: 12% !important; }
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text bg-transparent"><i class="icon-truck1"></i></span>
                                                 </div>
-                                                <input type="text" name="office-moving-form-location-from" id="office-moving-form-location-from" class="form-control required" value="" placeholder="Location From">
+                                                <input type="text" name="office-moving-form-location-from" id="office-moving-form-location-from" class="form-control required" value="" placeholder="Location From" list="zip_codes">
                                             </div>
 
                                             <div class="col-sm-6 input-group form-group">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text bg-transparent"><i class="icon-line2-map"></i></span>
                                                 </div>
-                                                <input type="text" name="office-moving-form-location-to" id="office-moving-form-location-to" class="form-control required" value="" placeholder="Location To">
+                                                <input type="text" name="office-moving-form-location-to" id="office-moving-form-location-to" class="form-control required" value="" placeholder="Location To" list="zip_codes">
                                             </div>
 
                                             <div class="col-sm-6 input-group form-group">
@@ -182,7 +187,7 @@ h3 { margin-top: 12% !important; }
                                             </div>
 
                                             <div class="col-12">
-                                                <button type="submit" name="office-moving-form-submit" class="btn bg-color text-white font-weight-medium btn-block py-2 mt-2">Contact Us</button>
+                                                <button type="submit" name="office-moving-form-submit" class="btn bg-color text-white font-weight-medium btn-block py-2 mt-2">Get Quote</button>
                                             </div>
 
                                             <input type="hidden" name="prefix" value="office-moving-form-">
@@ -281,7 +286,7 @@ h3 { margin-top: 12% !important; }
                                             </div>
 
                                             <div class="col-12">
-                                                <button type="submit" name="others-moving-form-submit" class="btn bg-color text-white font-weight-medium btn-block py-2 mt-2">Contact Us</button>
+                                                <button type="submit" name="others-moving-form-submit" class="btn bg-color text-white font-weight-medium btn-block py-2 mt-2">Get Quote</button>
                                             </div>
 
                                             <input type="hidden" name="prefix" value="others-moving-form-">
@@ -676,12 +681,34 @@ h3 { margin-top: 12% !important; }
         </div>
     </section>
 
-
-    <script src="https://use.fontawesome.com/3f7c8758bb.js"></script>
+<script src="https://use.fontawesome.com/3f7c8758bb.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 <script src="{{ $root }}/front/owl/owl.carousel.min.js"></script>
 <script>
     $(document).ready(function(){
+
+        const token = '{{ csrf_token()  }}';
+
+            $.ajax({
+                url: 'https://public.opendatasoft.com/api/records/1.0/search/?dataset=us-zip-code-latitude-and-longitude&q=',
+                method: 'GET',
+                success: function (response) {
+                    $(response.records).each(function () {
+                        const lat = ($(this)[0]['fields']['latitude']);
+                        const long = ($(this)[0]['fields']['longitude']);
+                        const zip = ($(this)[0]['fields']['zip']);
+                        const city = ($(this)[0]['fields']['city']);
+                        const state = ($(this)[0]['fields']['state']);
+                        $('#zip_codes').append(`
+                            <option data-lat='${lat}' data-long='${long}' value='${zip} , ${city} ${state}'></option>
+                        `);
+                    });
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            });
+
         const company = $('#companyCarousel').owlCarousel({
             loop:true,
             margin: 20,
@@ -720,7 +747,6 @@ h3 { margin-top: 12% !important; }
 
     });
 </script>
-
     @include('front.includes.footer')
 
 @endsection
