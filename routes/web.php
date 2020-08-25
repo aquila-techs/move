@@ -62,9 +62,5 @@ Route::group([], function () {
 
     });
 
-    Route::get('login',function(){
-        return env('ROOT_FOLDER');
-    });
-
      Route::get('{first}/{second}', 'RoutingController@secondLevel');
 

@@ -8,7 +8,7 @@
 <style>
 .dark .menu-link { color: #666; }
 .dark .menu-link:hover { color: var(--themecolor); }
-.sub-menu-container .menu-link:hover { color: white; }
+.sub-menu-container .menu-link:hover { background: #fff !important; }
 .card-text { line-height: 1.6em; margin-bottom: 8px; color: #666; font-size: 14px; }
 .card a:hover { color: var(--themecolor); font-weight: 600; }
 .card i { font-size: 11px; margin-left: 2px; }

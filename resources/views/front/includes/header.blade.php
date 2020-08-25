@@ -58,8 +58,20 @@
                         <div class="col-2">
                             <nav class="primary-menu with-arrows not-dark">
                                 <ul class="menu-container">
+                                    @guest
                                     <li class="menu-item"><a href="{{  url('login') }}" class="menu-link"> Login </a></li>
                                     <li class="menu-item"><a href="{{ url('register')  }}" class="menu-link"> Register </a></li>
+                                    @else
+                                        <li class="menu-item"><a class="menu-link" href="#"><div>{{ Auth::user()->name  }}</div></a>
+                                            <ul class="sub-menu-container mb-0">
+                                                <li class="menu-item"><a class="menu-link my-0 mb-n3" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" href="{{ route('logout') }}"><div>Logout</div></a></li>
+                                            <</ul>
+                                        </li>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            @csrf
+                                        </form>
+
+                                    @endif
                                 </ul>
                             </nav>
                         </div>
