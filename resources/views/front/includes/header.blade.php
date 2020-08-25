@@ -58,8 +58,8 @@
                         <div class="col-2">
                             <nav class="primary-menu with-arrows not-dark">
                                 <ul class="menu-container">
-                                    <li class="menu-item"><a href="/login" class="menu-link"> Login </a></li>
-                                    <li class="menu-item"><a href="/register" class="menu-link"> Register </a></li>
+                                    <li class="menu-item"><a href="{{  url('login') }}" class="menu-link"> Login </a></li>
+                                    <li class="menu-item"><a href="{{ url('register')  }}" class="menu-link"> Register </a></li>
                                 </ul>
                             </nav>
                         </div>

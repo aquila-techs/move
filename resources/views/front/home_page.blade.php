@@ -63,7 +63,6 @@ a:hover { var(--themecolor) !important; }
                             <div class="tab-content rounded-bottom shadow bg-white py-4 px-5">
                                 <div class="tab-pane fade show active" id="home-moving" role="tabpanel" aria-labelledby="home-moving-tab">
                                     <p class="mb-4">Shift to your new Home, So we're here. Please send us your Deatils &amp; our team will contact your email asap.</p>
-                                    <div class="form-widget">
                                         <div class="form-result"></div>
                                         <form class="row home-moving-form position-relative mb-0" action="{{ url('get-quote')  }}" method="post" enctype="multipart/form-data">
                                            @csrf
@@ -120,20 +119,19 @@ a:hover { var(--themecolor) !important; }
                                             </div>
 
                                             <div class="col-12">
-                                                <button type="button" name="home-moving-form-submit" class="btn bg-color text-white font-weight-medium btn-block py-2 mt-2">Get Quote</button>
+                                                <button type="submit" name="home-moving-form-submit" class="btn bg-color text-white font-weight-medium btn-block py-2 mt-2">Get Quote</button>
                                             </div>
 
                                             <input type="hidden" name="prefix" value="home-moving-form-">
                                             <input type="hidden" name="subject" value="Home Moving Request">
                                             <input type="hidden" name="html_title" value="Home Moving">
                                         </form>
-                                    </div>
                                 </div>
                                 <div class="tab-pane fade" id="office-moving" role="tabpanel" aria-labelledby="office-moving-tab">
                                     <p class="mb-4">Share your Office Shifting details by Filling out an Easy Form. Get Free Quotes from Verified Packers &amp; Movers Instantly.</p>
-                                    <div class="form-widget">
-                                        <div class="form-result"></div>
-                                        <form class="row office-moving-form position-relative mb-0" action="include/form.php" method="post" enctype="multipart/form-data">
+                                    <div class="form-result"></div>
+                                    <form class="row office-moving-form position-relative mb-0" action="{{ url('get-quote')  }}" method="post" enctype="multipart/form-data">
+                                            @csrf
                                             <div class="form-process">
                                                 <div class="css3-spinner">
                                                     <div class="css3-spinner-scaler"></div>
@@ -194,12 +192,11 @@ a:hover { var(--themecolor) !important; }
                                             <input type="hidden" name="subject" value="Office Moving Request">
                                             <input type="hidden" name="html_title" value="Office Moving">
                                         </form>
-                                    </div>
-                                </div>
+                            </div>
                                 <div class="tab-pane fade" id="others-moving" role="tabpanel" aria-labelledby="others-moving-tab">
-                                    <div class="form-widget">
-                                        <div class="form-result"></div>
-                                        <form class="row others-moving-form position-relative mb-0" action="include/form.php" method="post" enctype="multipart/form-data">
+                                    <div class="form-result"></div>
+                                    <form class="row others-moving-form position-relative mb-0" action="{{ url('get-quote')  }}" method="post" enctype="multipart/form-data">
+                                            @csrf
                                             <div class="form-process">
                                                 <div class="css3-spinner">
                                                     <div class="css3-spinner-scaler"></div>
@@ -292,8 +289,7 @@ a:hover { var(--themecolor) !important; }
                                             <input type="hidden" name="prefix" value="others-moving-form-">
                                             <input type="hidden" name="subject" value="Others Service Request">
                                             <input type="hidden" name="html_title" value="Others Service">
-                                        </form>
-                                    </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
