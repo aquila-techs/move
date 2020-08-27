@@ -8,7 +8,7 @@
 <style>
 .dark .menu-link { color: #666; }
 .dark .menu-link:hover { color: var(--themecolor); }
-.sub-menu-container .menu-link:hover { background: #fff !important; }
+.sub-menu-container .menu-link:hover { color: white; }
 .card-text { line-height: 1.6em; margin-bottom: 8px; color: #666; font-size: 14px; }
 .card a:hover { color: var(--themecolor); font-weight: 600; }
 .card i { font-size: 11px; margin-left: 2px; }
@@ -43,255 +43,20 @@ a:hover { var(--themecolor) !important; }
 			<div class="content-wrap" style="overflow: visible;">
 
                 <div class="container" style="z-index: 2">
-                    <div class="text-left text-gray">
-                        <h2 class="h2 font-weight-semibold mb-2" style="text-transform: uppercase;"> Welcome to Moveinandout.</h2>
-                        <p style="font-family: cursive;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, aperiam.</p>
-                    </div>
+
                     <div class="row topmargin justify-content-end">
                         <div class="col-lg-6">
-                            <ul class="nav nav-tabs nav-justified flex-column border-bottom-0 flex-md-row bg-color mt-4" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link py-3 active" id="home-moving-tab" data-toggle="tab" href="#home-moving" role="tab" aria-controls="home-moving" aria-selected="true">Home Moving</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link py-3" id="office-moving-tab" data-toggle="tab" href="#office-moving" role="tab" aria-controls="office-moving" aria-selected="false">Office Moving</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link py-3" id="others-moving-tab" data-toggle="tab" href="#others-moving" role="tab" aria-controls="others-moving" aria-selected="false">Others Service</a>
-                                </li>
-                            </ul>
-                            <div class="tab-content rounded-bottom shadow bg-white py-4 px-5">
-                                <div class="tab-pane fade show active" id="home-moving" role="tabpanel" aria-labelledby="home-moving-tab">
-                                    <p class="mb-4">Shift to your new Home, So we're here. Please send us your Deatils &amp; our team will contact your email asap.</p>
-                                        <div class="form-result"></div>
-                                        <form class="row home-moving-form position-relative mb-0" action="{{ url('get-quote')  }}" method="get" enctype="multipart/form-data">
-                                           @csrf
-                                            <div class="form-process">
-                                                <div class="css3-spinner">
-                                                    <div class="css3-spinner-scaler"></div>
-                                                </div>
-                                            </div>
 
-                                            <div class="col-sm-6 input-group form-group">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text bg-transparent"><i class="icon-truck1"></i></span>
-                                                </div>
-                                                <input type="text" name="home-moving-form-location-from" id="home-moving-form-location-from" class="form-control required" value="" placeholder="Location From" list="zip_codes">
-                                            </div>
-
-                                            <div class="col-sm-6 input-group form-group">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text bg-transparent"><i class="icon-line2-map"></i></span>
-                                                </div>
-                                                <input type="text" name="home-moving-form-location-to" id="home-moving-form-location-to" class="form-control required" value="" placeholder="Location To" list="zip_codes">
-                                            </div>
-
-                                            <div class="col-sm-6 input-group form-group">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text bg-transparent"><i class="icon-line2-user"></i></span>
-                                                </div>
-                                                <input type="text" name="home-moving-form-name" id="home-moving-form-name" class="form-control required" value="" placeholder="Your Full Name">
-                                            </div>
-                                            <datalist id="zip_codes"></datalist>
-                                            <div class="col-sm-6 input-group form-group">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text bg-transparent"><i class="icon-line2-envelope"></i></span>
-                                                </div>
-                                                <input type="email" name="home-moving-form-email" id="home-moving-form-email" class="form-control required" value="" placeholder="Your Email">
-                                            </div>
-
-                                            <div class="col-sm-6 input-group form-group">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text bg-transparent"><i class="icon-line2-call-out"></i></span>
-                                                </div>
-                                                <input type="text" name="home-moving-form-phone" id="home-moving-form-phone" class="form-control required" value="" placeholder="Your Phone Number">
-                                            </div>
-
-                                            <div class="col-sm-6 input-group form-group">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text bg-transparent"><i class="icon-line2-calendar"></i></span>
-                                                </div>
-                                                <input type="text" class="form-control home-date required" name="home-moving-form-date" id="home-moving-form-date" value="" placeholder="Your Date">
-                                            </div>
-
-                                            <div class="col-12 d-none">
-                                                <input type="text" id="home-moving-form-botcheck" name="home-moving-form-botcheck" value="" />
-                                            </div>
-
-                                            <div class="col-12">
-                                                <button type="submit" name="home-moving-form-submit" class="btn bg-color text-white font-weight-medium btn-block py-2 mt-2">Get Quote</button>
-                                            </div>
-
-                                            <input type="hidden" name="prefix" value="home-moving-form-">
-                                            <input type="hidden" name="subject" value="Home Moving Request">
-                                            <input type="hidden" name="html_title" value="Home Moving">
-                                        </form>
+                          <h1>Find professionals for pretty much anything.</h1>
+                           <form class="page-2" action="{{ url('get-quote')  }}" method="get">
+                              <div class="input-group mb-3">
+                                <input type="text" class="form-control company" placeholder="What is on your to-do this?" style="width: 40%;">
+                                <input type="text" class="form-control zip-code" placeholder="zip code">
+                                <div class="input-group-append ">
+                                  <button class="btn button btn-lg " type="submit">search</button>
                                 </div>
-                                <div class="tab-pane fade" id="office-moving" role="tabpanel" aria-labelledby="office-moving-tab">
-                                    <p class="mb-4">Share your Office Shifting details by Filling out an Easy Form. Get Free Quotes from Verified Packers &amp; Movers Instantly.</p>
-                                    <div class="form-result"></div>
-                                    <form class="row office-moving-form position-relative mb-0" action="{{ url('get-quote')  }}" method="get" enctype="multipart/form-data">
-                                            @csrf
-                                            <div class="form-process">
-                                                <div class="css3-spinner">
-                                                    <div class="css3-spinner-scaler"></div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-sm-6 input-group form-group">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text bg-transparent"><i class="icon-truck1"></i></span>
-                                                </div>
-                                                <input type="text" name="office-moving-form-location-from" id="office-moving-form-location-from" class="form-control required" value="" placeholder="Location From" list="zip_codes">
-                                            </div>
-
-                                            <div class="col-sm-6 input-group form-group">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text bg-transparent"><i class="icon-line2-map"></i></span>
-                                                </div>
-                                                <input type="text" name="office-moving-form-location-to" id="office-moving-form-location-to" class="form-control required" value="" placeholder="Location To" list="zip_codes">
-                                            </div>
-
-                                            <div class="col-sm-6 input-group form-group">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text bg-transparent"><i class="icon-line2-user"></i></span>
-                                                </div>
-                                                <input type="text" name="office-moving-form-name" id="office-moving-form-name" class="form-control required" value="" placeholder="Your Full Name">
-                                            </div>
-
-                                            <div class="col-sm-6 input-group form-group">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text bg-transparent"><i class="icon-line2-envelope"></i></span>
-                                                </div>
-                                                <input type="email" name="office-moving-form-email" id="office-moving-form-email" class="form-control required" value="" placeholder="Your Email">
-                                            </div>
-
-                                            <div class="col-sm-6 input-group form-group">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text bg-transparent"><i class="icon-line2-call-out"></i></span>
-                                                </div>
-                                                <input type="text" name="office-moving-form-phone" id="office-moving-form-phone" class="form-control required" value="" placeholder="Your Phone Number">
-                                            </div>
-
-                                            <div class="col-sm-6 input-group form-group">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text bg-transparent"><i class="icon-line2-calendar"></i></span>
-                                                </div>
-                                                <input type="text" class="form-control home-date required" name="office-moving-form-date" id="office-moving-form-date" value="" placeholder="Your Date">
-                                            </div>
-
-                                            <div class="col-12 d-none">
-                                                <input type="text" id="office-moving-form-botcheck" name="office-moving-form-botcheck" value="" />
-                                            </div>
-
-                                            <div class="col-12">
-                                                <button type="submit" name="office-moving-form-submit" class="btn bg-color text-white font-weight-medium btn-block py-2 mt-2">Get Quote</button>
-                                            </div>
-
-                                            <input type="hidden" name="prefix" value="office-moving-form-">
-                                            <input type="hidden" name="subject" value="Office Moving Request">
-                                            <input type="hidden" name="html_title" value="Office Moving">
-                                        </form>
-                            </div>
-                                <div class="tab-pane fade" id="others-moving" role="tabpanel" aria-labelledby="others-moving-tab">
-                                    <div class="form-result"></div>
-                                    <form class="row others-moving-form position-relative mb-0" action="{{ url('get-quote')  }}" method="get" enctype="multipart/form-data">
-                                            @csrf
-                                            <div class="form-process">
-                                                <div class="css3-spinner">
-                                                    <div class="css3-spinner-scaler"></div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-12 input-group form-group">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text bg-transparent"><img src="{{ asset($root.'front/movers/images/baggage.png') }}" height="18" alt="baggage Icon"></span>
-                                                </div>
-                                                <select class="required custom-select" name="others-moving-form-service" id="others-moving-form-service">
-                                                    <option value="" disabled selected>-- Select Your Service --</option>
-                                                    <option value="International Moving">International Moving</option>
-                                                    <option value="Pet Moving">Pet Moving</option>
-                                                    <option value="Car Moving">Car Moving</option>
-                                                    <option value="Hire Mover Truck">Hire Mover Truck</option>
-                                                </select>
-                                            </div>
-
-                                            <div class="col-sm-6 input-group form-group">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text bg-transparent"><i class="icon-line2-social-dropbox"></i></span>
-                                                </div>
-                                                <input type="text" name="others-moving-form-item" id="others-moving-form-item" class="form-control required" value="" placeholder="Your Item">
-                                            </div>
-
-                                            <div class="col-sm-6 input-group form-group">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text text-muted bg-transparent"><i class="icon-user-circle1"></i></span>
-                                                </div>
-                                                <select class="required custom-select" name="others-moving-form-movers" id="others-moving-form-movers">
-                                                    <option value="" disabled selected>-- Select Movers --</option>
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                    <option value="4">4</option>
-                                                </select>
-                                            </div>
-
-                                            <div class="col-sm-6 input-group form-group">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text bg-transparent"><i class="icon-truck1"></i></span>
-                                                </div>
-                                                <input type="text" name="others-moving-form-location-from" id="others-moving-form-location-from" class="form-control required" value="" placeholder="Location From">
-                                            </div>
-
-                                            <div class="col-sm-6 input-group form-group">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text bg-transparent"><i class="icon-line2-map"></i></span>
-                                                </div>
-                                                <input type="text" name="others-moving-form-location-to" id="others-moving-form-location-to" class="form-control required" value="" placeholder="Location To">
-                                            </div>
-
-                                            <div class="col-sm-6 input-group form-group">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text bg-transparent"><i class="icon-line2-user"></i></span>
-                                                </div>
-                                                <input type="text" name="others-moving-form-name" id="others-moving-form-name" class="form-control required" value="" placeholder="Your Full Name">
-                                            </div>
-
-                                            <div class="col-sm-6 input-group form-group">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text bg-transparent"><i class="icon-line2-envelope"></i></span>
-                                                </div>
-                                                <input type="email" name="others-moving-form-email" id="others-moving-form-email" class="form-control required" value="" placeholder="Your Email">
-                                            </div>
-
-                                            <div class="col-sm-6 input-group form-group">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text bg-transparent"><i class="icon-line2-call-out"></i></span>
-                                                </div>
-                                                <input type="text" name="others-moving-form-phone" id="others-moving-form-phone" class="form-control required" value="" placeholder="Your Phone Number">
-                                            </div>
-
-                                            <div class="col-sm-6 input-group form-group">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text bg-transparent"><i class="icon-line2-calendar"></i></span>
-                                                </div>
-                                                <input type="text" class="form-control home-date required" name="others-moving-form-date" id="others-moving-form-date" value="" placeholder="Your Date">
-                                            </div>
-
-                                            <div class="col-12 d-none">
-                                                <input type="text" id="others-moving-form-botcheck" name="others-moving-form-botcheck" value="" />
-                                            </div>
-
-                                            <div class="col-12">
-                                                <button type="submit" name="others-moving-form-submit" class="btn bg-color text-white font-weight-medium btn-block py-2 mt-2">Get Quote</button>
-                                            </div>
-
-                                            <input type="hidden" name="prefix" value="others-moving-form-">
-                                            <input type="hidden" name="subject" value="Others Service Request">
-                                            <input type="hidden" name="html_title" value="Others Service">
-                                    </form>
-                                </div>
-                            </div>
+                              </div>
+                           </form>
                         </div>
                         <div class="col-lg-5 d-none d-lg-flex flex-wrap justify-content-center">
                                 <img src="{{ asset('public/front/images/640.jpg') }}" style="margin-top: -20% !important;" alt="Image 1" class="d-flex align-self-end ml-5 mt-3">

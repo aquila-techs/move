@@ -36,7 +36,7 @@ Route::group([], function () {
     // Route::get('dashboard', 'RoutingController@index');
 
 
-    Route::view('/','front.home_page');
+    Route::view('/','front.home_page2');
     Route::view('about_us','front.about_us');
     Route::view('contact_us','front.contact_us');
     Route::view('faqs','front.faqs');
@@ -48,7 +48,7 @@ Route::group([], function () {
 
     Route::view('home2','front.home2');
 
-    Route::post('get-quote','CalculationController@getQuote');
+    Route::get('get-quote','CalculationController@getQuote');
 
     Route::prefix('company')->middleware(['auth'])->group(function (){
         Route::view('dashboard','companies.dashboard');
@@ -56,10 +56,8 @@ Route::group([], function () {
 
     });
 
-    Route::prefix('admin')->middleware(['auth'])->group(function (){
-        Route::view('dashboard','admin.dashboard');
-        Route::resource('companies', 'Admin\Companies');
-
+    Route::get('test',function(){
+        return env('ROOT_FOLDER');
     });
 
      Route::get('{first}/{second}', 'RoutingController@secondLevel');

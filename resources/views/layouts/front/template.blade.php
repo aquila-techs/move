@@ -11,7 +11,9 @@
 	============================================= -->
 	<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet" type="text/css" />
 	<link rel="stylesheet" href="{{ asset($root.'front/css/bootstrap.css') }}" type="text/css" />
-	<link rel="stylesheet" href="{{ asset($root.'front/style.css') }}" type="text/css" />
+    <link rel="stylesheet" href="{{ asset($root.'front/css/all.min.css') }}" type="text/css" />
+    <link rel="stylesheet" href="{{ asset($root.'front/css/fontawesome.min.css') }}" type="text/css" />
+    <link rel="stylesheet" href="{{ asset($root.'front/style.css') }}" type="text/css" />
 
 	<link rel="stylesheet" href="{{ asset($root.'front/css/dark.css') }}" type="text/css" />
 	<link rel="stylesheet" href="{{ asset($root.'front/css/font-icons.css') }}" type="text/css" />
