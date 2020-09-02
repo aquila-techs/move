@@ -36,32 +36,6 @@ a { color: #888a85 ; }
                   <a href="">Book Soon!</a></h5>
               </div>
             </div>
-            <div class="col-sm-12">
-              <div class="row-box  mb-4">
-                <div class="travel">
-                  <div class="">
-                    <h6>FROM</h6>
-                    <p>Lahore</p>
-                  </div>
-                  <div class="">
-                    <h6>To</h6>
-                    <p>Karachi</p>
-                  </div>
-                  <div class="">
-                    <h6>Move Date</h6>
-                    <p>Jun 29, 2020</p>
-                  </div>
-                  <div class="">
-                    <h6>Move Size</h6>
-                    <p>4 to 5</p>
-                  </div>
-                  <div class="">
-                    <h6>Distance</h6>
-                    <p>112km</p>
-                  </div>
-                </div>
-              </div>
-            </div>
              <div class="col-md-6 col-lg-4">
 
               <div class="row-box mb-4 people-box">
@@ -130,15 +104,15 @@ a { color: #888a85 ; }
 
             </div>
 
-            <div class="row-box sidebar  mb-4">
-              <h6>MOVING A CAR?</h6>
-              <h4>2020 Best Auto-Shippers</h4>
-              <p>Get instant pricing for shipping your vehicle safely and affordably.</p>
-              <div class="text-center">
-                <a class="active-btn peach-btn mb-2 mr-2" href="">Read More</a>
-              </div>
+{{--            <div class="row-box sidebar  mb-4">--}}
+{{--              <h6>MOVING A CAR?</h6>--}}
+{{--              <h4>2020 Best Auto-Shippers</h4>--}}
+{{--              <p>Get instant pricing for shipping your vehicle safely and affordably.</p>--}}
+{{--              <div class="text-center">--}}
+{{--                <a class="active-btn peach-btn mb-2 mr-2" href="">Read More</a>--}}
+{{--              </div>--}}
 
-            </div>
+{{--            </div>--}}
       </div>
 
     </div>
@@ -596,30 +570,12 @@ a { color: #888a85 ; }
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 <script src="{{ $root }}/front/owl/owl.carousel.min.js"></script>
-<script>
+{{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap-wizard/1.2/jquery.bootstrap.wizard.min.js"></script>--}}
+
+    <script>
     $(document).ready(function(){
 
-        const token = '{{ csrf_token()  }}';
 
-            // $.ajax({
-            //     url: 'https://public.opendatasoft.com/api/records/1.0/search/?dataset=us-zip-code-latitude-and-longitude&q=',
-            //     method: 'GET',
-            //     success: function (response) {
-            //         $(response.records).each(function () {
-            //             const lat = ($(this)[0]['fields']['latitude']);
-            //             const long = ($(this)[0]['fields']['longitude']);
-            //             const zip = ($(this)[0]['fields']['zip']);
-            //             const city = ($(this)[0]['fields']['city']);
-            //             const state = ($(this)[0]['fields']['state']);
-            //             $('#zip_codes').append(`
-            //                 <option data-lat='${lat}' data-long='${long}' value='${zip} , ${city} ${state}'></option>
-            //             `);
-            //         });
-            //     },
-            //     error: function (err) {
-            //         console.log(err);
-            //     }
-            // });
 
         const company1 = $('#companyCarousel1').owlCarousel({
             loop:true,

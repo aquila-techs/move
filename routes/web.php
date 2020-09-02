@@ -47,6 +47,7 @@ Route::group([], function () {
     Route::view('home_page','front.home_page');
 
     Route::view('home2','front.home2');
+    Route::view('company_profile', 'front.company_profile_page');
 
     Route::get('get-quote','CalculationController@getQuote');
 

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCompanyProfileTable extends Migration
+class CreateCompanyServicesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,14 @@ class CreateCompanyProfileTable extends Migration
      */
     public function up()
     {
-        Schema::create('company_profile', function (Blueprint $table) {
+        Schema::create('services', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('user_id');
-            $table->string('city')->nullable();
-            $table->string('logo')->nullable();
-            $table->string('state')->nullable();
-            $table->string('phone_number')->unique()->nullable();
-            $table->text('address')->nullable();
-            $table->longText('description')->nullable();
+            $table->string('region');
             $table->timestamps();
 
+            $table->foreign('category_id')->references('id')->on('company_categories')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
@@ -35,6 +32,6 @@ class CreateCompanyProfileTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('company_profile');
+        Schema::dropIfExists('services');
     }
 }

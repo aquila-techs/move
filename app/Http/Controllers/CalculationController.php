@@ -35,9 +35,16 @@ class CalculationController extends Controller
         }
     }
 
-    public function getQuote()
+    public function getQuote(Request $request)
     {
-        return view('front.get-quotes');
+        if($request->has('home-moving-form-email'))
+        {
+            $data = $request;
+
+//            return explode(',',$data->home-moving-form-location-from)[0];
+            return view('front.get-quotes',compact('data'));
+        }
+        return view('front.get-quotes',compact('request'));
     }
 
 

@@ -32,6 +32,13 @@ a:hover { var(--themecolor) !important; }
         font-family: cursive !important;
         color: gray;
 }
+.modal-form-body
+{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.hide { display: none; }
 </style>
 			<!-- Including header -->
 		@include('front.includes.header')
@@ -50,10 +57,9 @@ a:hover { var(--themecolor) !important; }
                           <h1>Find professionals for pretty much anything.</h1>
                            <form class="page-2" action="{{ url('get-quote')  }}" method="get">
                               <div class="input-group mb-3">
-                                <input type="text" class="form-control company" placeholder="What is on your to-do this?" style="width: 40%;">
-                                <input type="text" class="form-control zip-code" placeholder="zip code">
+                                <input type="text" class="form-control company" autocomplete="off" id="destination" list="zip_codes" placeholder="Choose your destination?" style="width: 40%;">
                                 <div class="input-group-append ">
-                                  <button class="btn button btn-lg " type="submit">search</button>
+                                  <button class="btn button btn-lg" id="modal_opened" data-toggle="modal" data-target="#myModal" type="button">search</button>
                                 </div>
                               </div>
                            </form>
@@ -63,6 +69,86 @@ a:hover { var(--themecolor) !important; }
                         </div>
                     </div>
                 </div>
+
+                 <!-- The Modal -->
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog ">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+          <h4 class="modal-title"></h4>
+          <button type="button" class="close" style="position: absolute; z-index: 10; right: 5px; top:5px;" data-dismiss="modal">&times;</button>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <form  method="get" action="{{ url('get-quote') }}">
+              <h4 class="text-center">Please Fill the Form</h4>
+              <div class="form-group">
+                  <input placeholder="Where are you moving from?" class="form-control"  list="zip_codes" name="from_location">
+              </div>
+              <div class="form-group">
+                  <input class="form-control" placeholder="Select your moving date" type="date" name="date">
+              </div>
+              <div class="form-group">
+                  <input placeholder="Where are you moving to?" class="form-control" list="zip_codes" name="to_location">
+              </div>
+              <datalist id="zip_codes"></datalist>
+              <button class="btn btn-primary" type="submit"> Submit </button>
+
+            </form>
+
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+                <!--Form Modal -->
+                {{-- <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                    <div class="modal-form-body" id="formModalInfo">
+                                        <h3 class="text-center"> We need some information from you.</h3>
+                                        <button type="button" class="float-left btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="float-right btn btn-primary changeTabBtn" data-value="q1">Next</button>
+                                    </div>
+
+                                    <div class="modal-form-body hide" id="q1">
+                                        <input type="text" class="form-control company" name="current_location" placeholder="From" style="width: 40%;">
+                                        <button type="button" class="float-left btn btn-secondary changeTabBtn" data-value="formModalInfo">Back</button>
+                                        <button type="button" class="float-right btn btn-primary changeTabBtn" data-value="q2">Next</button>
+                                    </div>
+                                    <div class="modal-form-body hide" id="q2">
+                                        <input type="text" class="form-control company" name="mover_name" placeholder="Name" style="width: 40%;">
+                                        <button type="button" class="float-left btn btn-secondary changeTabBtn" data-value="q1">Back</button>
+                                        <button type="button" class="float-right btn btn-primary changeTabBtn" data-value="q3">Next</button>
+                                    </div>
+                                    <div class="modal-form-body hide" id="q3">
+                                        <input type="text" class="form-control company" name="destination" required="" placeholder="Choose your destination?" style="width: 40%;">
+                                        <button type="button" class="float-left btn btn-secondary changeTabBtn" data-value="q2">Back</button>
+                                        <button type="button" class="float-right btn btn-primary changeTabBtn" data-value="q4">Next</button>
+                                    </div>
+                                    <div class="modal-form-body hide" id="q4">
+                                        <h3 class="text-center"> Phone </h3>
+                                        <button type="button" class="float-left btn btn-secondary changeTabBtn" data-value="q3">Back</button>
+                                        <button type="button" class="float-right btn btn-primary changeTabBtn" data-value="q5">Next</button>
+                                    </div>
+                                    <div class="modal-form-body hide" id="q6">
+                                        <h3 class="text-center"> Date </h3>
+                                        <button type="button" class="float-left btn btn-secondary changeTabBtn" data-value="q5" data-dismiss="modal">Close</button>
+                                        <button type="button" class="float-right btn btn-primary" >Submit</button>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> --}}
 
 
             </div>
@@ -449,7 +535,6 @@ a:hover { var(--themecolor) !important; }
     $(document).ready(function(){
 
         const token = '{{ csrf_token()  }}';
-
             $.ajax({
                 url: 'https://public.opendatasoft.com/api/records/1.0/search/?dataset=us-zip-code-latitude-and-longitude&q=',
                 method: 'GET',
@@ -505,6 +590,13 @@ a:hover { var(--themecolor) !important; }
         $('#prevspbtn').click(function () {
             sp.trigger('prev.owl.carousel');
         });
+
+       $('#modal_opened').click(function(){
+           $("input[name='from_location']").focus();
+           const val = $('#destination').val();
+           $("input[name='to_location']").val(val);
+       });
+
 
     });
 </script>
