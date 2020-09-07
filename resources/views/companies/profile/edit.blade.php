@@ -47,7 +47,7 @@
         <div class="card" style="mix-height: 500px;">
             <div class="card-body">
 
-                <form action="{{ url('company/profile/'.\Auth::user()->id)  }}" method="post" class="parsley-examples">
+                <form action="{{ url('company/profile/'.$profile->id)  }}" method="post" class="parsley-examples">
                     @csrf
                     @method('PUT')
 
@@ -64,17 +64,23 @@
                             </div>
                             @enderror
                         </div>
+
                         <div class="form-group col-md-6">
-                            <label for="category_id">Company Type<span class="text-danger">*</span></label>
-                            <input type="text" id="category_id" autocomplete="off" class="form-control" name="category_id" list="category_list" placeholder="Select Company Type"
-                                   required data-value="{{ old('category_id',$profile->category_id) }}" value="{{ old('category_id',\App\Company\Categories::select('name')->whereId($profile->category_id)->first()->name)  }}">
-                            <div class="invalid-input"></div>
-                            <datalist id="category_list">
-                               @foreach( \App\Company\Categories::orderBY('name')->get() as $row)
-                                    <option data-value="{{  $row->id }}" value="{{ $row->name  }}"></option>
-                                @endforeach
-                            </datalist>
+                            <label for="phone_number">Phone</label>
+                            <input type="text" id="phone_number" name="phone_number" parsley-trigger="change"  placeholder="Enter company phone number"
+                                   class="form-control" value="{{ old('phone_number',$profile->phone_number) }}">
                         </div>
+{{--                        <div class="form-group col-md-6">--}}
+{{--                            <label for="category_id">Company Type<span class="text-danger">*</span></label>--}}
+{{--                            <input type="text" id="category_id" autocomplete="off" class="form-control" name="category_id" list="category_list" placeholder="Select Company Type"--}}
+{{--                                   required data-value="{{ old('category_id',$profile->category_id) }}" value="{{ old('category_id',\App\Company\Categories::select('name')->whereId($profile->category_id)->first()->name)  }}">--}}
+{{--                            <div class="invalid-input"></div>--}}
+{{--                            <datalist id="category_list">--}}
+{{--                               @foreach( \App\Company\Categories::orderBY('name')->get() as $row)--}}
+{{--                                    <option data-value="{{  $row->id }}" value="{{ $row->name  }}"></option>--}}
+{{--                                @endforeach--}}
+{{--                            </datalist>--}}
+{{--                        </div>--}}
                     </div>
 
                     <div class="row">
@@ -91,16 +97,16 @@
                     </div>
 
                     <div class="row">
-                        <div class="form-group col-md-6">
-                            <label for="phone_number">Phone</label>
-                            <input type="text" id="phone_number" name="phone_number" parsley-trigger="change"  placeholder="Enter company phone number"
-                                   class="form-control" value="{{ old('phone_number',$profile->phone_number) }}">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="email">E-mail</label>
-                            <input type="email" id="email" name="email" parsley-trigger="change"  placeholder="Enter company email"
-                                   class="form-control" value="{{ old('email',$profile->email)  }}">
-                        </div>
+{{--                        <div class="form-group col-md-6">--}}
+{{--                            <label for="phone_number">Phone</label>--}}
+{{--                            <input type="text" id="phone_number" name="phone_number" parsley-trigger="change"  placeholder="Enter company phone number"--}}
+{{--                                   class="form-control" value="{{ old('phone_number',$profile->phone_number) }}">--}}
+{{--                        </div>--}}
+{{--                        <div class="form-group col-md-6">--}}
+{{--                            <label for="email">E-mail</label>--}}
+{{--                            <input type="email" id="email" name="email" parsley-trigger="change"  placeholder="Enter company email"--}}
+{{--                                   class="form-control" value="{{ old('email',$profile->email)  }}">--}}
+{{--                        </div>--}}
                     </div>
 
                     <div class="row">
@@ -147,27 +153,27 @@
                 menubar: false
             });
 
-            $('form').submit(function(e) {
-                e.preventDefault();
-                const value = $('#category_id').val();
-                const op_value = $('#category_list [value="' + value + '"]').data('value');
-
-                if (op_value == undefined)
-                {
-                    $('#category_id').addClass('is-invalid');
-                    $('.invalid-input').text('Please select option from list.');
-                }
-                else
-                {
-                    $('#category_id').val(op_value);
-                    this.submit();
-                }
-            });
-
-            $('#category_id').keydown(function () {
-                $(this).removeClass('is-invalid');
-                $('.invalid-input').text('');
-            });
+            // $('form').submit(function(e) {
+            //     e.preventDefault();
+            //     const value = $('#category_id').val();
+            //     const op_value = $('#category_list [value="' + value + '"]').data('value');
+            //
+            //     if (op_value == undefined)
+            //     {
+            //         $('#category_id').addClass('is-invalid');
+            //         $('.invalid-input').text('Please select option from list.');
+            //     }
+            //     else
+            //     {
+            //         $('#category_id').val(op_value);
+            //         this.submit();
+            //     }
+            // });
+            //
+            // $('#category_id').keydown(function () {
+            //     $(this).removeClass('is-invalid');
+            //     $('.invalid-input').text('');
+            // });
         });
 
     </script>

@@ -4,13 +4,15 @@
                 <div class="text-center">
                     <div class="row" id="edit-button">
                         <div class="col">
-                            <a href="{{  url('company/profile/1/edit') }}" class="btn btn-sm btn-primary float-right"> Edit </a>
+                            @if($profile)
+                            <a href="{{  url('company/profile/'.$profile->user->id.'/edit') }}" class="btn btn-sm btn-primary float-right"> Edit </a>
+                            @endif
                         </div>
                     </div>
                     <img src="{{ asset('public/assets/images/users/avatar-7.jpg') }}" alt="" class="avatar-lg rounded-circle" />
-                    <h5 class="mt-2 mb-0"> {{ $profile->name  }} </h5>
-                    <h6 class="text-muted font-weight-normal mt-2 mb-0"> {{ \App\Company\Categories::select('name')->whereId($profile->category_id)->first()->name  }}
-                    </h6>
+                    <h5 class="mt-2 mb-0"> {{ $profile->name }} </h5>
+{{--                        <h6 class="text-muted font-weight-normal mt-2 mb-0"> {{ \App\Company\Categories::select('name')->whereId($profile->category_id)->first()->name  }}--}}
+{{--                    </h6>--}}
                     <h6 class="text-muted font-weight-normal mt-1 mb-4">{{ $profile->city }}, {{ $profile->state }}</h6>
 
                 </div>

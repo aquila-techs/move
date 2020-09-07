@@ -54,12 +54,23 @@ Route::group([], function () {
     Route::prefix('company')->middleware(['auth'])->group(function (){
         Route::view('dashboard','companies.dashboard');
         Route::resource('profile','Company\ProfileController');
-
+        Route::resource('services','Company\ServicesController');
     });
 
-    Route::get('test',function(){
-        return env('ROOT_FOLDER');
+    Route::prefix('admin')->middleware(['auth'])->group(function (){
+        Route::view('dashboard','admin.dashboard');
+        Route::resource('companies', 'Admin\Companies');
+
     });
 
      Route::get('{first}/{second}', 'RoutingController@secondLevel');
+
+     Route::get('test',function (){
+         $servivce = \App\Company\Services::first();
+         $rates= new App\Company\Rates;
+         $rates->service_id = 6;
+         $rates->price_per_km_for_studio_less_then_100km = '2.5';
+         $rates->save();
+         return $servivce->rates;
+     });
 

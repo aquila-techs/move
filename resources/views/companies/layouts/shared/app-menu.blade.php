@@ -16,4 +16,11 @@
         </a>
     </li>
 
+    <li>
+        <a href="{{ url('company/services')  }}">
+            <i data-feather="profile"></i>
+            <span> Services </span>
+        </a>
+    </li>
+
 </ul>
