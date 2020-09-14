@@ -102,7 +102,7 @@
                 ajax: "{{ url('admin/companies') }}",
                 columns: [
                     {data: 'profile.name', name: 'profile.name'},
-                    {data: 'profile.email', name: 'profile.email'},
+                    {data: 'profile.company_email', name: 'profile.company_email'},
                     {data: 'name', name: 'name'},
                     {data: 'profile.city', name: 'profile.city'},
                     {data: 'profile.state', name: 'profile.state'},

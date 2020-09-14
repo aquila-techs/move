@@ -15,7 +15,7 @@ class ProfileController extends Controller
 
     public function index()
     {
-        $profile = Profile::findOrFail(\Auth::user()->id)->first();
+        $profile = \Auth::user()->profile;
         return view($this->directory.'index',compact('profile'));
     }
 
@@ -28,7 +28,6 @@ class ProfileController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            'category_id' => 'required|integer',
         ]);
         $profile->update($request->except('_token','user_id'));
         return redirect('company/profile')->with(['success' => 'Profile is updated successfully.']);

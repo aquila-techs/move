@@ -56,7 +56,7 @@
                                     <div class="form-group col-md-3">
                                         <label for="name">Company Name<span class="text-danger">*</span></label>
                                         <input type="text" id="name" name="name" autocomplete="off" parsley-trigger="change" required placeholder="Enter company name"
-                                               class="form-control" id="userName" value="{{ old('name',$company->profile->name)  }}">
+                                               class="form-control" id="name" value="{{ old('name',$company->profile->name)  }}">
                                         @error('name')
                                         <div class="row">
                                             <div class="col-5">
@@ -64,17 +64,6 @@
                                             </div>
                                         </div>
                                         @enderror
-                                    </div>
-                                    <div class="form-group col-md-3">
-                                        <label for="category_id">Company Type<span class="text-danger">*</span></label>
-                                        <input type="text" id="category_id" autocomplete="off" class="form-control" name="category_id" list="category_list" placeholder="Select Company Type"
-                                               required data-value="{{ old('category_id',$company->profile->category_id) }}" value="{{ old('category_id',\App\Company\Categories::select('name')->whereId($company->profile->category_id)->first()->name)  }}">
-                                        <div class="invalid-input"></div>
-                                        <datalist id="category_list">
-                                            @foreach( \App\Company\Categories::orderBY('name')->get() as $row)
-                                                <option data-value="{{  $row->id }}" value="{{ $row->name  }}"></option>
-                                            @endforeach
-                                        </datalist>
                                     </div>
 
                                 <div class="form-group col-md-3">
@@ -97,9 +86,9 @@
                                                class="form-control" value="{{ old('phone_number',$company->profile->phone_number) }}">
                                     </div>
                                     <div class="form-group col-md-3">
-                                        <label for="email">E-mail</label>
-                                        <input type="email" id="email" name="email" parsley-trigger="change"  placeholder="Enter company email"
-                                               class="form-control" value="{{ old('email',$company->profile->email)  }}">
+                                        <label for="company_email">E-mail</label>
+                                        <input type="email" id="company_email" name="company_email" parsley-trigger="change"  placeholder="Enter ccoompany email"
+                                               class="form-control" value="{{ old('company_email',$company->profile->company_email)  }}">
                                     </div>
 
                                     <div class="form-group col-md-6">
