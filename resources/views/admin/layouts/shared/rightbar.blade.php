@@ -1,4 +1,4 @@
-@php $root = env('ROOT_FOLDER'); @endphp
+@php if(env('ROOT_FOLDER')) $root = env('ROOT_FOLDER'); else $root='public/' @endphp
 <!-- Right Sidebar -->
 <div class="right-bar">
     <div class="rightbar-title">

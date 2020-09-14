@@ -11,7 +11,7 @@ class Profile extends Model
 
     public function category()
     {
-        return $this->belongsTo(App\Company\Categories::class);
+        return $this->belongsTo(Categories::class);
     }
 
     public function user()

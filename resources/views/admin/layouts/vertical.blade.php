@@ -15,7 +15,7 @@
 
 
 </head>
-@php $root = env('ROOT_FOLDER'); @endphp
+@php if(env('ROOT_FOLDER')) $root = env('ROOT_FOLDER'); else $root='public/' @endphp
 
 @if(isset($isScrollable) && $isScrollable)
     <body class="scrollable-layout">

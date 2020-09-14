@@ -15,7 +15,11 @@ class ProfileController extends Controller
 
     public function index()
     {
+<<<<<<< HEAD
         $profile = Profile::find(\Auth::user()->id);
+=======
+        $profile = \Auth::user()->profile;
+>>>>>>> 547df72f1cb1b168661c73c9ad86f13590ee2dad
         return view($this->directory.'index',compact('profile'));
     }
 
