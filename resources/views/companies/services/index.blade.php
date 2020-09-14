@@ -13,6 +13,7 @@
             padding-top: 20%;
             padding-left: 45%;
         }
+        .tab-content { padding-top: 0 !important; }
     </style>
 @endsection
 
@@ -40,7 +41,7 @@
 
     <div class="row bg-white pb-5 pl-2">
 
-            <h1 class="text-center col-12"> Services </h1>
+            <div class="col-12"> <a href="{{ url('company/services/create')  }}" class="mt-3 float-right btn btn-outline-primary"> Add Service </a>  </div>
 
             @if( $services->isEmpty() )
                 <div class="col-12">

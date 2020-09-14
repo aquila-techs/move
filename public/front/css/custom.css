@@ -25,6 +25,10 @@
     }
 }
 
+.dark .menu-link { color: #666; }
+.dark .menu-link:hover { color: var(--themecolor); }
+.sub-menu-container .menu-link:hover { color: white !important; }
+
 .side-bar{
     background-color: #fff;
     background-clip: border-box;
@@ -277,6 +281,10 @@ h1, h2, h3, h4, h5, h6 {
 
 /* -------   */
 
+.navbar-brand img
+{
+    max-height: 50px;
+}
 .row-box{
     padding: 1.3em;
     border-radius: .5rem;
@@ -498,4 +506,4 @@ h1, h2, h3, h4, h5, h6 {
 .arrow-div { margin-top: 5%; }
 .arrow-icon { width: 40px; height: 40px; background: #fff; padding-left: 15%; margin-bottom: 10px;  }
 .arrow-icon:hover { box-shadow: 10px 10px 40px 5px #ccc; cursor: pointer; }
-h3 { margin-top: 12% !important; }
+.owl-carousel h3 { margin-top: 12% !important; }
