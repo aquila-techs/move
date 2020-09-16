@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class CalculationController extends Controller
 {
@@ -45,6 +47,13 @@ class CalculationController extends Controller
             return view('front.get-quotes',compact('data'));
         }
         return view('front.get-quotes',compact('request'));
+    }
+
+    public function  test()
+    {
+//        $role = Role::find(3);
+//        $role->syncPermissions(Permission::all());
+        return Role::find(3)->getAllPermissions();
     }
 
 

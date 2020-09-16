@@ -65,12 +65,5 @@ Route::group([], function () {
 
      Route::get('{first}/{second}', 'RoutingController@secondLevel');
 
-     Route::get('test',function (){
-         $servivce = \App\Company\Services::first();
-         $rates= new App\Company\Rates;
-         $rates->service_id = 6;
-         $rates->price_per_km_for_studio_less_then_100km = '2.5';
-         $rates->save();
-         return $servivce->rates;
-     });
+     Route::get('test','CalculationController@test');
 
