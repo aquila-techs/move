@@ -36,6 +36,12 @@ a:hover { var(--themecolor) !important; }
     height: 100%;
 }
 .hide { display: none; }
+.modal-body img{
+    max-width: 200px;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+}
 </style>
 			<!-- Including header -->
 		@include('front.includes.header')
@@ -67,7 +73,7 @@ a:hover { var(--themecolor) !important; }
                     </div>
                 </div>
 
-                 <!-- The Modal -->
+                 {{-- <!-- The Modal -->
   <div class="modal fade" id="myModal">
     <div class="modal-dialog ">
       <div class="modal-content">
@@ -99,7 +105,45 @@ a:hover { var(--themecolor) !important; }
 
       </div>
     </div>
+  </div> --}}
+
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+        <button style="position: absolute; top: 10px; right: 10px; z-index: 2;" type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      <div class="modal-body">
+
+            <img class="img img-responsive" src="{{ asset($root.'front/images/homepage_modal_pic.jpg') }}" alt="">
+              <form  method="get" class="date-form" action="{{ url('get-quote') }}">
+              <div class="form-group">
+                  <input  class="form-control ab"  list="zip_codes" name="from_location">
+                  <Label> Were You Moving From?</Label>
+              </div>
+              <div class="form-group">
+                  <input class="form-control ab" type="text" name="date">
+                  <Label> Select Pickup Date</Label>
+              </div>
+              <div class="form-group">
+                  <input  class="form-control ab" list="zip_codes" name="to_location">
+                  <Label> Were You Moving To?</Label>
+              </div>
+              <datalist id="zip_codes"></datalist>
+              <button class="button button-circle" type="submit"> Submit </button>
+
+            </form>
+      </div>
+
+    </div>
   </div>
+</div>
 
                 <!--Form Modal -->
                 {{-- <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
@@ -592,7 +636,22 @@ a:hover { var(--themecolor) !important; }
            $("input[name='from_location']").focus();
            const val = $('#destination').val();
            $("input[name='to_location']").val(val);
+           $("input[name='to_location']").parent().addClass('ab-c');
+
        });
+
+
+
+
+  $(".ab").focusin(function(){
+   $(this).parent().addClass('ab-c');
+  });
+  $(".ab").focusout(function(){
+      if($(this).val().length == 0)
+     $(this).parent().removeClass('ab-c');
+  });
+
+
 
 
     });

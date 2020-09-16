@@ -507,3 +507,63 @@ h1, h2, h3, h4, h5, h6 {
 .arrow-icon { width: 40px; height: 40px; background: #fff; padding-left: 15%; margin-bottom: 10px;  }
 .arrow-icon:hover { box-shadow: 10px 10px 40px 5px #ccc; cursor: pointer; }
 .owl-carousel h3 { margin-top: 12% !important; }
+#myModal .modal-header{
+    background-color: #555;
+}
+#myModal .modal-header button,
+#myModal .modal-header button span{
+    color: #fff;
+}
+.date-form{
+   margin: 0px;
+}
+.date-form{
+   margin: 20px 0px 0px 0px;
+}
+.date-form .form-group{
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+.date-form .form-group label{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 15px;
+    color: #495057;
+    font-weight: 400;
+    pointer-events: none;
+}
+.date-form .ab-c label{
+      font-size: 11px;
+    left: 0px;
+    top: -15px;
+    font-weight: 600;
+}
+.date-form .form-control {
+    border: none;
+    border-bottom: 2px solid #ced4da !important;
+}
+#exampleModalCenterTitle{
+    display: flex;
+    margin-left: auto;
+    color: #fff;
+}
+#myModal .modal-title {
+    margin-bottom: 0;
+    line-height: 1.5;
+    display: flex;
+    margin-left: auto;
+    color: #fff;
+}
+.date-form button{
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    background-color: #55be73;
+    margin-top: 50px;
+    border-color: #55be73;
+}
+.date-form button:hover{
+    background-color: #555;
+    border-color: #555;
+}
