@@ -15,8 +15,13 @@ class ProfileController extends Controller
 
     public function index()
     {
-        $profile = \Auth::user()->profile;
+        $profile = Profile::where('user_id',\Auth::user()->id)->first();
         return view($this->directory.'index',compact('profile'));
+    }
+
+    public function show($id)
+    {
+        return $id;
     }
 
     public function edit(Profile $profile)
