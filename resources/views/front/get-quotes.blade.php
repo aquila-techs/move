@@ -1,6 +1,9 @@
 @extends('layouts.front.template')
 
 @php if(env('ROOT_FOLDER')) $root = env('ROOT_FOLDER'); else $root='/public/' @endphp
+{{--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v4.7.0/css/font-awesome-css.min.css">--}}
+
+{{--<link rel="stylesheet" href="{{ asset($root.'front/css/fontawesome.min.css') }}" type="text/css" />--}}
 <style>
 .dark .menu-link { color: #666 !important; }
 .dark .menu-link:hover { color: var(--themecolor) !important; }
@@ -8,6 +11,8 @@
 .bg-light { background: #fafafa !important; }
 section { min-height: 400px; }
 a { color: #888a85 ; }
+.card-title { font-size: 20px; }
+.qtus, .qtus p { font-size: 14px !important; }
 
 </style>
 @section('content')
@@ -36,6 +41,28 @@ a { color: #888a85 ; }
                   <a href="">Book Soon!</a></h5>
               </div>
             </div>
+
+          <div class="col-sm-4 py-5">
+              <div class="row-box mb-4">
+                  <span class="float-left"> From  </span>
+                  <span class="float-right"> {{ $request->from_location  }}  </span>
+              </div>
+          </div>
+
+          <div class="col-sm-4 py-5 ">
+              <div class="row-box mb-4">
+                  <span class="float-left"> To </span>
+                  <span class="float-right">  {{ $request->to_location  }}   </span>
+              </div>
+          </div>
+
+          <div class="col-sm-4  py-5">
+              <div class="row-box mb-4">
+                  <span class="float-left"> Date </span>
+                  <span class="float-right"> {{ $request->date  }} </span>
+              </div>
+          </div>
+
              <div class="col-md-6 col-lg-4">
 
               <div class="row-box mb-4 people-box">
@@ -138,122 +165,37 @@ a { color: #888a85 ; }
               </ul>
             </div>
 
-            <p>We found   <b>0</b> local movers near that would be perfect for you:</p>
+            <p>We found   <b> {{ count($pms) }} </b> local movers near that would be perfect for you:</p>
           </div>
               </div>
           </div>
              <div class="col-sm-11">
-                                <div class="owl-carousel owl-theme" id="companyCarousel1">
-                                    <div class="item">
-                                          <div class="card text-center company-card" >
-                            <img class="mx-auto d-flex img-responsive img-circle mt-2 img-thumbnail" src="http://themebubble.com/demo/webify/consult/wp-content/uploads/sites/3/2019/03/s.png" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">Company 4</h5>
-                                 <p class="card-text mb-2">Services: <span>Full Service</span></p>
-                                   <div class="star-reviews mb-3">
-                                 <ul>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                </ul>
-                               <p class="p-1">(23 reviews)</p>
-                                <a href="#">Visit Website <i class="fa fa-external-link" aria-hidden="true"></i></a>
-                            </div>
-                                <a href="#" class="btn btn-sm btn-outline-info">Get Quote</a>
-                                <a href="#" class="btn btn-sm btn-outline-info">Select</a>
-                            </div>
-                        </div>
+                    <div class="owl-carousel owl-theme" id="companyCarousel1">
+                    @foreach( $pms as $pm )
+                        <div class="item">
+                            <a href="{{ url('company_profile')  }}">
+                              <div class="card text-center company-card" >
+                                <img class="mx-auto d-flex img-responsive img-circle mt-2 img-thumbnail" src="http://themebubble.com/demo/webify/consult/wp-content/uploads/sites/3/2019/03/s.png" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title"> {{ $pm->company->name }} </h5>
+                                    <div class="star-reviews mb-3">
+                                         <ul>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                        </ul>
+                                       <p class="p-1">(23 reviews)</p>
+                                        <a href="#">Visit Website <i class="fa fa-external-link" aria-hidden="true"></i></a>
                                     </div>
-                                       <div class="item">
-                                          <div class="card text-center company-card" >
-                            <img class="mx-auto d-flex img-responsive img-circle mt-2 img-thumbnail" src="http://themebubble.com/demo/webify/consult/wp-content/uploads/sites/3/2019/03/s.png" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">Company 4</h5>
-                                 <p class="card-text mb-2">Services: <span>Full Service</span></p>
-                                   <div class="star-reviews mb-3">
-                                 <ul>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                </ul>
-                               <p class="p-1">(23 reviews)</p>
-                                <a href="#">Visit Website <i class="fa fa-external-link" aria-hidden="true"></i></a>
+                                    <a href="#" class="btn btn-sm btn-outline-info">Get Quote</a>
+                                </div>
                             </div>
-                                <a href="#" class="btn btn-sm btn-outline-info">Get Quote</a>
-                                <a href="#" class="btn btn-sm btn-outline-info">Select</a>
-                            </div>
+                            </a>
                         </div>
-                                    </div>
-                                    <div class="item">
-                                          <div class="card text-center company-card" >
-                            <img class="mx-auto d-flex img-responsive img-circle mt-2 img-thumbnail" src="http://themebubble.com/demo/webify/consult/wp-content/uploads/sites/3/2019/03/s.png" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">Company 4</h5>
-                                 <p class="card-text mb-2">Services: <span>Full Service</span></p>
-                                   <div class="star-reviews mb-3">
-                                 <ul>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                </ul>
-                               <p class="p-1">(23 reviews)</p>
-                                <a href="#">Visit Website <i class="fa fa-external-link" aria-hidden="true"></i></a>
-                            </div>
-                                <a href="#" class="btn btn-sm btn-outline-info">Get Quote</a>
-                                <a href="#" class="btn btn-sm btn-outline-info">Select</a>
-                            </div>
-                        </div>
-                                    </div>
-                                    <div class="item">
-                                          <div class="card text-center company-card" >
-                            <img class="mx-auto d-flex img-responsive img-circle mt-2 img-thumbnail" src="http://themebubble.com/demo/webify/consult/wp-content/uploads/sites/3/2019/03/s.png" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">Company 4</h5>
-                                 <p class="card-text mb-2">Services: <span>Full Service</span></p>
-                                   <div class="star-reviews mb-3">
-                                 <ul>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                </ul>
-                               <p class="p-1">(23 reviews)</p>
-                                <a href="#">Visit Website <i class="fa fa-external-link" aria-hidden="true"></i></a>
-                            </div>
-                                <a href="#" class="btn btn-sm btn-outline-info">Get Quote</a>
-                                <a href="#" class="btn btn-sm btn-outline-info">Select</a>
-                            </div>
-                        </div>
-                                    </div>
-                                    <div class="item">
-                                          <div class="card text-center company-card" >
-                            <img class="mx-auto d-flex img-responsive img-circle mt-2 img-thumbnail" src="http://themebubble.com/demo/webify/consult/wp-content/uploads/sites/3/2019/03/s.png" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">Company 4</h5>
-                                 <p class="card-text mb-2">Services: <span>Full Service</span></p>
-                                   <div class="star-reviews mb-3">
-                                 <ul>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                </ul>
-                               <p class="p-1">(23 reviews)</p>
-                                <a href="#">Visit Website <i class="fa fa-external-link" aria-hidden="true"></i></a>
-                            </div>
-                                <a href="#" class="btn btn-sm btn-outline-info">Get Quote</a>
-                                <a href="#" class="btn btn-sm btn-outline-info">Select</a>
-                            </div>
-                        </div>
-                                    </div>
+                        @endforeach
+
                                 </div>
                             </div>
                             <div class="col-sm-1 arrow-div">
@@ -286,122 +228,34 @@ a { color: #888a85 ; }
               </ul>
             </div>
 
-            <p>We found   <b>0</b> local movers near that would be perfect for you:</p>
+            <p>We found   <b> {{ count($realtors) }} </b> local movers near that would be perfect for you:</p>
           </div>
               </div>
           </div>
              <div class="col-sm-11">
                                 <div class="owl-carousel owl-theme" id="companyCarousel2">
-                                    <div class="item">
-                                          <div class="card text-center company-card" >
-                            <img class="mx-auto d-flex img-responsive img-circle mt-2 img-thumbnail" src="http://themebubble.com/demo/webify/consult/wp-content/uploads/sites/3/2019/03/s.png" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">Company 4</h5>
-                                 <p class="card-text mb-2">Services: <span>Full Service</span></p>
-                                   <div class="star-reviews mb-3">
-                                 <ul>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                </ul>
-                               <p class="p-1">(23 reviews)</p>
-                                <a href="#">Visit Website <i class="fa fa-external-link" aria-hidden="true"></i></a>
-                            </div>
-                                <a href="#" class="btn btn-sm btn-outline-info">Get Quote</a>
-                                <a href="#" class="btn btn-sm btn-outline-info">Select</a>
-                            </div>
-                        </div>
-                                    </div>
-                                       <div class="item">
-                                          <div class="card text-center company-card" >
-                            <img class="mx-auto d-flex img-responsive img-circle mt-2 img-thumbnail" src="http://themebubble.com/demo/webify/consult/wp-content/uploads/sites/3/2019/03/s.png" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">Company 4</h5>
-                                 <p class="card-text mb-2">Services: <span>Full Service</span></p>
-                                   <div class="star-reviews mb-3">
-                                 <ul>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                </ul>
-                               <p class="p-1">(23 reviews)</p>
-                                <a href="#">Visit Website <i class="fa fa-external-link" aria-hidden="true"></i></a>
-                            </div>
-                                <a href="#" class="btn btn-sm btn-outline-info">Get Quote</a>
-                                <a href="#" class="btn btn-sm btn-outline-info">Select</a>
-                            </div>
-                        </div>
-                                    </div>
-                                    <div class="item">
-                                          <div class="card text-center company-card" >
-                            <img class="mx-auto d-flex img-responsive img-circle mt-2 img-thumbnail" src="http://themebubble.com/demo/webify/consult/wp-content/uploads/sites/3/2019/03/s.png" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">Company 4</h5>
-                                 <p class="card-text mb-2">Services: <span>Full Service</span></p>
-                                   <div class="star-reviews mb-3">
-                                 <ul>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                </ul>
-                               <p class="p-1">(23 reviews)</p>
-                                <a href="#">Visit Website <i class="fa fa-external-link" aria-hidden="true"></i></a>
-                            </div>
-                                <a href="#" class="btn btn-sm btn-outline-info">Get Quote</a>
-                                <a href="#" class="btn btn-sm btn-outline-info">Select</a>
-                            </div>
-                        </div>
-                                    </div>
-                                    <div class="item">
-                                          <div class="card text-center company-card" >
-                            <img class="mx-auto d-flex img-responsive img-circle mt-2 img-thumbnail" src="http://themebubble.com/demo/webify/consult/wp-content/uploads/sites/3/2019/03/s.png" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">Company 4</h5>
-                                 <p class="card-text mb-2">Services: <span>Full Service</span></p>
-                                   <div class="star-reviews mb-3">
-                                 <ul>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                </ul>
-                               <p class="p-1">(23 reviews)</p>
-                                <a href="#">Visit Website <i class="fa fa-external-link" aria-hidden="true"></i></a>
-                            </div>
-                                <a href="#" class="btn btn-sm btn-outline-info">Get Quote</a>
-                                <a href="#" class="btn btn-sm btn-outline-info">Select</a>
-                            </div>
-                        </div>
-                                    </div>
-                                    <div class="item">
-                                          <div class="card text-center company-card" >
-                            <img class="mx-auto d-flex img-responsive img-circle mt-2 img-thumbnail" src="http://themebubble.com/demo/webify/consult/wp-content/uploads/sites/3/2019/03/s.png" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">Company 4</h5>
-                                 <p class="card-text mb-2">Services: <span>Full Service</span></p>
-                                   <div class="star-reviews mb-3">
-                                 <ul>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                </ul>
-                               <p class="p-1">(23 reviews)</p>
-                                <a href="#">Visit Website <i class="fa fa-external-link" aria-hidden="true"></i></a>
-                            </div>
-                                <a href="#" class="btn btn-sm btn-outline-info">Get Quote</a>
-                                <a href="#" class="btn btn-sm btn-outline-info">Select</a>
-                            </div>
-                        </div>
-                                    </div>
+                                    @foreach( $realtors as $realtor )
+                                        <div class="item">
+                                            <div class="card text-center company-card" >
+                                                <img class="mx-auto d-flex img-responsive img-circle mt-2 img-thumbnail" src="http://themebubble.com/demo/webify/consult/wp-content/uploads/sites/3/2019/03/s.png" alt="Card image cap">
+                                                <div class="card-body">
+                                                    <h5 class="card-title"> {{ $realtor->company->name }} </h5>
+                                                    <div class="star-reviews mb-3">
+                                                        <ul>
+                                                            <li><i class="fas fa-star"></i></li>
+                                                            <li><i class="fas fa-star"></i></li>
+                                                            <li><i class="fas fa-star"></i></li>
+                                                            <li><i class="fas fa-star"></i></li>
+                                                            <li><i class="fas fa-star"></i></li>
+                                                        </ul>
+                                                        <p class="p-1">(23 reviews)</p>
+                                                        <a href="#">Visit Website <i class="fa fa-external-link" aria-hidden="true"></i></a>
+                                                    </div>
+                                                    <a href="#" class="btn btn-sm btn-outline-info">Get Quote</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
                                 </div>
                             </div>
                             <div class="col-sm-1 arrow-div">
@@ -434,122 +288,34 @@ a { color: #888a85 ; }
               </ul>
             </div>
 
-            <p>We found   <b>0</b> local movers near that would be perfect for you:</p>
+            <p>We found   <b> {{ count($sps) }} </b> local movers near that would be perfect for you:</p>
           </div>
               </div>
           </div>
              <div class="col-sm-11">
                                 <div class="owl-carousel  owl-theme" id="companyCarousel3">
-                                    <div class="item">
-                                          <div class="card text-center company-card" >
-                            <img class="mx-auto d-flex img-responsive img-circle mt-2 img-thumbnail" src="http://themebubble.com/demo/webify/consult/wp-content/uploads/sites/3/2019/03/s.png" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">Company 4</h5>
-                                 <p class="card-text mb-2">Services: <span>Full Service</span></p>
-                                   <div class="star-reviews mb-3">
-                                 <ul>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                </ul>
-                               <p class="p-1">(23 reviews)</p>
-                                <a href="#">Visit Website <i class="fa fa-external-link" aria-hidden="true"></i></a>
-                            </div>
-                                <a href="#" class="btn btn-sm btn-outline-info">Get Quote</a>
-                                <a href="#" class="btn btn-sm btn-outline-info">Select</a>
-                            </div>
-                        </div>
-                                    </div>
-                                       <div class="item">
-                                          <div class="card text-center company-card" >
-                            <img class="mx-auto d-flex img-responsive img-circle mt-2 img-thumbnail" src="http://themebubble.com/demo/webify/consult/wp-content/uploads/sites/3/2019/03/s.png" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">Company 4</h5>
-                                 <p class="card-text mb-2">Services: <span>Full Service</span></p>
-                                   <div class="star-reviews mb-3">
-                                 <ul>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                </ul>
-                               <p class="p-1">(23 reviews)</p>
-                                <a href="#">Visit Website <i class="fa fa-external-link" aria-hidden="true"></i></a>
-                            </div>
-                                <a href="#" class="btn btn-sm btn-outline-info">Get Quote</a>
-                                <a href="#" class="btn btn-sm btn-outline-info">Select</a>
-                            </div>
-                        </div>
-                                    </div>
-                                    <div class="item">
-                                          <div class="card text-center company-card" >
-                            <img class="mx-auto d-flex img-responsive img-circle mt-2 img-thumbnail" src="http://themebubble.com/demo/webify/consult/wp-content/uploads/sites/3/2019/03/s.png" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">Company 4</h5>
-                                 <p class="card-text mb-2">Services: <span>Full Service</span></p>
-                                   <div class="star-reviews mb-3">
-                                 <ul>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                </ul>
-                               <p class="p-1">(23 reviews)</p>
-                                <a href="#">Visit Website <i class="fa fa-external-link" aria-hidden="true"></i></a>
-                            </div>
-                                <a href="#" class="btn btn-sm btn-outline-info">Get Quote</a>
-                                <a href="#" class="btn btn-sm btn-outline-info">Select</a>
-                            </div>
-                        </div>
-                                    </div>
-                                    <div class="item">
-                                          <div class="card text-center company-card" >
-                            <img class="mx-auto d-flex img-responsive img-circle mt-2 img-thumbnail" src="http://themebubble.com/demo/webify/consult/wp-content/uploads/sites/3/2019/03/s.png" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">Company 4</h5>
-                                 <p class="card-text mb-2">Services: <span>Full Service</span></p>
-                                   <div class="star-reviews mb-3">
-                                 <ul>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                </ul>
-                               <p class="p-1">(23 reviews)</p>
-                                <a href="#">Visit Website <i class="fa fa-external-link" aria-hidden="true"></i></a>
-                            </div>
-                                <a href="#" class="btn btn-sm btn-outline-info">Get Quote</a>
-                                <a href="#" class="btn btn-sm btn-outline-info">Select</a>
-                            </div>
-                        </div>
-                                    </div>
-                                    <div class="item">
-                                          <div class="card text-center company-card" >
-                            <img class="mx-auto d-flex img-responsive img-circle mt-2 img-thumbnail" src="http://themebubble.com/demo/webify/consult/wp-content/uploads/sites/3/2019/03/s.png" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">Company 4</h5>
-                                 <p class="card-text mb-2">Services: <span>Full Service</span></p>
-                                   <div class="star-reviews mb-3">
-                                 <ul>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                </ul>
-                               <p class="p-1">(23 reviews)</p>
-                                <a href="#">Visit Website <i class="fa fa-external-link" aria-hidden="true"></i></a>
-                            </div>
-                                <a href="#" class="btn btn-sm btn-outline-info">Get Quote</a>
-                                <a href="#" class="btn btn-sm btn-outline-info">Select</a>
-                            </div>
-                        </div>
-                                    </div>
+                                    @foreach( $sps as $sp )
+                                        <div class="item">
+                                            <div class="card text-center company-card" >
+                                                <img class="mx-auto d-flex img-responsive img-circle mt-2 img-thumbnail" src="http://themebubble.com/demo/webify/consult/wp-content/uploads/sites/3/2019/03/s.png" alt="Card image cap">
+                                                <div class="card-body">
+                                                    <h5 class="card-title"> {{ $sp->company->name }} </h5>
+                                                   <div class="star-reviews mb-3">
+                                                        <ul>
+                                                            <li><i class="fas fa-star"></i></li>
+                                                            <li><i class="fas fa-star"></i></li>
+                                                            <li><i class="fas fa-star"></i></li>
+                                                            <li><i class="fas fa-star"></i></li>
+                                                            <li><i class="fas fa-star"></i></li>
+                                                        </ul>
+                                                        <p class="p-1">(23 reviews)</p>
+                                                        <a href="#">Visit Website <i class="fa fa-external-link" aria-hidden="true"></i></a>
+                                                    </div>
+                                                    <a href="#" class="btn btn-sm btn-outline-info">Get Quote</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
                                 </div>
                             </div>
                             <div class="col-sm-1 arrow-div">
@@ -567,11 +333,9 @@ a { color: #888a85 ; }
 
 </section>
 
-
+{{--<script src="https://use.fontawesome.com/3f7c8758bb.js"></script>--}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 <script src="{{ $root }}/front/owl/owl.carousel.min.js"></script>
-{{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap-wizard/1.2/jquery.bootstrap.wizard.min.js"></script>--}}
-
     <script>
     $(document).ready(function(){
 

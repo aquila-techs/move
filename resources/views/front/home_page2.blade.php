@@ -2,6 +2,7 @@
 
 @php $root = env('ROOT_FOLDER'); @endphp
 
+
 @section('content')
     <link rel="stylesheet" href="{{ $root }}/front/owl/owl.carousel.min.css">
 {{--    <link rel="stylesheet" href="{{ $root }}/public/front/owl/owl.theme.default.min.css">--}}

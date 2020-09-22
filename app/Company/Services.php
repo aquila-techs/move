@@ -19,4 +19,10 @@ class Services extends Model
     {
         return $this->belongsTo(\App\Company\Categories::class);
     }
+
+    public function company()
+    {
+        $this->belongsTo(Profile::class);
+    }
+
 }

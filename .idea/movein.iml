@@ -104,5 +104,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="dnc" />
     <orderEntry type="module" module-name="tce.app.v1" />
+    <orderEntry type="module" module-name="dnc" />
   </component>
 </module>

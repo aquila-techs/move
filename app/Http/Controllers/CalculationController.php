@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use App\Company\Profile;
+use function foo\func;
 
 class CalculationController extends Controller
 {
@@ -39,21 +41,48 @@ class CalculationController extends Controller
 
     public function getQuote(Request $request)
     {
-        if($request->has('home-moving-form-email'))
+        $realtors = \App\Company\Services::whereHas('category', function ( $query ){
+            return $query->where('name','Realtors');
+        } )->get();
+        foreach( $realtors as $index => $row )
         {
-            $data = $request;
-
-//            return explode(',',$data->home-moving-form-location-from)[0];
-            return view('front.get-quotes',compact('data'));
+            $company = \App\Company\Profile::whereId($row->profile_id)->first();
+            $realtors[$index]['company'] = $company;
         }
-        return view('front.get-quotes',compact('request'));
+
+        $pms = \App\Company\Services::whereHas('category', function ( $query ){
+            return $query->where('name','Professional Movers');
+        } )->get();
+        foreach( $pms as $index => $row )
+        {
+            $company = \App\Company\Profile::whereId($row->profile_id)->first();
+            $pms[$index]['company'] = $company;
+        }
+
+        $sps = \App\Company\Services::whereHas('category', function ( $query ){
+            return $query->where('name','Service Providers');
+        } )->get();
+
+        foreach( $sps as $index => $row )
+        {
+            $company = \App\Company\Profile::whereId($row->profile_id)->first();
+            $sps[$index]['company'] = $company;
+        }
+
+        return view('front.get-quotes',compact('realtors','sps','pms','request'));
     }
 
     public function  test()
     {
-//        $role = Role::find(3);
-//        $role->syncPermissions(Permission::all());
-        return Role::find(3)->getAllPermissions();
+        $data = \App\Company\Services::whereHas('category', function ( $query ){
+            return $query->where('name','Realtors');
+        } )->get();
+        foreach( $data as $index => $row )
+        {
+           $company = \App\Company\Profile::whereId($row->profile_id)->first();
+            $data[$index]['company'] = $company;
+        }
+        return $data;
     }
 
 
