@@ -12,7 +12,7 @@
     <li>
         <a href="{{ url('company/profile')  }}">
             <i data-feather="profile"></i>
-            <span> Profile </span>
+            <span> My Company </span>
         </a>
     </li>
 

@@ -32,7 +32,9 @@ class ProfileController extends Controller
     public function update( Profile $profile, Request $request )
     {
         $this->validate($request, [
-            'name' => 'required',
+            'name' => 'required|unique:company_profile,name,'.$profile->id,
+            'company_email' => 'required|unique:company_profile,company_email,'.$profile->id,
+            'phone_number' => 'unique:company_profile,phone_number,'.$profile->id,
         ]);
         $profile->update($request->except('_token','user_id'));
         return redirect('company/profile')->with(['success' => 'Profile is updated successfully.']);

@@ -5,7 +5,7 @@
                     <div class="row" id="edit-button">
                         <div class="col">
                             @if($profile)
-                            <a href="{{  url('company/profile/'.$profile->user->id.'/edit') }}" class="btn btn-sm btn-primary float-right"> Edit </a>
+                            <a href="{{  url('company/profile/'.$profile->id.'/edit') }}" class="btn btn-sm btn-primary float-right"> Edit </a>
                             @endif
                         </div>
                     </div>

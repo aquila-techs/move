@@ -5,7 +5,7 @@
         <img src="{{ URL::asset($root.'assets//images/users/avatar-7.jpg') }}" class="avatar-xs rounded-circle mr-2" alt="Shreyu" />
 
         <div class="media-body">
-            <h6 class="pro-user-name mt-0 mb-0">Moveinandout</h6>
+            <h6 class="pro-user-name mt-0 mb-0"> {{ \Auth::user()->name  }}</h6>
             <span class="pro-user-desc">Administrator</span>
         </div>
         <div class="dropdown align-self-center profile-dropdown-menu">
@@ -19,7 +19,7 @@
                     <span>My Account</span>
                 </a>
 
-                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                <a href="javascript:void(0);" class="drop   down-item notify-item">
                     <i data-feather="settings" class="icon-dual icon-xs mr-2"></i>
                     <span>Settings</span>
                 </a>

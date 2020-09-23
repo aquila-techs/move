@@ -74,15 +74,16 @@ class CalculationController extends Controller
 
     public function  test()
     {
-        $data = \App\Company\Services::whereHas('category', function ( $query ){
-            return $query->where('name','Realtors');
-        } )->get();
-        foreach( $data as $index => $row )
-        {
-           $company = \App\Company\Profile::whereId($row->profile_id)->first();
-            $data[$index]['company'] = $company;
-        }
-        return $data;
+//        $data = \App\Company\Services::whereHas('category', function ( $query ){
+//            return $query->where('name','Realtors');
+//        } )->get();
+//        foreach( $data as $index => $row )
+//        {
+//           $company = \App\Company\Profile::whereId($row->profile_id)->first();
+//            $data[$index]['company'] = $company;
+//        }
+//        return $data;
+        return \Auth::user()->roles()->first();
     }
 
 
