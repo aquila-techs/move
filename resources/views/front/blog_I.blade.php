@@ -1,9 +1,9 @@
-@extends('layouts.front.main_template')
+@extends('layouts.front.template')
 
 @section('content')
 
 			<!-- Including header -->
-		@include('front.includes.main_header')
+		@include('front.includes.header')
 
 				<!-- Page Title
 		============================================= -->
@@ -359,7 +359,7 @@
 	<script src="{{ asset('front/js/plugins.isotope.js' )}}"></script>
 	<script src="{{ asset('front/js/plugins.twitter.js' )}}"></script>
 	<script src="{{ asset('front/js/plugins.masonrythumbs.js' )}}"></script>
-		
+
 @endpush
 
 @endsection

@@ -1,20 +1,20 @@
-@extends('layouts.front.main_template')
+@extends('layouts.front.template')
 
 	@section('content')
-	
+
 				<!-- Including header -->
-			@include('front.includes.main_header')
+			@include('front.includes.header')
 
 @push('custom-css')
-	
+
 <style>
-	input 
-	{ 
-	  border: none !important; 
+	input
+	{
+	  border: none !important;
 	  height: 50px !important;
 	  line-height: 50px !important;
-	  margin-bottom: 20px !important; 
-	  border-bottom: 1px solid #ced4da !important;  
+	  margin-bottom: 20px !important;
+	  border-bottom: 1px solid #ced4da !important;
 	}
 	textarea { border: none !important; border-bottom: 1px solid #ced4da !important;  }
 	label { display: none;  }
@@ -52,12 +52,12 @@
 								<button type="submit" class="button  button-circle">Submit</button>
 							</form>
 
-							
+
 						</div>
 
 						<div class="col-lg-7">
 							<img src="{{ asset(env('ROOT_FOLDER').'front/images/contact_form.jpg') }}" style="position:absolute;top:-30px;left:30px;transition:opacity 0.5s;width:100%;height:125%;object-fit:cover;object-position:center;">
-						</div>	
+						</div>
 			</div>
 			</div>
 			</div>

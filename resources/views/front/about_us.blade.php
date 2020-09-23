@@ -1,10 +1,10 @@
-@extends('layouts.front.main_template')
+@extends('layouts.front.template')
 
 	@section('content')
 
-@php $root = env('ROOT_FOLDER'); @endphp	
+@php $root = env('ROOT_FOLDER'); @endphp
 				<!-- Including header -->
-			@include('front.includes.main_header')
+			@include('front.includes.header')
 
 
 		<!-- Page Title

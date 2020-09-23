@@ -150,7 +150,7 @@
                         @if($errors->has('address'))
                             <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('address') }}</strong>
-                                </span>
+                            </span>
                         @endif
 
                         </div>
