@@ -1,13 +1,12 @@
 @extends('layouts.front.template')
 
-@include('front.includes.header')
+
 @php $root = env('ROOT_FOLDER'); @endphp
 
 
-<style>
-    .dark .menu-link { color: var(--themecolor) !important; }
-</style>
 @section('content')
+
+@include('front.includes.header')
 
 <section id="content">
 

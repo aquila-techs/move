@@ -1,13 +1,10 @@
 @extends('layouts.front.template')
 
-@include('front.includes.header')
 @php $root = env('ROOT_FOLDER'); @endphp
 
-
-<style>
-    .dark .menu-link { color: var(--themecolor) !important; }
-</style>
 @section('content')
+@include('front.includes.header')
+
 
     <section id="content">
 
@@ -19,7 +16,7 @@
                         <div class="col-12 p-5">
                             <div class="mx-auto">
                                 <a href="/">
-                                    <img src="public/assets/images/logo.png" alt="" height="24" />
+                                    <img src="public/assets/images/logo.png" alt="" width='auto' height="24" />
                                     <h3 class="d-inline align-middle ml-1 text-logo">MoveinandOut</h3>
                                 </a>
                             </div>

@@ -14,6 +14,7 @@
             padding-top: 20%;
             padding-left: 45%;
         }
+        .nav-link { max-width: 150px; }
     </style>
 @endsection
 
@@ -47,28 +48,46 @@
         <div class="card" style="height: 500px;">
             <div class="card-body">
 
-                @foreach (['danger', 'warning', 'success', 'info'] as $key)
-                    @if(Session::has($key))
-                        <div class="row">
-                            <div class="offset-3 col-6">
-                                <div class="alert alert-{{ $key }} alert-dismissible fade show" role="alert">
-                                    {{ Session::get($key) }}
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
+                    <div class="card-body">
+                        <ul class="nav nav-pills navtab-bg nav-justified" id="pills-tab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="pills-activity-tab" data-toggle="pill" href="#pills-activity" role="tab" aria-controls="pills-activity" aria-selected="true">
+                                    About
+                                </a>
+                            </li>
+                        </ul>
+
+                        <div class="tab-content" id="pills-tabContent">
+
+                            @foreach (['danger', 'warning', 'success', 'info'] as $key)
+                                @if(Session::has($key))
+                                    <div class="row">
+                                        <div class="offset-3 col-6">
+                                            <div class="alert alert-{{ $key }} alert-dismissible fade show" role="alert">
+                                                {{ Session::get($key) }}
+                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+                            @endforeach
+
+                            <div class="tab-pane fade active show" id="pills-activity" role="tabpanel" aria-labelledby="pills-activity-tab">
+                                {!! $profile->description  !!}
+                            </div>
+
+
                             </div>
                         </div>
-                    @endif
-                @endforeach
-
-
+                <!-- end card -->
+            </div>
             </div>
         </div>
-        <!-- end card -->
-    </div>
+
 </div>
-<!-- end row -->
+
 @endsection
 
 @section('script')

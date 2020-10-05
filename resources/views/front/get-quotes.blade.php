@@ -13,7 +13,30 @@ section { min-height: 400px; }
 a { color: #888a85 ; }
 .card-title { font-size: 20px; }
 .qtus, .qtus p { font-size: 14px !important; }
-
+.company-card { height: 400px; }
+.company-card img { max-height: 150px; }
+.row-box
+{
+    padding-top: 2em;
+    padding-bottom: 3em !important;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+.arrow-div
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.section_top
+{
+    display: flex;
+    align-items: center;
+}
+.section_top p {
+    margin-left: 30px;
+    font-size: 16px !important;
+}
 </style>
 @section('content')
 
@@ -32,11 +55,6 @@ a { color: #888a85 ; }
           <div class="row">
             <div class="col-sm-12">
               <div class="row-box well--idea mb-4">
-                <h5><b>June</b> is peak moving season. Prices will be higher with limited availability, especially near the end of the month! <a href="">Book Soon!</a></h5>
-              </div>
-            </div>
-            <div class="col-sm-12">
-              <div class="row-box well--idea mb-4">
                   <h5>You're moving close to  <b>Independence Day</b> . Holidays are extremely busy. Prices will be higher with limited availability.
                   <a href="">Book Soon!</a></h5>
               </div>
@@ -44,21 +62,21 @@ a { color: #888a85 ; }
 
           <div class="col-sm-4 py-5">
               <div class="row-box mb-4">
-                  <span class="float-left"> From  </span>
+                  <span class="float-left"> <b> From </b>   </span>
                   <span class="float-right"> {{ $request->from_location  }}  </span>
               </div>
           </div>
 
           <div class="col-sm-4 py-5 ">
               <div class="row-box mb-4">
-                  <span class="float-left"> To </span>
+                  <span class="float-left"> <b> To </b> </span>
                   <span class="float-right">  {{ $request->to_location  }}   </span>
               </div>
           </div>
 
           <div class="col-sm-4  py-5">
               <div class="row-box mb-4">
-                  <span class="float-left"> Date </span>
+                  <span class="float-left"> <b> Date </b> </span>
                   <span class="float-right"> {{ $request->date  }} </span>
               </div>
           </div>
@@ -68,8 +86,14 @@ a { color: #888a85 ; }
               <div class="row-box mb-4 people-box">
                 <a href="">
                     <i class="fas fa-people-carry"></i>
-                    <h4>Professional</h4>
-                    <p> $0 - $0 </p>
+                    <h4>Professional Movers</h4>
+                    <p> <b> $
+                        @foreach( $mins as $min ) @if( $min->category == 'Professional Movers' ) {{ $min->min  }} @endif @endforeach
+                        </b> -
+                        <b> $
+                        @foreach( $maxs as $max ) @if( $max->category == 'Professional Movers' ) {{ $max->max  }} @endif @endforeach
+                        </b>
+                    </p>
                 </a>
               </div>
              </div>
@@ -77,8 +101,14 @@ a { color: #888a85 ; }
               <div class="row-box mb-4 people-box">
                 <a href="">
                   <i class="fas fa-warehouse"></i>
-                  <h4>Container</h4>
-                  <p> $0 - $0 </p>
+                  <h4> Realtors </h4>
+                  <p> <b>
+                      @foreach( $mins as $min ) @if( $min->category == 'Realtors' ) {{ $min->min  }} @endif @endforeach
+                      </b> -
+                      <b> $
+                      @foreach( $maxs as $max ) @if( $max->category == 'Realtors' ) {{ $max->max  }} @endif @endforeach
+                      </b>
+                  </p>
                 </a>
               </div>
             </div>
@@ -86,8 +116,14 @@ a { color: #888a85 ; }
               <div class="row-box mb-4 people-box">
                 <a href="">
                 <i class="fas fa-truck-moving"></i>
-                  <h4>Rental Truck</h4>
-                  <p> $0 - $0 </p>
+                  <h4> Service Providers </h4>
+                  <p> <b>
+                      @foreach( $mins as $min ) @if( $min->category == 'Service Providers' ) {{ $min->min  }} @endif @endforeach
+                      </b> -
+                      <b> $
+                      @foreach( $maxs as $max ) @if( $max->category == 'Service Providers' ) {{ $max->max  }} @endif @endforeach
+                      </b>
+                  </p>
                 </a>
               </div>
             </div>
@@ -152,8 +188,20 @@ a { color: #888a85 ; }
               <div class="col-sm-12">
                     <div class="row-box mover mb-4">
             <h5>THEY LOAD, THEY DRIVE</h5>
-            <h1>Professional Movers</h1>
-            <p><span> 0$ </span> to <span> 0$ </span></p>
+            <div class="section_top">
+                <h1>Professional Movers</h1>
+                <p>
+                    From: @if(isset( $request->from_location )) <span class="ml-2 mr-5">  <b> {{ $request->from_location  }} </b> </span> @endif
+                    To:  @if(isset( $request->to_location )) <span class="ml-2"> <b> {{ $request->to_location  }} </b> </span> @endif
+                </p>
+            </div>
+
+            <p><span> <b> $
+                @foreach( $mins as $min ) @if( $min->category == 'Professional Movers' ) {{ $min->min  }} @endif @endforeach
+                </b> </span> to
+                    <span> <b> $
+               @foreach( $maxs as $max ) @if( $max->category == 'Professional Movers' ) {{ $max->max  }} @endif @endforeach
+                </b></span></p>
             <div class="lists">
               <ul>
                 <li>All loading and unloading</li>
@@ -169,43 +217,50 @@ a { color: #888a85 ; }
           </div>
               </div>
           </div>
+          @if( count($pms) )
              <div class="col-sm-11">
-                    <div class="owl-carousel owl-theme" id="companyCarousel1">
+                <div class="owl-carousel owl-theme" id="companyCarousel1">
                     @foreach( $pms as $pm )
-                        <div class="item">
-                            <a href="{{ url('company_profile')  }}">
-                              <div class="card text-center company-card" >
-                                <img class="mx-auto d-flex img-responsive img-circle mt-2 img-thumbnail" src="http://themebubble.com/demo/webify/consult/wp-content/uploads/sites/3/2019/03/s.png" alt="Card image cap">
-                                <div class="card-body">
-                                    <h5 class="card-title"> {{ $pm->company->name }} </h5>
-                                    <div class="star-reviews mb-3">
-                                         <ul>
-                                            <li><i class="fas fa-star"></i></li>
-                                            <li><i class="fas fa-star"></i></li>
-                                            <li><i class="fas fa-star"></i></li>
-                                            <li><i class="fas fa-star"></i></li>
-                                            <li><i class="fas fa-star"></i></li>
-                                        </ul>
-                                       <p class="p-1">(23 reviews)</p>
-                                        <a href="#">Visit Website <i class="fa fa-external-link" aria-hidden="true"></i></a>
-                                    </div>
-                                    <a href="#" class="btn btn-sm btn-outline-info">Get Quote</a>
+                    <div class="item">
+                        <a href="{{ url('company_profile')  }}">
+                          <div class="card text-center company-card" >
+                            @if( $pm->company->media )
+                                  <img class="mx-auto d-flex img-responsive mt-2" src="{{ asset('storage/company/media/'.$pm->company->media->logo) }}" alt="Card image cap">
+                            @else
+                                  <img class="mx-auto d-flex img-responsive mt-2" src="{{ asset($root.'front/images/clients/logo/14.png') }}" alt="Card image cap">
+                            @endif
+                            <div class="card-body">
+                                <h5 class="card-title"> {{ $pm->company->name }} </h5>
+                                <div class="star-reviews mb-3">
+                                     <ul>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star"></i></li>
+                                    </ul>
+                                   <p class="p-1">(23 reviews)</p>
+                                    <a href="#">Visit Website <i class="fa fa-external-link" aria-hidden="true"></i></a>
                                 </div>
+                                <a href="#" class="btn btn-sm btn-outline-info">Get Quote</a>
                             </div>
-                            </a>
                         </div>
-                        @endforeach
-
-                                </div>
-                            </div>
-                            <div class="col-sm-1 arrow-div">
-                                <div class="arrow-icon" id="nextCompanybtn1">
-                                    <i class="fas fa-long-arrow-alt-up"></i><br>
-                                </div>
-                                <div class="arrow-icon"  id="prevCompanybtn1">
-                                    <i class="fas fa-long-arrow-alt-down"></i>
-                                </div>
-                            </div>
+                        </a>
+                    </div>
+                    @endforeach
+                </div>
+                </div>
+                <div class="col-sm-1 arrow-div">
+                        <div class="arrow-icon mr-2" id="nextCompanybtn1">
+                            <i class="fas fa-long-arrow-alt-up"></i><br>
+                        </div>
+                        <div class="arrow-icon"  id="prevCompanybtn1">
+                            <i class="fas fa-long-arrow-alt-down"></i>
+                        </div>
+                </div>
+          @else
+              <h3 class="col-12"> No Professional Mover found. </h3>
+          @endif
 
 
   </div>
@@ -215,8 +270,20 @@ a { color: #888a85 ; }
               <div class="col-sm-12">
                     <div class="row-box mover mb-4">
             <h5>THEY LOAD, THEY DRIVE</h5>
-            <h1>Realtors Movers</h1>
-            <p><span> 0$ </span> to <span> 0$ </span></p>
+            <div class="section_top">
+                <h1> Realtors </h1>
+                <p>
+                    From: @if(isset( $request->from_location )) <span class="ml-2 mr-5">  <b> {{ $request->from_location  }} </b> </span> @endif
+                    To:  @if(isset( $request->to_location )) <span class="ml-2"> <b> {{ $request->to_location  }} </b> </span> @endif
+                </p>
+            </div>
+
+                <p><span><b> $
+                @foreach( $mins as $min ) @if( $min->category == 'Realtors' ) {{ $min->min  }} @endif @endforeach
+                </b> </span> to
+                <span> <b> $
+                   @foreach( $maxs as $max ) @if( $max->category == 'Realtors' ) {{ $max->max  }} @endif @endforeach
+                </b> </span></p>
             <div class="lists">
               <ul>
                 <li>All loading and unloading</li>
@@ -232,40 +299,50 @@ a { color: #888a85 ; }
           </div>
               </div>
           </div>
-             <div class="col-sm-11">
-                                <div class="owl-carousel owl-theme" id="companyCarousel2">
-                                    @foreach( $realtors as $realtor )
-                                        <div class="item">
-                                            <div class="card text-center company-card" >
-                                                <img class="mx-auto d-flex img-responsive img-circle mt-2 img-thumbnail" src="http://themebubble.com/demo/webify/consult/wp-content/uploads/sites/3/2019/03/s.png" alt="Card image cap">
-                                                <div class="card-body">
-                                                    <h5 class="card-title"> {{ $realtor->company->name }} </h5>
-                                                    <div class="star-reviews mb-3">
-                                                        <ul>
-                                                            <li><i class="fas fa-star"></i></li>
-                                                            <li><i class="fas fa-star"></i></li>
-                                                            <li><i class="fas fa-star"></i></li>
-                                                            <li><i class="fas fa-star"></i></li>
-                                                            <li><i class="fas fa-star"></i></li>
-                                                        </ul>
-                                                        <p class="p-1">(23 reviews)</p>
-                                                        <a href="#">Visit Website <i class="fa fa-external-link" aria-hidden="true"></i></a>
-                                                    </div>
-                                                    <a href="#" class="btn btn-sm btn-outline-info">Get Quote</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endforeach
+
+       @if( count($realtors) )
+            <div class="col-sm-11">
+                <div class="owl-carousel owl-theme" id="companyCarousel2">
+                    @foreach( $realtors as $realtor )
+                        <div class="item">
+                            <div class="card text-center company-card" >
+                                @if( $realtor->company->media )
+                                    <img class="mx-auto d-flex img-responsive mt-2" src="{{ asset('storage/company/media/'.$realtor->company->media->logo) }}" alt="Card image cap">
+                                @else
+                                    <img class="mx-auto d-flex img-responsive mt-2" src="{{ asset($root.'front/images/clients/logo/12.png') }}" alt="Card image cap">
+                                @endif
+                                <div class="card-body">
+                                    <h5 class="card-title"> {{ $realtor->company->name }} </h5>
+                                    <div class="star-reviews mb-3">
+                                        <ul>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                        </ul>
+                                        <p class="p-1">(23 reviews)</p>
+                                        <a href="#">Visit Website <i class="fa fa-external-link" aria-hidden="true"></i></a>
+                                    </div>
+                                    <a href="#" class="btn btn-sm btn-outline-info">Get Quote</a>
                                 </div>
                             </div>
-                            <div class="col-sm-1 arrow-div">
-                                <div class="arrow-icon" id="nextCompanybtn2">
-                                    <i class="fas fa-long-arrow-alt-up" aria-hidden="true"></i><br>
-                                </div>
-                                <div class="arrow-icon"  id="prevCompanybtn2">
-                                    <i class="fas fa-long-arrow-alt-down " aria-hidden="true"></i>
-                                </div>
-                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+            <div class="col-sm-1 arrow-div">
+                <div class="arrow-icon mr-2" id="nextCompanybtn2">
+                    <i class="fas fa-long-arrow-alt-up" aria-hidden="true"></i><br>
+                </div>
+                <div class="arrow-icon"  id="prevCompanybtn2">
+                    <i class="fas fa-long-arrow-alt-down " aria-hidden="true"></i>
+                </div>
+            </div>
+
+       @else
+           <h3 class="col-12"> No Realtor found. </h3>
+       @endif
 
 
   </div>
@@ -275,8 +352,19 @@ a { color: #888a85 ; }
               <div class="col-sm-12">
                     <div class="row-box mover mb-4">
             <h5>THEY LOAD, THEY DRIVE</h5>
-            <h1>Service Provider </h1>
-            <p><span> 0$ </span> to <span> 0$ </span></p>
+            <div class="section_top">
+                <h1> Service Provider </h1>
+                <p>
+                    From: @if(isset( $request->from_location )) <span class="ml-2 mr-5">  <b> {{ $request->from_location  }} </b> </span> @endif
+                    To:  @if(isset( $request->to_location )) <span class="ml-2"> <b> {{ $request->to_location  }} </b> </span> @endif
+                </p>
+            </div>
+            <p><span><b> $
+                @foreach( $mins as $min ) @if( $min->category == 'Service Providers' ) {{ $min->min  }} @endif @endforeach
+            </b></span>  to
+                <span><b> $
+                   @foreach( $maxs as $max ) @if( $max->category == 'Service Providers' ) {{ $max->max  }} @endif @endforeach
+                </b> </span></p>
             <div class="lists">
               <ul>
                 <li>All loading and unloading</li>
@@ -292,40 +380,49 @@ a { color: #888a85 ; }
           </div>
               </div>
           </div>
+       @if( count( $sps ) )
              <div class="col-sm-11">
-                                <div class="owl-carousel  owl-theme" id="companyCarousel3">
-                                    @foreach( $sps as $sp )
-                                        <div class="item">
-                                            <div class="card text-center company-card" >
-                                                <img class="mx-auto d-flex img-responsive img-circle mt-2 img-thumbnail" src="http://themebubble.com/demo/webify/consult/wp-content/uploads/sites/3/2019/03/s.png" alt="Card image cap">
-                                                <div class="card-body">
-                                                    <h5 class="card-title"> {{ $sp->company->name }} </h5>
-                                                   <div class="star-reviews mb-3">
-                                                        <ul>
-                                                            <li><i class="fas fa-star"></i></li>
-                                                            <li><i class="fas fa-star"></i></li>
-                                                            <li><i class="fas fa-star"></i></li>
-                                                            <li><i class="fas fa-star"></i></li>
-                                                            <li><i class="fas fa-star"></i></li>
-                                                        </ul>
-                                                        <p class="p-1">(23 reviews)</p>
-                                                        <a href="#">Visit Website <i class="fa fa-external-link" aria-hidden="true"></i></a>
-                                                    </div>
-                                                    <a href="#" class="btn btn-sm btn-outline-info">Get Quote</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endforeach
+                <div class="owl-carousel  owl-t heme" id="companyCarousel3">
+                    @foreach( $sps as $sp )
+                        <div class="item">
+                            <div class="card text-center company-card" >
+                                @if( $sp->company->media )
+                                    <img class="mx-auto d-flex img-responsive mt-2" src="{{ asset('storage/company/media/'.$sp->company->media->logo) }}" alt="Card image cap">
+                                @else
+                                    <img class="mx-auto d-flex img-responsive mt-2" src="{{ asset($root.'front/images/clients/logo/11.png') }}" alt="Card image cap">
+                                @endif
+                                <div class="card-body">
+                                    <h5 class="card-title"> {{ $sp->company->name }} </h5>
+                                   <div class="star-reviews mb-3">
+                                        <ul>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                        </ul>
+                                        <p class="p-1">(23 reviews)</p>
+                                        <a href="#">Visit Website <i class="fa fa-external-link" aria-hidden="true"></i></a>
+                                    </div>
+                                    <a href="#" class="btn btn-sm btn-outline-info">Get Quote</a>
                                 </div>
                             </div>
-                            <div class="col-sm-1 arrow-div">
-                                <div class="arrow-icon" id="nextCompanybtn3">
-                                    <i class="fas fa-long-arrow-alt-up" aria-hidden="true"></i><br>
-                                </div>
-                                <div class="arrow-icon"  id="prevCompanybtn3">
-                                    <i class="fas fa-long-arrow-alt-down " aria-hidden="true"></i>
-                                </div>
-                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+            <div class="col-sm-1 arrow-div">
+                <div class="arrow-icon mr-2" id="nextCompanybtn3">
+                    <i class="fas fa-long-arrow-alt-up" aria-hidden="true"></i><br>
+                </div>
+                <div class="arrow-icon"  id="prevCompanybtn3">
+                    <i class="fas fa-long-arrow-alt-down " aria-hidden="true"></i>
+                </div>
+            </div>
+
+       @else
+           <h3 class="col-12"> No Service Provider found. </h3>
+       @endif
 
 
   </div>

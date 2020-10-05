@@ -11,6 +11,8 @@
 |
 */
 Auth::routes();
+Route::redirect('register','register/company');
+
 
 Route::group([], function () {
 
@@ -36,15 +38,16 @@ Route::post('distance_calculator','CalculationController@getDistance');
 // Route::get('dashboard', 'RoutingController@index');
 
 
-Route::view('/','front.home_page2');
+Route::get('/','RoutingController@home');
 Route::view('about_us','front.about_us');
 Route::view('contact_us','front.contact_us');
 Route::view('faqs','front.faqs');
-Route::view('blog_I','front.blog_I');
+Route::view('blogs','front.blog_I');
 Route::view('blog_II','front.blog_II');
 Route::view('page1','front.page1');
 Route::view('calculator','front.calculator');
 Route::view('home_page','front.home_page');
+Route::view('pricing','front.pricing');
 
 Route::view('home2','front.home2');
 Route::view('company_profile', 'front.company_profile_page');
@@ -58,15 +61,24 @@ Route::prefix('company')->middleware(['auth'])->group(function (){
     Route::view('dashboard','companies.dashboard');
     Route::resource('profile','Company\ProfileController');
     Route::resource('services','Company\ServicesController');
+    Route::post('add-logo','Company\ProfileController@addLogo');
+    Route::resource('blogs', 'Company\BlogsController');
 });
 
 Route::prefix('admin')->middleware(['auth'])->group(function (){
     Route::view('dashboard','admin.dashboard');
     Route::resource('companies', 'Admin\Companies');
+    Route::resource('contact_us', 'Admin\ContactUsController');
+    Route::resource('blogs', 'Admin\BlogsController');
 
 });
+
+Route::post('contact_us','Admin\ContactUsController@store');
+Route::post('getLocation','CalculationController@getLocation');
 
 Route::get('{first}/{second}', 'RoutingController@secondLevel');
 
 Route::get('test','CalculationController@test');
+
+Route::post('file-upload','CalculationController@fileUpload');
 

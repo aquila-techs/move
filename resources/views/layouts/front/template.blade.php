@@ -12,7 +12,9 @@
 	<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet" type="text/css" />
 	<link rel="stylesheet" href="{{ asset($root.'front/css/bootstrap.css') }}" type="text/css" />
     <link rel="stylesheet" href="{{ asset($root.'front/css/all.min.css') }}" type="text/css" />
-    <link rel="stylesheet" href="{{ asset($root.'front/style.css') }}" type="text/css" />
+     
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>   
+ <link rel="stylesheet" href="{{ asset($root.'front/style.css') }}" type="text/css" />
 
 	<link rel="stylesheet" href="{{ asset($root.'front/css/dark.css') }}" type="text/css" />
 	<link rel="stylesheet" href="{{ asset($root.'front/css/font-icons.css') }}" type="text/css" />
@@ -49,7 +51,11 @@
 </head>
 
 <body class="stretched">
-
+    <div id="loader">
+        <div class="spinner-grow text-primary m-2" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
 	@yield('content')
 	<!-- Document Wrapper
 	============================================= -->
@@ -90,7 +96,7 @@
 @stack('custom-scripts')
 
 	<script>
-
+        $('#loader').fadeOut('slow');
 		jQuery('.home-date').datepicker({
 			autoclose: true,
 			startDate: "today",

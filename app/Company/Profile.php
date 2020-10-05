@@ -19,4 +19,9 @@ class Profile extends Model
         return $this->hasMany(Services::class)->with('rates');
     }
 
+    public function media()
+    {
+        return $this->hasOne(\App\Company\Media::class);
+    }
+
 }

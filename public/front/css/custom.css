@@ -24,7 +24,6 @@
         margin-left: 5px;
     }
 }
-
 .dark .menu-link { color: #666; }
 .dark .menu-link:hover { color: var(--themecolor); }
 .sub-menu-container .menu-link:hover { color: white !important; }
@@ -566,4 +565,16 @@ h1, h2, h3, h4, h5, h6 {
 .date-form button:hover{
     background-color: #555;
     border-color: #555;
+}
+
+#loader {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background: #fff;
+    padding-top: 20%;
+    padding-left: 45%;
 }

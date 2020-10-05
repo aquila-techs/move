@@ -3,74 +3,40 @@
 <footer id="footer" class="bg-transparent border-0">
 
     <div class="container">
-
-        <!-- Footer Widgets
-        ============================================= -->
-        <div class="footer-widgets-wrap pb-4 clearfix">
-
-            <div class="row">
-
-                <div class="col-lg-2 col-md-2 col-6">
-                    <div class="widget clearfix">
-
-                        <h4 class="ls0 mb-4 nott">Features</h4>
-
-                        <ul class="list-unstyled iconlist ml-0">
-                            <li class="mb-2"><a href="#">Help Center</a></li>
-                            <li class="mb-2"><a href="#">Paid with Moblie</a></li>
-                            <li class="mb-2"><a href="#">Status</a></li>
-                            <li class="mb-2"><a href="#">Changelog</a></li>
-                            <li class="mb-2"><a href="#">Contact Support</a></li>
-                        </ul>
-
-                    </div>
+       <div class="row py-5">
+        <div class="col-md-4">
+             <div class="widget clearfix">
+                    <img src="{{ asset('/public/images/logo.png') }}"  width="150px" height="50px" alt="">
+                  <p class="pt-3">Whether it's a complete refurbishment or a small remodeling job, we have everything you need from the designers.</p>
                 </div>
-                <div class="col-lg-2 col-md-2 col-6">
-                    <div class="widget clearfix">
+             </div>
+<div class="col-md-2 offset-1">
+               <div class="widget clearfix">
 
                         <h4 class="ls0 mb-4 nott">Support</h4>
 
                         <ul class="list-unstyled iconlist ml-0">
-                            <li class="mb-2"><a href="#">Home</a></li>
-                            <li class="mb-2"><a href="#">About</a></li>
-                            <li class="mb-2"><a href="#">FAQs</a></li>
-                            <li class="mb-2"><a href="#">Support</a></li>
-                            <li class="mb-2"><a href="#">Contact</a></li>
+                            <li class="mb-2"><a href="{{ url('/')  }}">Home</a></li>
+                            <li class="mb-2"><a href="{{ url('about_us')  }}">About</a></li>
+                            <li class="mb-2"><a href="{{ url('faqs')  }}">FAQs</a></li>
+                            <li class="mb-2"><a href="{{ url('contact_us')  }}">Contact</a></li>
                         </ul>
 
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-2 col-6">
-                    <div class="widget clearfix">
-
-                        <h4 class="ls0 mb-4 nott">Trending</h4>
-
-                        <ul class="list-unstyled iconlist ml-0">
-                            <li class="mb-2"><a href="#">Shop</a></li>
-                            <li class="mb-2"><a href="#">Portfolio</a></li>
-                            <li class="mb-2"><a href="#">Blog</a></li>
-                            <li class="mb-2"><a href="#">Events</a></li>
-                            <li class="mb-2"><a href="#">Forums</a></li>
-                        </ul>
-
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-2 col-6">
-                    <div class="widget clearfix">
+                    </div> 
+             </div>
+<div class="col-md-2">
+              <div class="widget clearfix">
 
                         <h4 class="ls0 mb-4 nott">Get to Know us</h4>
 
                         <ul class="list-unstyled iconlist ml-0">
-                            <li class="mb-2"><a href="#">Corporate</a></li>
-                            <li class="mb-2"><a href="#">Agency</a></li>
-                            <li class="mb-2"><a href="#">eCommerce</a></li>
-                            <li class="mb-2"><a href="#">Personal</a></li>
-                            <li class="mb-2"><a href="#">OnePage</a></li>
+                            <li class="mb-2"><a href="{{ url('pricing')  }}">Pricing</a></li>
                         </ul>
 
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-4 text-md-right">
+             </div>
+<div class="col-md-3 text-md-right">
+             
                     <div class="widget clearfix">
 
                         <h4 class="ls0 mb-4 nott">Headquarters:</h4>
@@ -105,11 +71,9 @@
                         </div>
 
                     </div>
-                </div>
-
-            </div>
-
-        </div><!-- .footer-widgets-wrap end -->
+             </div>
+       </div>
+     
 
     </div>
 
@@ -126,7 +90,7 @@
 
                 <div class="col-md-6 d-md-flex flex-md-column align-items-md-end mt-4 mt-md-0">
                     <div class="copyrights-menu copyright-links text-black-50 clearfix">
-                        <a href="#">About</a>/<a href="#">Features</a>/<a href="#">FAQs</a>/<a href="#">Contact</a>
+                        <a href="{{ url('about_us')  }}">About</a>/<a href="{{ url('pricing')  }}">Pricing</a>/<a href="{{ url('faqs')  }}">FAQs</a>/<a href="{{ url('contact_us')  }}">Contact</a>
                     </div>
                 </div>
             </div>

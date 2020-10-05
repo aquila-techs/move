@@ -13,10 +13,8 @@
 
 			<div class="container clearfix">
 				<h1>About Us</h1>
-				<span>Everything you need to know about our Company</span>
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item"><a href="#">Home</a></li>
-					<li class="breadcrumb-item"><a href="#">Pages</a></li>
 					<li class="breadcrumb-item active" aria-current="page">About Us</li>
 				</ol>
 			</div>
@@ -44,58 +42,6 @@
 							</div>
 						</div>
 
-					</div>
-
-
-					<div class="container clearfix" style="margin-top: 10%; margin-bottom: 12%;">
-
-						<!-- Contact Info
-						============================================= -->
-						<div class="row col-mb-50">
-							<div class="col-sm-6 col-lg-3">
-								<div class="feature-box fbox-center fbox-bg fbox-plain">
-									<div class="fbox-icon">
-										<a href="#"><i class="icon-map-marker2"></i></a>
-									</div>
-									<div class="fbox-content">
-										<h3>Our Headquarters<span class="subtitle">Melbourne, Australia</span></h3>
-									</div>
-								</div>
-							</div>
-
-							<div class="col-sm-6 col-lg-3">
-								<div class="feature-box fbox-center fbox-bg fbox-plain">
-									<div class="fbox-icon">
-										<a href="#"><i class="icon-phone3"></i></a>
-									</div>
-									<div class="fbox-content">
-										<h3>Speak to Us<span class="subtitle">(123) 456 7890</span></h3>
-									</div>
-								</div>
-							</div>
-
-							<div class="col-sm-6 col-lg-3">
-								<div class="feature-box fbox-center fbox-bg fbox-plain">
-									<div class="fbox-icon">
-										<a href="#"><i class="icon-skype2"></i></a>
-									</div>
-									<div class="fbox-content">
-										<h3>Make a Video Call<span class="subtitle">CanvasOnSkype</span></h3>
-									</div>
-								</div>
-							</div>
-
-							<div class="col-sm-6 col-lg-3">
-								<div class="feature-box fbox-center fbox-bg fbox-plain">
-									<div class="fbox-icon">
-										<a href="#"><i class="icon-twitter2"></i></a>
-									</div>
-									<div class="fbox-content">
-										<h3>Follow on Twitter<span class="subtitle">2.3M Followers</span></h3>
-									</div>
-								</div>
-							</div>
-						</div><!-- Contact Info End -->
 					</div>
 
 
@@ -207,5 +153,6 @@
 @push('custom-scripts')
 	<script src="{{ asset($root.'front/js/plugins.animations.js' )}}"></script>
 @endpush
+    @include('front.includes.footer')
 
 @endsection

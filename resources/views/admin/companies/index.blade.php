@@ -14,6 +14,11 @@
             padding-top: 20%;
             padding-left: 45%;
         }
+        .logo
+        {
+            min-width: 150px !important;
+            height: auto;
+        }
     </style>
     <link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" rel="stylesheet">
@@ -66,6 +71,7 @@
                             <thead>
                             <tr>
                                 <th>Name</th>
+                                <th>Logo</th>
                                 <th>Email</th>
                                 <th> Owner </th>
                                 <th> City </th>
@@ -102,6 +108,7 @@
                 ajax: "{{ url('admin/companies') }}",
                 columns: [
                     {data: 'profile.name', name: 'profile.name'},
+                    {data: 'logo', name: 'logo'},
                     {data: 'profile.company_email', name: 'profile.company_email'},
                     {data: 'name', name: 'name'},
                     {data: 'profile.city', name: 'profile.city'},

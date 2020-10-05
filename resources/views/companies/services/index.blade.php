@@ -64,6 +64,7 @@
             </div>
 
             <div class="col-9">
+                @if( $service->rates)
                 @foreach( $services as $key => $service )
                     <div class="tab-content" id="v-pills-tabContent">
                         <div class="tab-pane fade show @if($key == 0) active @endif" id="v-pills-{{ $service->id  }}" role="tabpanel" aria-labelledby="v-pills-{{ $service->id  }}-tab">
@@ -72,7 +73,6 @@
                                     <h4 class="service-category-name"> {{ $service->category->name  }} </h4>
                                     <h6> <b>  Price/km within 100km for: </b> </h6>
                                 </div>
-
                                 <div class="col-4">
                                     <h6 class="float-left"> Studio </h6>
                                     <p class="float-left ml-5 pl-5 pt-2"> @if( $service->rates->price_per_km_for_studio_less_then_100km )   ${{ $service->rates->price_per_km_for_studio_less_then_100km }} @endif </p>
@@ -195,9 +195,13 @@
                                 </div>
 
                             </div>
+
+
                         </div>
                     </div>
                 @endforeach
+                @endif
+
             </div>
         @endif
 

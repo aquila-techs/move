@@ -1,18 +1,15 @@
 @extends('layouts.front.template')
 
-@include('front.includes.header')
 @php $root = env('ROOT_FOLDER'); @endphp
 
-
-<style>
-    .dark .menu-link { color: var(--themecolor) !important; }
-</style>
 @section('content')
+
+@include('front.includes.header')
 
     <section id="content">
 
-        <div class="container">
-            <div class="row">
+        <div class="container-fluid">
+            <div class="row" >
                 <div class="col-8">
 
                     <div class="row mt-n3">
@@ -20,11 +17,11 @@
                             <div class="mx-auto">
                                 <a href="/">
                                     <img src="/public/assets/images/logo.png" alt="" height="24" />
-                                    <h3 class="d-inline align-middle ml-1 text-logo">MoveinandOut</h3>
+                                    <h3 class="d-inline align-middle ml-1  text-logo">MoveinandOut</h3>
                                 </a>
                             </div>
 
-                            <p class="text-muted mt-0">Register as a Company</p>
+                            <p class="text-muted text-white mt-0">Register as a Company</p>
 
                             @if(session('error'))<div class="alert alert-danger">{{ session('error') }}</div>
                             <br>@endif
@@ -226,6 +223,8 @@
                                     <button class="button button-rounded btn-block" type="submit"> Register Company </button>
                                 </div>
                             </form>
+                                <p class="text-muted text-center">Already have account? <a href="/login"
+                                                                               class="text-primary font-weight-bold ml-1">Login Up</a></p>
 
                             <!-- <div class="py-3 text-center"><span class="font-size-16 font-weight-bold">Or</span>
                             </div>
@@ -245,19 +244,12 @@
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col-12 text-center">
-                            <p class="text-muted">Already have account? <a href="/login"
-                                                                           class="text-primary font-weight-bold ml-1">Login Up</a></p>
-                        </div> <!-- end col -->
-                    </div>
                     <!-- end row -->
 
                 </div> <!-- end col -->
 
-                <div class="col-lg-4 d-none d-lg-flex flex-wrap justify-content-center">
-                    <img src="{{ asset('public/front/images/main_cover.webp') }}" style="margin-top: -20% !important;" alt="Image 1" class="d-flex align-self-end ml-5 mt-3">
-                </div>
+                <div class="col-lg-4 ">
+               </div>
 
             </div>
 

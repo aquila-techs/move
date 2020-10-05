@@ -6,12 +6,12 @@ use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use App\Company\Profile;
-use function foo\func;
+use DB;
 
 class CalculationController extends Controller
 {
     // distance calculator
-    public function getDistance(Request $request)
+    public function getDistance($request)
     {
         $lat1 = $request['zip1']['lat'];
         $lat2 = $request['zip2']['lat'];
@@ -44,6 +44,13 @@ class CalculationController extends Controller
         $realtors = \App\Company\Services::whereHas('category', function ( $query ){
             return $query->where('name','Realtors');
         } )->get();
+        $mins = DB::select('
+            select min(`price_per_km_for_studio_less_then_100km`) as min, c.name as category from `ratelist`r inner join services s on s.id = r.service_id inner join company_categories c on c.id = s.category_id group by c.name
+        ');
+        $maxs = DB::select('
+            select max(`price_per_km_for_studio_less_then_100km`) as max, c.name as category from `ratelist`r inner join services s on s.id = r.service_id inner join company_categories c on c.id = s.category_id group by c.name
+        ');
+
         foreach( $realtors as $index => $row )
         {
             $company = \App\Company\Profile::whereId($row->profile_id)->first();
@@ -69,21 +76,38 @@ class CalculationController extends Controller
             $sps[$index]['company'] = $company;
         }
 
-        return view('front.get-quotes',compact('realtors','sps','pms','request'));
+        return view('front.get-quotes',compact('realtors','sps','pms','request','mins','maxs'));
+    }
+
+    public function getLocation(Request $request)
+    {
+
+        $m_name = $request->m_name;
+
+        $result = DB::select("SELECT distinct(city), latitude, longitude, country  FROM cities ct inner join countries cr on ct.country_id = cr.id WHERE city LIKE '%{$m_name}%'");
+
+        $output = "<ul>";
+        if ($result) {
+            foreach ($result as $row) {
+
+                $output .= "<li data-latitude='" .$row->latitude."' data-longitude='" .$row->longitude."' >$row->city, $row->country</li>";
+
+            }
+        } else {
+            $output .= "<li>Location Not Found</li>";
+        }
+        $output .= "</ul>";
+        echo $output;
     }
 
     public function  test()
     {
-//        $data = \App\Company\Services::whereHas('category', function ( $query ){
-//            return $query->where('name','Realtors');
-//        } )->get();
-//        foreach( $data as $index => $row )
-//        {
-//           $company = \App\Company\Profile::whereId($row->profile_id)->first();
-//            $data[$index]['company'] = $company;
-//        }
-//        return $data;
-        return \Auth::user()->roles()->first();
+        return \App\User::findOrFail(4)->profile->media->logo;
+    }
+
+    public function fileUpload( Request $request )
+    {
+        return $request;
     }
 
 

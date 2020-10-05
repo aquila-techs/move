@@ -15,7 +15,14 @@ File: Custom Bootstrap Css File
  * Copyright 2011-2019 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
-
+.edit-btn
+{
+    color: #43d39e;
+}
+.delete-btn
+{
+    color: #ff5c75;
+}
 :root {
   --blue: #5369f8;
   --indigo: #564ab1;

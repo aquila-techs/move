@@ -43,7 +43,7 @@
     <div class="row">
 
         <div class="col-lg-12">
-            <div class="card" style="height: 500px;">
+            <div class="card" style="min-height: 500px;">
                 <div class="card-body">
 
                     <div class="row">

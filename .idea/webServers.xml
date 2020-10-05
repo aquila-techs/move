@@ -2,7 +2,7 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="9c67da49-9ca9-40b2-8811-7e534cd20bf2" name="dnc" url="http://binyameen.dncourier.com">
+      <webServer id="9c67da49-9ca9-40b2-8811-7e534cd20bf2" name="dnc" url="http://www.dncourier.com">
         <fileTransfer host="dncourier.com" port="21">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />

@@ -43,6 +43,30 @@ a:hover { var(--themecolor) !important; }
     justify-content: center;
     margin: auto;
 }
+#zipcodelist{
+  position: absolute;
+    top: 60px;
+    width: 77.6%;
+}
+#zipcodelist ul,
+#zipcodelist1 ul{
+  list-style: none;
+}
+#zipcodelist ul li,
+#zipcodelist ul li{
+  padding: 5px;
+  border: 1px solid #ddd;
+    border-top: none;
+    border-bottom: none;
+  background-color: #fafafa;
+  color: #555;
+}
+#zipcodelist ul li:hover,
+#zipcodelist1 ul li:hover{
+  background-color: #555;
+  color: #fff;
+ cursor: pointer;
+}
 </style>
 			<!-- Including header -->
 		@include('front.includes.header')
@@ -61,52 +85,23 @@ a:hover { var(--themecolor) !important; }
                           <h1>Find professionals for pretty much anything.</h1>
                            <form class="page-2" action="{{ url('get-quote')  }}" method="get">
                               <div class="input-group mb-3">
-                                <input type="text" class="form-control company" autocomplete="off" id="destination" list="zip_codes" placeholder="Choose your destination?" style="width: 40%;">
-                                <div class="input-group-append ">
+                                <input type="text" class="form-control company" autocomplete="off" id="destination"  placeholder="Choose your destination?" style="width: 40%;">
+                                 <div id="zipcodelist">
+
+                                    </div>
+                                  <div class="input-group-append ">
                                   <button class="btn button btn-lg" id="modal_opened" data-toggle="modal" data-target="#myModal" type="button">search</button>
                                 </div>
                               </div>
                            </form>
                         </div>
                         <div class="col-lg-5 d-none d-lg-flex flex-wrap justify-content-center">
-                                <img src="{{ asset('public/front/images/640.jpg') }}" style="margin-top: -20% !important;" alt="Image 1" class="d-flex align-self-end ml-5 mt-3">
+                                <img src="{{ asset('public/images/home_page.jpg') }}" style="margin-top: -20% !important;" alt="Image 1" class="d-flex align-self-end ml-5 mt-3">
                         </div>
                     </div>
                 </div>
 
-                 {{-- <!-- The Modal -->
-  <div class="modal fade" id="myModal">
-    <div class="modal-dialog ">
-      <div class="modal-content">
 
-        <!-- Modal Header -->
-          <h4 class="modal-title"></h4>
-          <button type="button" class="close" style="position: absolute; z-index: 10; right: 5px; top:5px;" data-dismiss="modal">&times;</button>
-
-        <!-- Modal body -->
-        <div class="modal-body">
-          <form  method="get" action="{{ url('get-quote') }}">
-              <h4 class="text-center">Please Fill the Form</h4>
-              <div class="form-group">
-                  <input placeholder="Where are you moving from?" class="form-control"  list="zip_codes" name="from_location">
-              </div>
-              <div class="form-group">
-                  <input class="form-control" placeholder="Select your moving date" type="date" name="date">
-              </div>
-              <div class="form-group">
-                  <input placeholder="Where are you moving to?" class="form-control" list="zip_codes" name="to_location">
-              </div>
-              <datalist id="zip_codes"></datalist>
-              <button class="btn btn-primary" type="submit"> Submit </button>
-
-            </form>
-
-        </div>
-
-
-      </div>
-    </div>
-  </div> --}}
 
 
 
@@ -123,24 +118,60 @@ a:hover { var(--themecolor) !important; }
       <div class="modal-body">
 
             <img class="img img-responsive" src="{{ asset($root.'front/images/homepage_modal_pic.jpg') }}" alt="">
-              <form  method="get" class="date-form" action="{{ url('get-quote') }}">
-              <div class="form-group">
-                  <input  class="form-control ab"  list="zip_codes" name="from_location">
+              <form  method="get" class="date-form needs-validation" novalidate action="{{ url('get-quote') }}"  >
+
+                  <div class="form-group">
+                  <input  class="form-control ab" id="destination1" autocomplete="off" name="from_location">
+                   <div id="zipcodelist1">
+
+                                    </div>
                   <Label> Were You Moving From?</Label>
+                  <div class="invalid-feedback">
+        Please Select.
+      </div>
+
               </div>
+
               <div class="form-group">
-                  <input class="form-control ab" type="text" name="date">
+                  <input autocomplete="off" class="form-control ab" type="text" name="date">
                   <Label> Select Pickup Date</Label>
+                   <div class="invalid-feedback">
+                    Please Select.
+                  </div>
               </div>
               <div class="form-group">
-                  <input  class="form-control ab" list="zip_codes" name="to_location">
+                  <input  class="form-control ab"  autocomplete="off" name="to_location">
                   <Label> Were You Moving To?</Label>
+                    <div class="invalid-feedback">
+                        Please Select.
+                    </div>
               </div>
-              <datalist id="zip_codes"></datalist>
               <button class="button button-circle" type="submit"> Submit </button>
 
             </form>
+              <script>
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+</script>
       </div>
+
+
 
     </div>
   </div>
@@ -207,12 +238,17 @@ a:hover { var(--themecolor) !important; }
                             </div>
                             <div class="col-md-8">
                                 <div class="owl-carousel owl-theme" id="companyCarousel">
+                                    @foreach( $pms as $pm )
                                     <div class="item">
                                         <div class="item-body">
-                                            <img src="https://secureservercdn.net/50.62.172.232/6cb.dd2.myftpupload.com/wp-content/uploads/2019/11/Moving-Companies.jpg" alt="">
+                                            @if( $pm->media )
+                                                <img src="{{ asset('storage/company/media/'.$pm->media->logo)  }}" alt="">
+                                            @else
+                                                <img src="https://secureservercdn.net/50.62.172.232/6cb.dd2.myftpupload.com/wp-content/uploads/2019/11/Moving-Companies.jpg" alt="">
+                                            @endif
                                         </div>
                                         <div class="item-footer">
-                                            <h6> Company Name </h6>
+                                            <h6> {{ $pm->name  }} </h6>
                                             <div class="stars mt-n4">
                                                 <span class="fa fa-star checked"></span>
                                                 <span class="fa fa-star checked"></span>
@@ -222,51 +258,7 @@ a:hover { var(--themecolor) !important; }
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="item">
-                                        <div class="item-body">
-                                            <img src="https://www.meganewsviral.com/wp-content/uploads/2019/02/questions_for_moving_company_large.jpg" alt="">
-                                        </div>
-                                        <div class="item-footer">
-                                            <h6> Company Name </h6>
-                                            <div class="stars mt-n4">
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="item-body">
-                                            <img src="http://www.movingsupplies.us/wp-content/uploads/2018/09/Moving-Companies-Helping-You-to-Relocate.jpg" alt="">
-                                        </div>
-                                        <div class="item-footer">
-                                            <h6> Company Name </h6>
-                                            <div class="stars mt-n4">
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="item-body">
-                                            <img src="https://www.iblogshub.com/wp-content/uploads/2019/08/Moving-Companies.jpg" alt="">
-                                        </div>
-                                        <div class="item-footer">
-                                            <h6> Company Name </h6>
-                                            <div class="stars mt-n4">
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
                             <div class="col-md-1 arrow-div">
@@ -287,12 +279,17 @@ a:hover { var(--themecolor) !important; }
             <div class="row py-5">
                 <div class="col-md-8">
                     <div class="owl-carousel owl-theme" id="retalorCarosousel">
+                        @foreach( $realtors as $realtor )
                         <div class="item">
                             <div class="item-body">
-                                <img src="https://snow-wolf-studios.com/wp-content/uploads/Fotolia_72430358_Subscription_Monthly_M-1.jpg" alt="">
+                                @if( $realtor->media )
+                                    <img src="{{ asset('storage/company/media/'.$realtor->media->logo)  }}" alt="">
+                                @else
+                                    <img src="https://snow-wolf-studios.com/wp-content/uploads/Fotolia_72430358_Subscription_Monthly_M-1.jpg" alt="">
+                                @endif
                             </div>
                             <div class="item-footer">
-                                <h6> Realtors Name </h6>
+                                <h6> {{ $realtor->name }} </h6>
                                 <div class="stars mt-n4">
                                     <span class="fa fa-star checked"></span>
                                     <span class="fa fa-star checked"></span>
@@ -302,51 +299,7 @@ a:hover { var(--themecolor) !important; }
                                 </div>
                             </div>
                         </div>
-                        <div class="item">
-                            <div class="item-body">
-                                <img src="https://realtybiznews.com/wp-content/uploads/2017/02/Realtor.jpg" alt="">
-                            </div>
-                            <div class="item-footer">
-                                <h6> Realtors Name </h6>
-                                <div class="stars mt-n4">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="item-body">
-                                <img src="https://www.thechronicleherald.ca/media/photologue/photos/cache/while-the-market-is-plummeting-realtors-are-turning-to-high-tech-solutions-1_large.jpg" alt="">
-                            </div>
-                            <div class="item-footer">
-                                <h6> Realtors Name </h6>
-                                <div class="stars mt-n4">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="item-body">
-                                <img src="https://i2.wp.com/www.pammarketingnut.com/wp-content/uploads/iStock_000014364264XSmall.jpg" alt="">
-                            </div>
-                            <div class="item-footer">
-                                <h6> Realtors Name </h6>
-                                <div class="stars mt-n4">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
                 <div class="col-md-1 arrow-div">
@@ -378,12 +331,17 @@ a:hover { var(--themecolor) !important; }
                 </div>
                 <div class="col-md-8">
                     <div class="owl-carousel owl-theme" id="spCarousel">
+                        @foreach( $sps as $sp )
                         <div class="item">
                             <div class="item-body">
-                                <img src="https://miro.medium.com/max/685/1*BfCdPHrqkGIIwv7j9O5LhQ.jpeg" alt="">
+                                @if( $sp->media )
+                                    <img src="{{ asset('storage/company/media/'.$sp->media->logo)  }}" alt="">
+                                @else
+                                    <img src="https://miro.medium.com/max/685/1*BfCdPHrqkGIIwv7j9O5LhQ.jpeg" alt="">
+                                @endif
                             </div>
                             <div class="item-footer">
-                                <h6> Service Provider Name </h6>
+                                <h6> {{ $sp->name }} </h6>
                                 <div class="stars mt-n4">
                                     <span class="fa fa-star checked"></span>
                                     <span class="fa fa-star checked"></span>
@@ -393,51 +351,7 @@ a:hover { var(--themecolor) !important; }
                                 </div>
                             </div>
                         </div>
-                        <div class="item">
-                            <div class="item-body">
-                                <img src="http://www.wall-ebuilders.com/wp-content/uploads/2018/04/brand-620x400.jpg" alt="">
-                            </div>
-                            <div class="item-footer">
-                                <h6> Service Provider Name </h6>
-                                <div class="stars mt-n4">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="item-body">
-                                <img src="https://i1.wp.com/movingtips.wpengine.com/wp-content/uploads/2018/07/movers-carrying-boxes.jpg" alt="">
-                            </div>
-                            <div class="item-footer">
-                                <h6> Service Provider Name </h6>
-                                <div class="stars mt-n4">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="item-body">
-                                <img src="https://i.pinimg.com/originals/a0/9f/01/a09f01c8f344512299f9830f0ec25e16.jpg" alt="">
-                            </div>
-                            <div class="item-footer">
-                                <h6> Service Provider Name </h6>
-                                <div class="stars mt-n4">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
                 <div class="col-md-1 arrow-div">
@@ -572,30 +486,84 @@ a:hover { var(--themecolor) !important; }
 
 <script src="https://use.fontawesome.com/3f7c8758bb.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
-<script src="{{ $root }}/front/owl/owl.carousel.min.js"></script>
+<script src="{{ $root }}front/owl/owl.carousel.min.js"></script>
 <script>
+
+
+
+
+
+
     $(document).ready(function(){
 
         const token = '{{ csrf_token()  }}';
-            $.ajax({
-                url: 'https://public.opendatasoft.com/api/records/1.0/search/?dataset=us-zip-code-latitude-and-longitude&q=',
-                method: 'GET',
-                success: function (response) {
-                    $(response.records).each(function () {
-                        const lat = ($(this)[0]['fields']['latitude']);
-                        const long = ($(this)[0]['fields']['longitude']);
-                        const zip = ($(this)[0]['fields']['zip']);
-                        const city = ($(this)[0]['fields']['city']);
-                        const state = ($(this)[0]['fields']['state']);
-                        $('#zip_codes').append(`
-                            <option data-lat='${lat}' data-long='${long}' value='${zip} , ${city} ${state}'></option>
-                        `);
-                    });
-                },
-                error: function (err) {
-                    console.log(err);
-                }
-            });
+
+
+
+
+
+     // Autocomplete Textbox
+
+     $("#destination").keyup(function(){
+        var m_name = $(this).val();
+	console.log(name)
+        if(m_name != ''){
+         $.ajax({
+          type: 'Post',
+          url: '{{url('getLocation')}}',
+          data: {
+            _token: token,
+	    m_name: m_name
+          },
+          cache: false,
+          success: function(data){
+            $("#zipcodelist").fadeIn("fast").html(data);
+          }
+        });
+       }else{
+        $("#zipcodelist").fadeOut();
+        $("#table-data").html("");
+      }
+    });
+
+    // Autocomplete List Click Code
+    $(document).on('click','#zipcodelist li',function(){
+      $('#destination').val($(this).text());
+      $("#zipcodelist").fadeOut();
+    });
+
+
+
+       // Autocomplete Textbox
+
+     $("#destination1").keyup(function(){
+        var m_name = $(this).val();
+	console.log(name)
+        if(m_name != ''){
+         $.ajax({
+          type: 'Post',
+          url: '{{url('getLocation')}}',
+          data: {
+            _token: token,
+	    m_name: m_name
+          },
+          cache: false,
+          success: function(data){
+            $("#zipcodelist1").fadeIn("fast").html(data);
+          }
+        });
+       }else{
+        $("#zipcodelist1").fadeOut();
+        $("#table-data1").html("");
+      }
+    });
+
+    // Autocomplete List Click Code
+    $(document).on('click','#zipcodelist1 li',function(){
+      $('#destination1').val($(this).text());
+      $("#zipcodelist1").fadeOut();
+    });
+
 
         const company = $('#companyCarousel').owlCarousel({
             loop:true,
@@ -657,6 +625,7 @@ a:hover { var(--themecolor) !important; }
 
     });
 </script>
+    <script src="//code.tidio.co/troyytbmxuk2s5nst1ilugz8htsimo39.js" async></script>
     @include('front.includes.footer')
 
 @endsection

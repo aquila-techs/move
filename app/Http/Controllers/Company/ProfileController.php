@@ -40,4 +40,12 @@ class ProfileController extends Controller
         return redirect('company/profile')->with(['success' => 'Profile is updated successfully.']);
     }
 
+    public function addLogo( Request $request )
+    {
+        $imageName = time().$request->logo->getClientOriginalName();
+        $request->logo->move(storage_path('company/media'), $imageName);
+        \Auth::user()->profile->media()->create([ 'logo' => $imageName]);
+        return redirect('company/profile')->with(['success' => 'Logo updated successfully.']);
+    }
+
 }
