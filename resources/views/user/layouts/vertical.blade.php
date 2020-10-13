@@ -4,14 +4,14 @@
 <head>
     <meta charset="utf-8" />
 
-    <title>Move in and out - Admin Dashboard </title>
+    <title>Move in and out - User Dashboard </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+    <meta content="A fully featured user theme which can be used to build CRM, CMS, etc." name="description" />
     <meta content="Coderthemes" name="author" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
 
-        @include('admin.layouts.shared.head')
+        @include('user.layouts.shared.head')
 
 
 </head>
@@ -45,8 +45,8 @@
 
     <div id="wrapper">
 
-        @include('admin.layouts.shared.header')
-        @include('admin.layouts.shared.sidebar')
+        @include('user.layouts.shared.header')
+        @include('user.layouts.shared.sidebar')
 
         <div class="content-page">
             <div class="content">
@@ -57,11 +57,11 @@
                 </div>
             </div>
 
-            @include('admin.layouts.shared.footer')
+            @include('user.layouts.shared.footer')
         </div>
     </div>
 
-    @include('admin.layouts.shared.footer-script')
+    @include('user.layouts.shared.footer-script')
 
     @if (getenv('APP_ENV') === 'local')
     <script id="__bs_script__">//<![CDATA[

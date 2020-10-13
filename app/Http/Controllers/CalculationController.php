@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
@@ -102,7 +103,12 @@ class CalculationController extends Controller
 
     public function  test()
     {
-        return \App\User::findOrFail(4)->profile->media->logo;
+        $role = Role::find(4);
+        $user = \App\User::find(9)->with('roles')->get();
+
+//        $user->assignRole($role);
+
+        return $user;
     }
 
     public function fileUpload( Request $request )

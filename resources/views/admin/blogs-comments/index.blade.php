@@ -1,4 +1,4 @@
-@extends('companies.layouts.vertical')
+@extends('admin.layouts.vertical')
 
 
 @section('css')
@@ -14,14 +14,6 @@
             padding-top: 20%;
             padding-left: 45%;
         }
-        .edit-btn
-        {
-            color: #43d39e;
-        }
-        .delete-btn
-        {
-            color: #ff5c75;
-        }
     </style>
     <link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" rel="stylesheet">
@@ -32,11 +24,11 @@
         <div class="col-md-12">
             <nav aria-label="breadcrumb" class="float-right mt-1">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ url('company/dashboard') }}">Company Dashboard</a></li>
-                    <li class="breadcrumb-item active" aria-current="page"> Blogs </li>
+                    <li class="breadcrumb-item"><a href="{{ url('admin/dashboard') }}">Admin Dashboard</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"> Blog Comments </li>
                 </ol>
             </nav>
-            <h4 class="mb-1 mt-0">Blogs </h4>
+            <h4 class="mb-1 mt-0">Blog Comments</h4>
         </div>
     </div>
 @endsection
@@ -55,9 +47,6 @@
 
                 <div class="table-responsive card-body">
 
-                    <div class="col-12">
-                        <a href="{{ url('company/blogs/create')  }}" class="mb-3 btn btn-sm btn-outline-primary float-right"> Add Blog </a>
-                    </div>
 
                     @foreach (['danger', 'warning', 'success', 'info'] as $key)
                         @if(Session::has($key))
@@ -75,13 +64,12 @@
                     @endforeach
 
 
-                    <table id="blog_datatable" class="table nowrap table-hover">
+                    <table id="blog-comments-datatable" class="table nowrap table-hover">
                         <thead>
                         <tr>
-                            <th>Title</th>
-                            <th> Featured Image </th>
-                            <th>Description</th>
-                            <th>Status</th>
+                            <th> Blog </th>
+                            <th> Comment Author </th>
+                            <th> Comment </th>
                             <th> Created at </th>
                             <th> Actions </th>
                         </tr>
@@ -90,6 +78,27 @@
                         <tbody>
                         </tbody>
                     </table>
+
+<div class="modal fade" id="editCommentModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Edit Comment</h5>
+            </div>
+
+            <div class="modal-body">
+                <div class="form-group">
+                    <textarea class="form-control"  id="edited-comment"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
                 </div>
 
             </div>
@@ -107,20 +116,14 @@
         $(document).ready(function () {
             $('#loader').fadeOut('slow');
 
-            var table = $('#blog_datatable').DataTable({
+            var table = $('#blog-comments-datatable').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{ url('company/blogs') }}",
+                ajax: "{{ url('admin/blogs-comments') }}",
                 columns: [
-                    {data: 'title', name: 'title'},
-                    {data: 'picture', name: 'picture'},
-                    {
-                        data: 'description',
-                        name: 'description',
-                        orderable: true,
-                        searchable: true
-                    },
-                    {data: 'status', name: 'status'},
+                    {data: 'blog.title', name: 'blog.title'},
+                    {data: 'author.name', name: 'author.name'},
+                    {data: 'comment', name: 'comment'},
                     {data: 'created_at', name: 'created_at'},
                     {
                         data: 'action',
@@ -130,9 +133,26 @@
                     },
                 ]
             });
+
+
+            $('#blog-comments-datatable').on('click', '.edit-comment', function (){
+                const id = $(this).data('id');
+                $('#loader').fadeIn('slow');
+                $.ajax({
+                    url: `blogs-comments/${id}`,
+                    method: "get",
+                    success: function (response) {
+                        $('#loader').fadeOut('slow');
+                        $('#editCommentModal').modal('show');
+                        $('#edited-comment').val(response['comment']);
+                    }
+
+                });
+            });
         });
     </script>
 @endsection
+
 
 @section('script-bottom')
 @endsection

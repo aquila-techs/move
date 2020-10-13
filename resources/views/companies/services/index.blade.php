@@ -43,16 +43,38 @@
 
     <div class="row bg-white pb-5 pl-2">
 
-        <div class="col-12"> <a href="{{ url('company/services/create')  }}" class="mt-3 float-right btn btn-outline-primary"> Add Service </a>  </div>
+        <div class="col-8">
+                @foreach (['danger', 'warning', 'success', 'info'] as $key)
+                                @if(Session::has($key))
+
+
+                                            <div class="alert alert-{{ $key }} alert-dismissible fade show float-right mb-0 mt-3" role="alert">
+                                                {{ Session::get($key) }}
+                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+
+
+                                @endif
+                            @endforeach
+        </div>
+         <div class="col-4"> <a href="{{ url('company/services/create')  }}" class="mt-3 float-right btn btn-outline-primary"> Add Service </a>  </div>
+
+    </div>
 
         @if( $services->isEmpty() )
+          <div class="row">
             <div class="col-12">
                 <div class="col-12">
                     <h3 class="text-center my-5 pt-5"> No Service is added yet. </h3>
                     <a href="{{ url('company/services/create')  }}" class="btn btn-outline-primary mx-auto"> Add Service </a>
                 </div>
             </div>
+        </div>
         @else
+         <div class="row bg-white">
+
             <div class="col-3">
                 @foreach( $services as $service )
                     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -67,6 +89,10 @@
                 @if( $service->rates)
                 @foreach( $services as $key => $service )
                     <div class="tab-content" id="v-pills-tabContent">
+  <div class="col-12"> <a href="{{ url('company/services/'.$service->id.'/status_update')  }}" class="mt-3 ml-3 float-right btn btn-sm  btn-outline-warning"> @if( $service->status == 'active' ) Deactivate @else Activate @endif Service </a>  </div>
+ <div class="col-12"> <a href="{{ url('company/services/'.$service->id.'/edit')  }}" class="mt-3 float-right btn btn-sm btn-outline-primary"> Edit Service </a>  </div>
+
+
                         <div class="tab-pane fade show @if($key == 0) active @endif" id="v-pills-{{ $service->id  }}" role="tabpanel" aria-labelledby="v-pills-{{ $service->id  }}-tab">
                             <div class="row">
                                 <div class="col-12">
@@ -203,10 +229,11 @@
                 @endif
 
             </div>
+             </div>
         @endif
 
 
-    </div>
+
 
 
 @section('script')

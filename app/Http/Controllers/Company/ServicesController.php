@@ -59,9 +59,9 @@ class ServicesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show( Services $service )
     {
-        //
+        return $service;
     }
 
     /**
@@ -70,9 +70,9 @@ class ServicesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Services $service)
     {
-        //
+        return view( $this->directory.'edit',compact('service') );
     }
 
     /**
@@ -82,9 +82,10 @@ class ServicesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Services $service)
     {
-        //
+        $service->rates()->update(  $request->except([ '_token', '_method' ]) );
+        return redirect('company/services')->with([ 'success' => 'Service is updated successfully.' ]);
     }
 
     /**
@@ -97,4 +98,17 @@ class ServicesController extends Controller
     {
         //
     }
+
+    public function status_update( Services $service )
+    {
+        if( $service->status == 'active') {
+            $service->update(['status' => 'deactive']);
+            return back()->with([ 'warning' => 'Service is deactivated.' ]);
+        }
+        else
+        $service->update([ 'status' => 'active' ]);
+
+        return back()->with([ 'success' => 'Service is activated.' ]);
+    }
+
 }

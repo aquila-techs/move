@@ -18,5 +18,10 @@ class Blogs extends Model
         return $this->belongsTo(\App\User::class,'user_id');
     }
 
+    public function comments()
+    {
+        return $this->hasMany(BlogComments::class);
+    }
+
 
 }

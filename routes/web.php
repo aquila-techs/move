@@ -11,7 +11,7 @@
 |
 */
 Auth::routes();
-Route::redirect('register','register/company');
+//Route::redirect('register','register/company');
 
 
 Route::group([], function () {
@@ -57,19 +57,35 @@ Route::post('register/company', 'UserController@store');
 
 Route::get('get-quote','CalculationController@getQuote');
 
-Route::prefix('company')->middleware(['auth'])->group(function (){
-    Route::view('dashboard','companies.dashboard');
-    Route::resource('profile','Company\ProfileController');
-    Route::resource('services','Company\ServicesController');
-    Route::post('add-logo','Company\ProfileController@addLogo');
-    Route::resource('blogs', 'Company\BlogsController');
-});
-
 Route::prefix('admin')->middleware(['auth'])->group(function (){
     Route::view('dashboard','admin.dashboard');
     Route::resource('companies', 'Admin\Companies');
     Route::resource('contact_us', 'Admin\ContactUsController');
     Route::resource('blogs', 'Admin\BlogsController');
+    Route::resource('blogs-comments', 'Admin\BlogCommentsController');
+    Route::get('blogs/{blog}/update-status', 'Admin\BlogsController@update_status');
+    Route::resource('leads', 'Admin\LeadsController');
+    Route::get('completed-leads', 'Admin\LeadsController@completed');
+    Route::get('leads/{lead}/change-status', 'Admin\LeadsController@change_status');
+
+});
+
+Route::prefix('company')->middleware(['auth'])->group(function (){
+    Route::view('dashboard','companies.dashboard');
+    Route::resource('profile','Company\ProfileController');
+    Route::resource('services','Company\ServicesController');
+    Route::get('services/{service}/update_status', 'Company\ServicesController@update_status');
+    Route::post('add-logo','Company\ProfileController@addLogo');
+    Route::resource('blogs', 'Company\BlogsController');
+    Route::get('blogs/{blog}/update-status', 'Company\BlogsController@update_status');
+    Route::resource('leads', 'Company\LeadsController');
+    Route::get('completed-leads', 'Company\LeadsController@completed');
+    Route::get('leads/{lead}/change-status', 'Company\LeadsController@change_status');
+});
+
+Route::prefix('user')->middleware(['auth'])->group(function (){
+    Route::view('dashboard','user.dashboard');
+    Route::resource('profile','User\ProfileController');
 
 });
 

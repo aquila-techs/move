@@ -59,4 +59,9 @@ class User extends Authenticatable  implements JWTSubject
         return $this->hasMany(\App\Blogs::class);
     }
 
+    public function user_profile()
+    {
+        return $this->hasOne( \App\User\Profile::class, 'user_id' );
+    }
+
 }

@@ -44,6 +44,7 @@ class LoginController extends Controller
     {
         if($user->hasRole('admin')) return redirect('admin/dashboard');
         else if($user->hasRole('company'))  return redirect('company/dashboard');
+        else if($user->hasRole('User'))  return redirect('user/dashboard');
 
     }
 

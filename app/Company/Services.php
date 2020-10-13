@@ -22,7 +22,12 @@ class Services extends Model
 
     public function company()
     {
-        $this->belongsTo(Profile::class);
+        return $this->belongsTo(Profile::class,'profile_id');
+    }
+
+    public function leads()
+    {
+        return $this->hasMany( Leads::class, 'service_id' );
     }
 
 }

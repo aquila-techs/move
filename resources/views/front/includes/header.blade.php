@@ -16,6 +16,8 @@
                                     <li class="nav-item"><a class="nav-link" href="{{ url('admin/dashboard') }}"><div>Dashboard</div></a></li>
                                 @elseif( \Auth::user() && \Auth::user()->roles->first()->name == 'company' )
                                     <li class="nav-item"><a class="nav-link" href="{{ url('company/dashboard') }}"><div>Dashboard</div></a></li>
+                                @elseif( \Auth::user() && \Auth::user()->roles->first()->name == 'User' )
+                                    <li class="nav-item"><a class="nav-link" href="{{ url('user/dashboard') }}"><div>Dashboard</div></a></li>
                                 @endif
                                 <li class="nav-item active"><a class="nav-link" href="{{ url('/') }}"><div>Home</div></a></li>
                                 <li class="nav-item"><a class="nav-link" href="{{ url('about_us') }}"><div>Our Company</div></a></li>

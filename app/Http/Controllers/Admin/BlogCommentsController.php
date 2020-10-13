@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Company;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Blogs;
+use App\BlogComments;
 use DataTables;
 
-class BlogsController extends Controller
+class BlogCommentsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,35 +17,29 @@ class BlogsController extends Controller
 
     public function __construct()
     {
-        $this->directory = 'companies.blogs.';
+        $this->directory = 'admin.blogs-comments.';
     }
 
     public function index()
     {
-//        $data = Blogs::latest()->whereHas('author',function( $query ){
-//            $query->where('name',\Auth::user()->name);
-//        })->with('author')->with('picture')->get();
-//        return $data;
         if (request()->ajax()) {
-            $data = Blogs::latest()->whereHas('author',function( $query ){
-                $query->where('name',\Auth::user()->name);
-            })->with('author')->with('picture')->get();
+            $data = BlogComments::latest()->with(['blog','author'])->get();
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($row){
                     $btn = '<div class="d-flex">';
-                    $btn .= '<a href="blogs/'.$row['id'].'/edit">
+                    $btn .= '<button class="btn edit-comment" style="background: transparent; border:none" class="ml-2" data-id="'.$row['id'].'">
                         <div class="icon-item edit-btn">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
                             <span></span>
                         </div>
-                    </a>';
+                    </button>';
                     $btn .= '
-                        <form method="POST" class="float-left" action="blogs/'.$row['id'].'">
+                        <form method="POST" class="float-left" action="blogs-comments/'.$row['id'].'">
                           '.csrf_field().method_field('DELETE').'
 
                             <div class="form-group">
-                                <button style="background: transparent; border:none" type="submit" class="ml-2">
+                                <button type="submit" style="background: transparent; border:none" class="ml-2 pt-3">
                                     <div class="icon-item delete-btn">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
                                         <span></span>
@@ -55,22 +49,9 @@ class BlogsController extends Controller
                         </form>
                         </div>
                     ';
-                    $btn .= "<a href=blogs/".$row['id']."/update-status>";
-                    if( $row['status'] == 'published' )
-                        $btn .= 'save as draft';
-                    else $btn .= 'publish';
-                    $btn .= '</a>';
                     return $btn;
                 })
-                ->addColumn('picture', function ($row) {
-                    if( $row['picture'] )
-                        return '<img width="150px" src="'.asset("storage\\".$row['picture']['path'].$row['picture']['logo']).'" class="img img-thumbnail"/>';
-                    else return '<p class="text-center"> No Image. </p>';
-                })
-                ->addColumn('description', function ($row) {
-                    return $row['description'];
-                })
-                ->rawColumns(['picture','description','action'])
+                ->rawColumns(['action'])
                 ->make(true);
         }
         return view($this->directory.'index');
@@ -83,7 +64,7 @@ class BlogsController extends Controller
      */
     public function create()
     {
-        return view($this->directory.'form');
+
     }
 
     /**
@@ -94,8 +75,8 @@ class BlogsController extends Controller
      */
     public function store(Request $request)
     {
-        \Auth::user()->blogs()->create( $request->except('_token') );
-        return redirect('company/blogs')->with([ 'success' => 'Blog is updated successfully.' ]);
+        BlogComments::create($request->except('_token'));
+        return redirect('admin/blogs-comments')->with([ 'success' => 'Comment is updated successfully.' ]);
     }
 
     /**
@@ -106,7 +87,8 @@ class BlogsController extends Controller
      */
     public function show($id)
     {
-        //
+        $comment = BlogComments::findOrFail($id);
+        return $comment;
     }
 
     /**
@@ -115,8 +97,9 @@ class BlogsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Blogs $blog)
+    public function edit($id)
     {
+
         return view($this->directory.'form',compact('blog'));
     }
 
@@ -129,8 +112,8 @@ class BlogsController extends Controller
      */
     public function update(Request $request, Blogs $blog)
     {
-        $blog->update( $request->except('_token','_method','user_id') );
-        return redirect('company\blogs')->with([ 'success' => 'Blog is updated successfully.' ]);
+        $blog->update( $request->except('_token','_method') );
+        return redirect('admin\blogs')->with([ 'success' => 'Blog is updated successfully.' ]);
     }
 
     /**
@@ -139,23 +122,11 @@ class BlogsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Blogs $blog)
+    public function destroy(BlogComments $comment)
     {
+        return $comment;
         $blog->delete();
-        return back()->with([ 'success' => 'Blog is deleted successfully.' ]);
+        return back()->with([ 'success' => 'Comment is deleted successfully.' ]);
     }
 
-    public function update_status( Blogs $blog )
-    {
-        if( $blog->status == 'published' )
-        {
-            $blog->update(['status' => 'draft']);
-            return back()->with(['success' => 'Blog is saved as draft.']);
-        }
-        else
-        {
-            $blog->update([ 'status' => 'published' ]);
-            return back()->with([ 'success' => 'Blog is published successfully.' ]);
-        }
-    }
 }

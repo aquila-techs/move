@@ -1,4 +1,4 @@
-@extends('companies.layouts.vertical')
+@extends('admin.layouts.vertical')
 
 
 @section('css')
@@ -22,6 +22,8 @@
         {
             color: #ff5c75;
         }
+        .link{ color: #777; font-weight: 700; }
+        .link:hover{ color: #555; }
     </style>
     <link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" rel="stylesheet">
@@ -32,11 +34,11 @@
         <div class="col-md-12">
             <nav aria-label="breadcrumb" class="float-right mt-1">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ url('company/dashboard') }}">Company Dashboard</a></li>
-                    <li class="breadcrumb-item active" aria-current="page"> Blogs </li>
+                    <li class="breadcrumb-item"><a href="{{ url('admin/dashboard') }}">Admin Dashboard</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"> Leads </li>
                 </ol>
             </nav>
-            <h4 class="mb-1 mt-0">Blogs </h4>
+            <h4 class="mb-1 mt-0">In-Progress Leads </h4>
         </div>
     </div>
 @endsection
@@ -55,10 +57,6 @@
 
                 <div class="table-responsive card-body">
 
-                    <div class="col-12">
-                        <a href="{{ url('company/blogs/create')  }}" class="mb-3 btn btn-sm btn-outline-primary float-right"> Add Blog </a>
-                    </div>
-
                     @foreach (['danger', 'warning', 'success', 'info'] as $key)
                         @if(Session::has($key))
                             <div class="row">
@@ -75,19 +73,23 @@
                     @endforeach
 
 
-                    <table id="blog_datatable" class="table nowrap table-hover">
+                    <table id="leads_datatable" class="table nowrap table-hover">
                         <thead>
                         <tr>
-                            <th>Title</th>
-                            <th> Featured Image </th>
-                            <th>Description</th>
-                            <th>Status</th>
-                            <th> Created at </th>
+                            <th> Service </th>
+                            <th> Company </th>
+                            <th> Client Name </th>
+                            <th> Client Email </th>
+                            <th> Client Phone </th>
+                            <th> Moving Distance </th>
+                            <th> Estimated Cost </th>
+                            <th> Lead Requested </th>
+                            <th> Status </th>
                             <th> Actions </th>
                         </tr>
                         </thead>
 
-                        <tbody>
+                        <tbody class="text-center">
                         </tbody>
                     </table>
                 </div>
@@ -107,21 +109,35 @@
         $(document).ready(function () {
             $('#loader').fadeOut('slow');
 
-            var table = $('#blog_datatable').DataTable({
+            const table = $('#leads_datatable').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{ url('company/blogs') }}",
+                ajax: "{{ url('admin/leads') }}",
                 columns: [
-                    {data: 'title', name: 'title'},
-                    {data: 'picture', name: 'picture'},
                     {
-                        data: 'description',
-                        name: 'description',
+                        data: 'service_name',
+                        name: 'service_name',
                         orderable: true,
                         searchable: true
                     },
-                    {data: 'status', name: 'status'},
+                    {data: 'service.company.name', name: 'service.company.name'},
+                    {data: 'username', name: 'username'},
+                    {data: 'email', name: 'email'},
+                    {data: 'phone', name: 'phone'},
+                    {
+                        data: 'distance',
+                        name: 'distance',
+                        orderable: true,
+                        searchable: true
+                    },
+                    {
+                        data: 'est_price',
+                        name: 'est_price',
+                        orderable: true,
+                        searchable: true
+                    },
                     {data: 'created_at', name: 'created_at'},
+                    {data: 'status', name: 'status'},
                     {
                         data: 'action',
                         name: 'action',
